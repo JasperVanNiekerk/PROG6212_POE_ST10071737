@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace PROG6212_POE_ST10071737.MVVM.View
@@ -22,28 +11,67 @@ namespace PROG6212_POE_ST10071737.MVVM.View
     public partial class DownMenuAnimation : UserControl
     {
 
+        //___________________________________________________________________________________________________________
+        //__________________________________________Parameters_______________________________________________________
+        //___________________________________________________________________________________________________________
+
         private DispatcherTimer animationTimer;
+        //___________________________________________________________________________________________________________
+
         private DispatcherTimer animationTimer2;
+        //___________________________________________________________________________________________________________
+
         private DispatcherTimer animationTimer3;
+        //___________________________________________________________________________________________________________
+
         private DispatcherTimer animationTimer4;
+        //___________________________________________________________________________________________________________
+
         private Point endPoint1 = new Point(0, 0);
+        //___________________________________________________________________________________________________________
+
         private Point endPoint2 = new Point(0, 0);
+        //___________________________________________________________________________________________________________
+
         private Point endPoint3 = new Point(0, 0);
+        //___________________________________________________________________________________________________________
+
         private Point endPoint4 = new Point(0, 0);
+        //___________________________________________________________________________________________________________
 
+        //___________________________________________________________________________________________________________
+        //__________________________________________Constructors_____________________________________________________
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// constructor to set the display for the down menu animation
+        /// </summary>
         public DownMenuAnimation()
         {
             InitializeComponent();
             Loaded += MainWindow_Loaded;
         }
+        //___________________________________________________________________________________________________________
 
+        //___________________________________________________________________________________________________________
+        //_____________________________________________Methods_______________________________________________________
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// method to load the timer chain for the Down menu animation
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             this.timerManager1();
 
         }
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// method to define and start the first timer
+        /// </summary>
         private void timerManager1()
         {
             animationTimer = new DispatcherTimer();
@@ -51,7 +79,11 @@ namespace PROG6212_POE_ST10071737.MVVM.View
             animationTimer.Tick += AnimationTimer_Tick;
             animationTimer.Start();
         }
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// method to define and start the second timer
+        /// </summary>
         private void timerManager2()
         {
             drawingLine2.Y1 = endPoint1.Y - 1.5;
@@ -63,7 +95,11 @@ namespace PROG6212_POE_ST10071737.MVVM.View
             animationTimer2.Tick += AnimationTimer_Tick2;
             animationTimer2.Start();
         }
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// method to define and start the third timer
+        /// </summary>
         private void timerManager3()
         {
             drawingLine3.Y1 = endPoint1.Y - 1.5;
@@ -75,7 +111,11 @@ namespace PROG6212_POE_ST10071737.MVVM.View
             animationTimer3.Tick += AnimationTimer_Tick3;
             animationTimer3.Start();
         }
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// method to define and start the fourth timer
+        /// </summary>
         private void timerManager4()
         {
             drawingLine4.Y1 = endPoint1.Y - 1.5;
@@ -87,7 +127,13 @@ namespace PROG6212_POE_ST10071737.MVVM.View
             animationTimer4.Tick += AnimationTimer_Tick4;
             animationTimer4.Start();
         }
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// method to draw the first line
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AnimationTimer_Tick(object sender, EventArgs e)
         {
             if (endPoint1.Y < 228)
@@ -115,7 +161,13 @@ namespace PROG6212_POE_ST10071737.MVVM.View
                 animationTimer.Stop();
             }
         }
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// method to draw the second line
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AnimationTimer_Tick2(object sender, EventArgs e)
         {
             if (endPoint2.X < 40 && endPoint2.Y < 120)
@@ -126,7 +178,13 @@ namespace PROG6212_POE_ST10071737.MVVM.View
                 drawingLine2.Y2 = endPoint2.Y;
             }
         }
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// method to draw the third line
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AnimationTimer_Tick3(object sender, EventArgs e)
         {
             if (endPoint3.X < 40 && endPoint3.Y < 196)
@@ -137,7 +195,13 @@ namespace PROG6212_POE_ST10071737.MVVM.View
                 drawingLine3.Y2 = endPoint3.Y;
             }
         }
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// method to draw the fourth line
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AnimationTimer_Tick4(object sender, EventArgs e)
         {
             if (endPoint4.X < 40 && endPoint4.Y < 272)
@@ -148,5 +212,7 @@ namespace PROG6212_POE_ST10071737.MVVM.View
                 drawingLine4.Y2 = endPoint4.Y;
             }
         }
+        //___________________________________________________________________________________________________________
     }
 }
+//____________________________________EOF_________________________________________________________________________

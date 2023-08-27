@@ -6,20 +6,57 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
 {
     internal class MainWindowViewModel : ObservableObject
     {
+        //___________________________________________________________________________________________________________
+        //__________________________________________Parameters_______________________________________________________
+        //___________________________________________________________________________________________________________
+
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// creates a relay command to set the current view to the modual manager
+        /// </summary>
         public RelayCommand ModualManagerViewCommand { get; set; }
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// creates a relay command to set the current view to the study manager
+        /// </summary>
         public RelayCommand StudyManagerViewCommand { get; set; }
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// creates a relay command to set the current view to the productivity manager
+        /// </summary>
         public RelayCommand ProductivityManagerViewCommand { get; set; }
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// creates a new instance of the ModualManagerViewModel
+        /// </summary>
         public ModualManagerViewModel ModualManagerVM { get; set; }
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// creates a new instance of the StudyManagerViewModel
+        /// </summary>
         public StudyManagerViewModel StudyManagerVM { get; set; }
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// creates a new instance of the ProductivityManagerViewModel
+        /// </summary>
         public ProductivityManagerViewModel ProductivityManagerVM { get; set; }
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// variable to store the current view displayed in the main window
+        /// </summary>
         private object _currentView;
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// variable to store the current view displayed in the main window
+        /// </summary>
         public object CurrentView
         {
             get { return _currentView; }
@@ -29,11 +66,23 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
                 OnPropertyChanged();
             }
         }
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// timer variable used to time the radio buttons in the main windows visibility
+        /// </summary>
         private DispatcherTimer timer;
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// boolean to set the visibility of the study manager radio button
+        /// </summary>
         private bool isStudyManagerVisible;
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// boolean to set the visibility of the study manager radio button
+        /// </summary>
         public bool IsStudyManagerVisible
         {
             get { return isStudyManagerVisible; }
@@ -45,11 +94,19 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
                     OnPropertyChanged(nameof(isStudyManagerVisible));
                 }
             }
-                
+
         }
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// boolean to set the visibility of the modual manager radio button
+        /// </summary>
         private bool isModualManagerVisible;
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// boolean to set the visibility of the Modual manager radio button
+        /// </summary>
         public bool IsModualManagerVisible
         {
             get { return isModualManagerVisible; }
@@ -63,8 +120,17 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             }
 
         }
-        private bool isProductivityManagerVisible;
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// boolean to set the visibility of the Productivity manager radio button
+        /// </summary>
+        private bool isProductivityManagerVisible;
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// boolean to set the visibility of the Productivity manager radio button
+        /// </summary>
         public bool IsProductivityManagerVisible
         {
             get { return isProductivityManagerVisible; }
@@ -78,7 +144,15 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             }
 
         }
+        //___________________________________________________________________________________________________________
 
+        //___________________________________________________________________________________________________________
+        //__________________________________________Constructors_____________________________________________________
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// constructor used to set the display of the main window
+        /// </summary>
         public MainWindowViewModel()
         {
             IsStudyManagerVisible = false;
@@ -111,7 +185,17 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             timer.Tick += Timer_Tick;
             timer.Start();
         }
+        //___________________________________________________________________________________________________________
 
+        //___________________________________________________________________________________________________________
+        //_____________________________________________Methods_______________________________________________________
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// timer for first radio button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Timer_Tick(object sender, EventArgs e)
         {
             // Stop the timer
@@ -126,7 +210,13 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             timer.Tick += Timer_Tick_Second;
             timer.Start();
         }
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// timer for second radio button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Timer_Tick_Second(object sender, EventArgs e)
         {
             // Stop the timer
@@ -141,7 +231,13 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             timer.Tick += Timer_Tick_Third;
             timer.Start();
         }
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// timer for third radio button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Timer_Tick_Third(object sender, EventArgs e)
         {
             // Stop the timer
@@ -150,5 +246,7 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             // Show the third radio button after 4.5 seconds
             IsProductivityManagerVisible = true;
         }
+        //___________________________________________________________________________________________________________
     }
 }
+//____________________________________EOF_________________________________________________________________________

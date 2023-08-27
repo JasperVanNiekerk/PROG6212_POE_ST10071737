@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace PROG6212_POE_ST10071737.MVVM.View
@@ -21,21 +10,54 @@ namespace PROG6212_POE_ST10071737.MVVM.View
     /// </summary>
     public partial class RightMenuAnimation : UserControl
     {
+        //___________________________________________________________________________________________________________
+        //__________________________________________Parameters_______________________________________________________
+        //___________________________________________________________________________________________________________
+
         private DispatcherTimer animationTimer;
+        //___________________________________________________________________________________________________________
+
         private DispatcherTimer animationTimer2;
+        //___________________________________________________________________________________________________________
+
         private Point endPoint1 = new Point(0, 0);
+        //___________________________________________________________________________________________________________
+
         private Point endPoint2 = new Point(0, 0);
+        //___________________________________________________________________________________________________________
+
+        //___________________________________________________________________________________________________________
+        //__________________________________________Constructors_____________________________________________________
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// constructor to set thhe display of the RightMenuAnimation
+        /// </summary>
         public RightMenuAnimation()
         {
             InitializeComponent();
             Loaded += MainWindow_Loaded;
         }
+        //___________________________________________________________________________________________________________
 
+        //___________________________________________________________________________________________________________
+        //_____________________________________________Methods_______________________________________________________
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// method to load the timer chain
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             this.timerManager1();
         }
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// method the define and set the first timer
+        /// </summary>
         private void timerManager1()
         {
             animationTimer = new DispatcherTimer();
@@ -43,6 +65,11 @@ namespace PROG6212_POE_ST10071737.MVVM.View
             animationTimer.Tick += AnimationTimer_Tick;
             animationTimer.Start();
         }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// method to define and set the second timmer
+        /// </summary>
         private void timerManager2()
         {
 
@@ -52,7 +79,13 @@ namespace PROG6212_POE_ST10071737.MVVM.View
             animationTimer2.Tick += AnimationTimer_Tick2;
             animationTimer2.Start();
         }
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// method to draw the fist line of the right Menu animation
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AnimationTimer_Tick(object sender, EventArgs e)
         {
             if (endPoint1.X < 60 && endPoint1.Y < 60)
@@ -68,10 +101,16 @@ namespace PROG6212_POE_ST10071737.MVVM.View
                 animationTimer.Stop();
             }
         }
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// method to draw the second line of te right menu animation
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AnimationTimer_Tick2(object sender, EventArgs e)
         {
-            if(endPoint2.X < 700)
+            if (endPoint2.X < 700)
             {
                 endPoint2.X += 5.5;
                 drawingLine2.X2 = endPoint2.X;
@@ -81,5 +120,7 @@ namespace PROG6212_POE_ST10071737.MVVM.View
                 animationTimer2.Stop();
             }
         }
+        //___________________________________________________________________________________________________________
     }
 }
+//____________________________________EOF_________________________________________________________________________
