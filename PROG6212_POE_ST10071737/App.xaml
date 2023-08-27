@@ -1,0 +1,31 @@
+﻿<Application x:Class="PROG6212_POE_ST10071737.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ViewModel="clr-namespace:PROG6212_POE_ST10071737.MVVM.ViewModel"
+             xmlns:View="clr-namespace:PROG6212_POE_ST10071737.MVVM.View"
+             xmlns:Boolean="clr-namespace:PROG6212_POE_ST10071737.UICode"
+             xmlns:local="clr-namespace:PROG6212_POE_ST10071737"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/HomeradioBTNStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type ViewModel:StudyManagerViewModel}">
+                <View:StudyManagerView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type ViewModel:ModualManagerViewModel}">
+                <View:ModualManagerView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type ViewModel:ProductivityManagerViewModel}">
+                <View:ProductivityManagerView/>
+            </DataTemplate>
+
+            <Boolean:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

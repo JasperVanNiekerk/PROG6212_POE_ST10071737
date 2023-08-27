@@ -1,0 +1,116 @@
+﻿<Window x:Class="PROG6212_POE_ST10071737.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:beh="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
+        xmlns:hw="http://schemas.hpod9.com/haley/wpf"
+        xmlns:local="clr-namespace:PROG6212_POE_ST10071737"
+        xmlns:View="clr-namespace:PROG6212_POE_ST10071737.MVVM.View"
+        xmlns:ViewModel="clr-namespace:PROG6212_POE_ST10071737.MVVM.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        Height="650" 
+        Width="900"
+        WindowStyle="None"
+        hm:WindowBlurAP.IsEnabled="true"
+        AllowsTransparency="True"
+        Background="black"
+        Opacity="0.5"
+        WindowStartupLocation="CenterScreen"
+        BorderThickness="0"
+        BorderBrush="Transparent">
+
+    <Window.DataContext>
+        <ViewModel:MainWindowViewModel/>
+    </Window.DataContext>
+
+    <Border CornerRadius="75">
+        
+        <beh:Interaction.Behaviors>
+            <hw:BorderClipper EnableClip="True"/>
+        </beh:Interaction.Behaviors>
+
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.RowSpan="2"/>
+
+            <!--Animations-->
+            
+            <View:DownMenuAnimation x:Name="DMA"
+                                    Margin="-33.5,75,150,0"
+                                    Grid.Column="0"
+                                    Grid.Row="0"/>
+
+            <View:RightMenuAnimation x:Name="RMA"/>
+            
+            <View:CoreSmall x:Name="CS"
+                            Margin="-25"/>
+
+            
+
+
+            <!--Radio buttons-->
+
+            <StackPanel Grid.Row="1"
+                        Grid.ColumnSpan="3"
+                        Width="190"
+                        Margin="0,0,710,0">
+                
+                <RadioButton Content="Study manager"
+                             x:Name="SMRB"
+                             Width="160"
+                             Margin="25,13,0,0"
+                             IsChecked="True"
+                             Command="{Binding StudyManagerViewCommand}"
+                             Style="{StaticResource HomeRadioBTNStyle}"
+                             Visibility="{Binding IsStudyManagerVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+                <Border Background="Transparent"
+                        Height="30"/>
+
+                <RadioButton Content="Manage Moduals"
+                             x:Name="MMRB"
+                             Width="160"
+                             Margin="20,13,0,0"
+                             Command="{Binding ModualManagerViewCommand}"
+                             Style="{StaticResource HomeRadioBTNStyle}"
+                             Visibility="{Binding IsModualManagerVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+                <Border Background="Transparent"
+                        Height="30"/>
+
+                <RadioButton Content="Productivity manager"
+                             x:Name="PMRB"
+                             Width="160"
+                             Margin="25,13,0,0"
+                             Command="{Binding ProductivityManagerViewCommand}"
+                             Style="{StaticResource HomeRadioBTNStyle}"
+                             Visibility="{Binding IsProductivityManagerVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+            </StackPanel>
+
+            <!--CurrentView-->
+            
+            <ContentControl Grid.Row="1"
+                            Grid.Column="3"
+                            Margin="10"
+                            Content="{Binding CurrentView}"/>
+            
+        </Grid>
+        
+    </Border>
+    
+</Window>
