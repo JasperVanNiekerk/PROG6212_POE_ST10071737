@@ -5,7 +5,7 @@
              xmlns:View="clr-namespace:PROG6212_POE_ST10071737.MVVM.View"
              xmlns:Boolean="clr-namespace:PROG6212_POE_ST10071737.UICode"
              xmlns:local="clr-namespace:PROG6212_POE_ST10071737"
-             StartupUri="MainWindow.xaml">
+             StartupUri="/MVVM/View/Login.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -22,6 +22,10 @@
 
             <DataTemplate DataType="{x:Type ViewModel:ProductivityManagerViewModel}">
                 <View:ProductivityManagerView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type ViewModel:LoginViewModel}">
+                <View:Login/>
             </DataTemplate>
 
             <Boolean:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />

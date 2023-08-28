@@ -8,7 +8,103 @@
              d:DesignHeight="400" 
              d:DesignWidth="700">
     <Grid>
-        <Label Content="moduals" 
-               Foreground="LightBlue"/>
+        <StackPanel>
+
+            <StackPanel.Effect>
+                <DropShadowEffect Color="LightBlue"
+                                  BlurRadius="20"
+                                  Opacity="0.5"
+                                  ShadowDepth="0"/>
+            </StackPanel.Effect>
+
+            <Canvas Height="150">
+
+                <Polygon Points="0,0 400,0 505,150 105,150"
+                     Stroke="LightBlue" 
+                     StrokeThickness="3"/>
+
+                <TextBlock x:Name="QuestionTB"
+                           Foreground="LightBlue"
+                           Text="Hello world this is a question"
+                           Width="295"
+                           Height="150"
+                           TextAlignment="Center"
+                           Canvas.Left="105"/>
+
+                <Rectangle Width="120"
+                           Height="40"
+                           StrokeThickness="2"
+                           Stroke="LightBlue"
+                           Canvas.Top="16.5"
+                           Canvas.Left="505"/>
+
+                <TextBlock x:Name="SemesterTB"
+                           Height="30"
+                           Width="110"
+                           Canvas.Top="20"
+                           Canvas.Left="510"
+                           Foreground="LightBlue"
+                           Text="Semester 1"
+                           Margin="5,5,0,0"
+                           FontSize="16"/>
+
+                <Button x:Name="SemesterPlusBTN"
+                        Width="30"
+                        Height="21"
+                        Background="Transparent"
+                        BorderBrush="LightBlue"
+                        Foreground="LightBlue"
+                        BorderThickness="2"
+                        Content="+"
+                        Canvas.Top="16.5"
+                        Canvas.Left="623"/>
+
+                <Button x:Name="SemesterMinusBTN"
+                        Width="30"
+                        Height="21"
+                        Background="Transparent"
+                        BorderBrush="LightBlue"
+                        Foreground="LightBlue"
+                        BorderThickness="2"
+                        Content="-"
+                        Canvas.Top="35.5"
+                        Canvas.Left="623"/>
+
+            </Canvas>
+
+            <Border Height="50"/>
+
+            <Canvas Height="150">
+
+                <Polygon Points="160,0 560,0 455,150 65,150"
+                     Stroke="LightBlue" 
+                     StrokeThickness="3"/>
+
+                <TextBox x:Name="InputTB"
+                         Foreground="LightBlue"
+                         Text="Hello world this is the awnser"
+                         Background="Transparent"
+                         BorderThickness="0"
+                         Width="295"
+                         Height="150"
+                         TextAlignment="Center"
+                         Canvas.Left="210"/>
+
+
+                <Button x:Name="NextBTN"
+                        Width="100"
+                        Height="40"
+                        Background="Transparent"
+                        BorderBrush="LightBlue"
+                        Foreground="LightBlue"
+                        BorderThickness="2"
+                        Content="NEXT"
+                        Canvas.Bottom="20"
+                        Canvas.Left="553"/>
+
+            </Canvas>
+
+
+        </StackPanel>
     </Grid>
 </UserControl>

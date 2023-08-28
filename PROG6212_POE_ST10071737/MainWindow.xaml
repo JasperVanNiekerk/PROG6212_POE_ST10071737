@@ -102,12 +102,46 @@
 
             </StackPanel>
 
+            <!--Top display-->
+            
+            <StackPanel Orientation="Horizontal"
+                        Grid.Row="0"
+                        Grid.Column="3">
+
+                <StackPanel.Effect>
+                    <DropShadowEffect Color="LightBlue"
+                                      BlurRadius="20"
+                                      Opacity="0.5"
+                                      ShadowDepth="0"/>
+                </StackPanel.Effect>
+
+                <TextBlock Text="Your Name Here"
+                           Foreground="LightBlue"
+                           FontSize="25"
+                           TextAlignment="Center"
+                           Height="50"
+                           Margin="0,70,0,0"
+                           Visibility="{Binding IsStudyManagerVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+                <Border Width="300"/>
+
+                <TextBlock Text="Time/date"
+                           Foreground="LightBlue"
+                           FontSize="20"
+                           Height="50"
+                           TextAlignment="Center"
+                           Margin="0,80,0,0"
+                           Visibility="{Binding IsProductivityManagerVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+            </StackPanel>
+
             <!--CurrentView-->
             
             <ContentControl Grid.Row="1"
                             Grid.Column="3"
                             Margin="10"
-                            Content="{Binding CurrentView}"/>
+                            Content="{Binding CurrentView}"
+                            Visibility="{Binding IsProductivityManagerVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
             
         </Grid>
         

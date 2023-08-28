@@ -1,0 +1,172 @@
+﻿<UserControl x:Class="PROG6212_POE_ST10071737.MVVM.View.BigCore"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PROG6212_POE_ST10071737.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" 
+             d:DesignWidth="400"
+             Background="Transparent">
+    <Canvas>
+        <Canvas.Effect>
+            <DropShadowEffect Color="LightBlue"
+                              Opacity="0.5"
+                              BlurRadius="20"
+                              ShadowDepth="0"/>
+        </Canvas.Effect>
+
+
+        <Ellipse Width="100"
+                 Height="100"
+                 StrokeThickness="2"
+                 Stroke="LightBlue"
+                 Canvas.Left="150"
+                 Canvas.Top="150">
+
+            <Ellipse.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="azure"
+                                      Offset="0"/>
+                    <GradientStop Color="LightBlue"
+                                      Offset="1"/>
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+            
+        </Ellipse>
+
+        <Ellipse Width="130"
+                 Height="130"
+                 StrokeThickness="2"
+                 Stroke="LightBlue"
+                 Canvas.Left="135"
+                 Canvas.Top="135"/>
+
+        <!-- broken circle -->
+        
+        <Border Width="200"
+                Height="200"
+                Background="Transparent"
+                Canvas.Top="100"
+                Canvas.Left="100"
+                x:Name="BrokenCircleBorder">
+
+            <Image Source="/Images/BrokenCircle.png"
+                   Stretch="Fill"/>
+
+            <Border.RenderTransform>
+                <RotateTransform x:Name="BrokenCircleRotation"
+                                     CenterX="100"
+                                     CenterY="100"/>
+            </Border.RenderTransform>
+
+        </Border>
+
+        <!-- 1st Arc -->
+        
+        <Border Height="240"
+                Width="240"
+                Background="Transparent"
+                Canvas.Left="80"
+                Canvas.Top="80"
+                x:Name="Arc1Border">
+
+            <Image Source="/Images/arc4.png"
+                       HorizontalAlignment="Left"/>
+
+            <Border.RenderTransform>
+                <RotateTransform x:Name="Arc1rotation"
+                                     CenterX="120"
+                                     CenterY="120"/>
+            </Border.RenderTransform>
+
+        </Border>
+
+        <!-- 2nd Arc -->
+
+        <Border Height="280"
+                Width="280"
+                Background="Transparent"
+                Canvas.Left="60"
+                Canvas.Top="60"
+                x:Name="Arc2Border">
+
+            <Image Source="/Images/arc4.png"
+                       HorizontalAlignment="Left"/>
+
+            <Border.RenderTransform>
+                <RotateTransform x:Name="Arc2rotation"
+                                     CenterX="140"
+                                     CenterY="140"/>
+            </Border.RenderTransform>
+
+        </Border>
+
+        <!-- 2nd Arc -->
+
+        <Border Height="320"
+                Width="320"
+                Background="Transparent"
+                Canvas.Left="40"
+                Canvas.Top="40"
+                x:Name="Arc3Border">
+
+            <Image Source="/Images/arc4.png"
+                       HorizontalAlignment="Left"/>
+
+            <Border.RenderTransform>
+                <RotateTransform x:Name="Arc3rotation"
+                                     CenterX="160"
+                                     CenterY="160"/>
+            </Border.RenderTransform>
+
+        </Border>
+
+    </Canvas>
+    
+    <UserControl.Resources>
+
+        <!-- Broken circle -->
+
+        <Storyboard x:Key="BrokenCircleAnimation">
+            <DoubleAnimation Storyboard.TargetName="BrokenCircleRotation"
+                             Storyboard.TargetProperty="Angle"
+                             From="0" To="360"
+                             RepeatBehavior="Forever"
+                             Duration="0:0:30"/>
+        </Storyboard>
+        
+        <!-- 1st arc -->
+
+        <Storyboard x:Key="Arc1animation">
+            <DoubleAnimation Storyboard.TargetName="Arc1rotation"
+                             Storyboard.TargetProperty="Angle"
+                             From="0" To="360"
+                             RepeatBehavior="Forever"
+                             Duration="0:0:2"/>
+        </Storyboard>
+
+        <!-- 2nd arc -->
+
+        <Storyboard x:Key="Arc2animation">
+            <DoubleAnimation Storyboard.TargetName="Arc2rotation"
+                             Storyboard.TargetProperty="Angle"
+                             From="360" To="0"
+                             RepeatBehavior="Forever"
+                             Duration="0:0:4"/>
+        </Storyboard>
+
+        <!-- 3rd arc -->
+
+        <Storyboard x:Key="Arc3animation">
+            <DoubleAnimation Storyboard.TargetName="Arc3rotation"
+                             Storyboard.TargetProperty="Angle"
+                             From="60" To="270"
+                             AutoReverse="True"
+                             RepeatBehavior="Forever"
+                             Duration="0:0:3"/>
+        </Storyboard>
+
+    </UserControl.Resources>
+    
+</UserControl>

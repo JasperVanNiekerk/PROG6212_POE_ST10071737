@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>jasper_icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Haley.Abstractions, Version=1.0.20.0, Culture=neutral, PublicKeyToken=9b5f4902d3fea17a, processorArchitecture=MSIL">
       <HintPath>..\packages\Haley.Abstractions.1.0.20\lib\netstandard2.0\Haley.Abstractions.dll</HintPath>
@@ -124,6 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MVVM\ViewModel\LoginViewModel.cs" />
+    <Compile Include="MVVM\View\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UICode\BooleanToVisibilityConverter.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -144,6 +151,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVM\View\DownMenuAnimation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -235,6 +246,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\arc4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="WhatsApp_Image_2023-08-28_at_12.50.39-removebg-preview.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="jasper_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

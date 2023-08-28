@@ -6,9 +6,25 @@
              xmlns:local="clr-namespace:PROG6212_POE_ST10071737.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="400" 
-             d:DesignWidth="700">
+             d:DesignWidth="700"
+             Background="Transparent">
     <Grid>
-        <Label Content="study"  
-               Foreground="LightBlue"/>
+
+        <Ellipse Width="175"
+                 Height="175"
+                 StrokeThickness="3"
+                 Stroke="LightBlue">
+
+            <Ellipse.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="Transparent"
+                                  Offset="2"/>
+                    <GradientStop Color="LightBlue"
+                                  Offset="0"/>
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+            
+        </Ellipse>
+
     </Grid>
 </UserControl>
