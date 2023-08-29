@@ -12,6 +12,9 @@ namespace PROG6212_POE_ST10071737.Core
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
-
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

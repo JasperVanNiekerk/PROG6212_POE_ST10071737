@@ -123,14 +123,15 @@
                            Margin="0,70,0,0"
                            Visibility="{Binding IsStudyManagerVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
-                <Border Width="300"/>
+                <Border Width="270"/>
 
                 <TextBlock Text="Time/date"
+                           x:Name="dateTimeTB"
                            Foreground="LightBlue"
                            FontSize="20"
                            Height="50"
                            TextAlignment="Center"
-                           Margin="0,80,0,0"
+                           Margin="0,80,30,0"
                            Visibility="{Binding IsProductivityManagerVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
             </StackPanel>

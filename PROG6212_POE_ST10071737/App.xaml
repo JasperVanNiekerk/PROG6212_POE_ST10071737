@@ -5,7 +5,7 @@
              xmlns:View="clr-namespace:PROG6212_POE_ST10071737.MVVM.View"
              xmlns:Boolean="clr-namespace:PROG6212_POE_ST10071737.UICode"
              xmlns:local="clr-namespace:PROG6212_POE_ST10071737"
-             StartupUri="/MVVM/View/Login.xaml">
+             StartupUri="/MVVM/View/LoadingWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -26,6 +26,10 @@
 
             <DataTemplate DataType="{x:Type ViewModel:LoginViewModel}">
                 <View:Login/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type ViewModel:LoadingWindowViewModel}">
+                <View:LoadingWindow/>
             </DataTemplate>
 
             <Boolean:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />

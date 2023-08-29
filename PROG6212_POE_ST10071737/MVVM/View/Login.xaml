@@ -47,13 +47,13 @@
                      StrokeThickness="3"
                      Stroke="LightBlue"
                      Canvas.Top="125"
-                     Canvas.Left="225"/>
+                     Canvas.Left="230"/>
 
             <Polygon Points="0,0 10,20 140,20 10,20"
                      StrokeThickness="3"
                      Stroke="LightBlue"
                      Canvas.Top="175"
-                     Canvas.Left="250"/>
+                     Canvas.Left="255"/>
 
             <Polygon Points="0,0 120,0 130,30 10,30"
                      Stroke="LightBlue"
@@ -73,7 +73,7 @@
                      Height="40"
                      TextAlignment="Left"
                      Canvas.Top="109"
-                     Canvas.Left="237"
+                     Canvas.Left="242"
                      CaretBrush="LightBlue"/>
 
             <PasswordBox PasswordChar="*"
@@ -86,7 +86,7 @@
                          Height="40"
                          HorizontalContentAlignment="Left"
                          Canvas.Top="160"
-                         Canvas.Left="260"
+                         Canvas.Left="265"
                          CaretBrush="LightBlue"/>
 
             <Button Content="ENTER"
