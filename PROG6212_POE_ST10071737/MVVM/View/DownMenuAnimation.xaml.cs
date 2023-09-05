@@ -27,6 +27,9 @@ namespace PROG6212_POE_ST10071737.MVVM.View
         private DispatcherTimer animationTimer4;
         //___________________________________________________________________________________________________________
 
+        private DispatcherTimer animationTimer5;
+        //___________________________________________________________________________________________________________
+
         private Point endPoint1 = new Point(0, 0);
         //___________________________________________________________________________________________________________
 
@@ -37,6 +40,9 @@ namespace PROG6212_POE_ST10071737.MVVM.View
         //___________________________________________________________________________________________________________
 
         private Point endPoint4 = new Point(0, 0);
+        //___________________________________________________________________________________________________________
+
+        private Point endPoint5 = new Point(0, 0);
         //___________________________________________________________________________________________________________
 
         //___________________________________________________________________________________________________________
@@ -130,13 +136,30 @@ namespace PROG6212_POE_ST10071737.MVVM.View
         //___________________________________________________________________________________________________________
 
         /// <summary>
+        /// method to define and start the fourth timer
+        /// </summary>
+        private void timerManager5()
+        {
+            drawingLine5.Y1 = endPoint1.Y - 1.5;
+            drawingLine5.X1 = endPoint1.X;
+            endPoint5 = endPoint1;
+
+            animationTimer5 = new DispatcherTimer();
+            animationTimer5.Interval = TimeSpan.FromMilliseconds(20);
+            animationTimer5.Tick += AnimationTimer_Tick5;
+            animationTimer5.Start();
+        }
+
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
         /// method to draw the first line
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void AnimationTimer_Tick(object sender, EventArgs e)
         {
-            if (endPoint1.Y < 228)
+            if (endPoint1.Y < 300)
             {
                 endPoint1.Y += 2;
                 drawingLine.Y2 = endPoint1.Y;
@@ -154,6 +177,11 @@ namespace PROG6212_POE_ST10071737.MVVM.View
                 if (endPoint1.Y == 228)
                 {
                     this.timerManager4();
+                }
+
+                if (endPoint1.Y == 300)
+                {
+                    this.timerManager5();
                 }
             }
             else
@@ -210,6 +238,23 @@ namespace PROG6212_POE_ST10071737.MVVM.View
                 endPoint4.Y += 1;
                 drawingLine4.X2 = endPoint4.X;
                 drawingLine4.Y2 = endPoint4.Y;
+            }
+        }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// method to draw the fifth line
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AnimationTimer_Tick5(object sender, EventArgs e)
+        {
+            if (endPoint5.X < 40 && endPoint5.Y < 348)
+            {
+                endPoint5.X += 0.7;
+                endPoint5.Y += 1;
+                drawingLine5.X2 = endPoint5.X;
+                drawingLine5.Y2 = endPoint5.Y;
             }
         }
         //___________________________________________________________________________________________________________

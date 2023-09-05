@@ -46,6 +46,7 @@ namespace PROG6212_POE_ST10071737.MVVM.View
             Storyboard animation4 = (Storyboard)FindResource("Arc4animation");
             animation4.Begin(Arc4Border);
         }
+
         //___________________________________________________________________________________________________________
     }
 }

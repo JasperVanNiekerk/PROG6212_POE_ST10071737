@@ -10,32 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace PROG6212_POE_ST10071737.MVVM.View
 {
     /// <summary>
-    /// Interaction logic for Login.xaml
+    /// Interaction logic for SettingsView.xaml
     /// </summary>
-    public partial class Login : Window
+    public partial class SettingsView : UserControl
     {
-        public Login()
+        public SettingsView()
         {
             InitializeComponent();
-        }
-
-        private void EnterBTN_Click(object sender, RoutedEventArgs e)
-        {
-            var MainWinow = new MainWindow();
-            MainWinow.Show();
-            this.Close();
-        }
-
-        private void SignUpBTN_Click(object sender, RoutedEventArgs e)
-        {
-            var Login2view = new Login2View();
-            Login2view.Show();
-            this.Close();
         }
     }
 }

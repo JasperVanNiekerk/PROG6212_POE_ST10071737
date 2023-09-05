@@ -30,6 +30,13 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         public RelayCommand ProductivityManagerViewCommand { get; set; }
         //___________________________________________________________________________________________________________
 
+
+        /// <summary>
+        /// creates a relay command to set the current view to the productivity manager
+        /// </summary>
+        public RelayCommand SettingsViewCommand { get; set; }
+        //___________________________________________________________________________________________________________
+
         /// <summary>
         /// creates a new instance of the ModualManagerViewModel
         /// </summary>
@@ -46,6 +53,12 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         /// creates a new instance of the ProductivityManagerViewModel
         /// </summary>
         public ProductivityManagerViewModel ProductivityManagerVM { get; set; }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// creates a new instance of the ProductivityManagerViewModel
+        /// </summary>
+        public SettingsViewModel SettingsVM { get; set; }
         //___________________________________________________________________________________________________________
 
         /// <summary>
@@ -146,6 +159,30 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         }
         //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// boolean to set the visibility of the Productivity manager radio button
+        /// </summary>
+        private bool isSettingsVisible;
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// boolean to set the visibility of the Productivity manager radio button
+        /// </summary>
+        public bool IsSettingsVisible
+        {
+            get { return isSettingsVisible; }
+            set
+            {
+                if (isSettingsVisible != value)
+                {
+                    isSettingsVisible = value;
+                    OnPropertyChanged(nameof(isSettingsVisible));
+                }
+            }
+
+        }
+        //___________________________________________________________________________________________________________
+
         //___________________________________________________________________________________________________________
         //__________________________________________Constructors_____________________________________________________
         //___________________________________________________________________________________________________________
@@ -158,9 +195,11 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             IsStudyManagerVisible = false;
             IsModualManagerVisible = false;
             IsProductivityManagerVisible = false;
+            IsSettingsVisible = false;
             ModualManagerVM = new ModualManagerViewModel();
             StudyManagerVM = new StudyManagerViewModel();
             ProductivityManagerVM = new ProductivityManagerViewModel();
+            SettingsVM = new SettingsViewModel();
             CurrentView = StudyManagerVM;
 
             ModualManagerViewCommand = new RelayCommand(o =>
@@ -176,6 +215,11 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             ProductivityManagerViewCommand = new RelayCommand(o =>
             {
                 CurrentView = ProductivityManagerVM;
+            });
+
+            SettingsViewCommand = new RelayCommand(o =>
+            {
+                CurrentView = SettingsVM;
             });
 
             timer = new DispatcherTimer();
@@ -201,7 +245,7 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             // Stop the timer
             timer.Stop();
 
-            // Show the first radio button after 1.5 seconds
+            // Show the first radio button
             IsStudyManagerVisible = true;
 
             // Configure the second timer
@@ -222,11 +266,11 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             // Stop the timer
             timer.Stop();
 
-            // Show the second radio button after 3 seconds
+            // Show the second radio button
             IsModualManagerVisible = true;
 
             // Configure the third timer
-            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Interval = TimeSpan.FromSeconds(0.7);
             timer.Tick -= Timer_Tick_Second;
             timer.Tick += Timer_Tick_Third;
             timer.Start();
@@ -243,8 +287,29 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             // Stop the timer
             timer.Stop();
 
-            // Show the third radio button after 4.5 seconds
+            // Show the third radio button
             IsProductivityManagerVisible = true;
+
+            // Configure the forth timer
+            timer.Interval = TimeSpan.FromSeconds(0.7);
+            timer.Tick -= Timer_Tick_Second;
+            timer.Tick += Timer_Tick_Fourth;
+            timer.Start();
+        }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// timer for fourth radio button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Timer_Tick_Fourth(object sender, EventArgs e)
+        {
+            // Stop the timer
+            timer.Stop();
+
+            // Show the third radio button
+            IsSettingsVisible = true;
         }
         //___________________________________________________________________________________________________________
     }

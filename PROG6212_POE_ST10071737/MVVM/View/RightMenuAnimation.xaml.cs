@@ -112,7 +112,7 @@ namespace PROG6212_POE_ST10071737.MVVM.View
         {
             if (endPoint2.X < 700)
             {
-                endPoint2.X += 5.5;
+                endPoint2.X += 4.2;
                 drawingLine2.X2 = endPoint2.X;
             }
             else

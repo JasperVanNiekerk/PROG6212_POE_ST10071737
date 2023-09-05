@@ -15,27 +15,13 @@ using System.Windows.Shapes;
 namespace PROG6212_POE_ST10071737.MVVM.View
 {
     /// <summary>
-    /// Interaction logic for Login.xaml
+    /// Interaction logic for SemesterInfoView.xaml
     /// </summary>
-    public partial class Login : Window
+    public partial class SemesterInfoView : Window
     {
-        public Login()
+        public SemesterInfoView()
         {
             InitializeComponent();
-        }
-
-        private void EnterBTN_Click(object sender, RoutedEventArgs e)
-        {
-            var MainWinow = new MainWindow();
-            MainWinow.Show();
-            this.Close();
-        }
-
-        private void SignUpBTN_Click(object sender, RoutedEventArgs e)
-        {
-            var Login2view = new Login2View();
-            Login2view.Show();
-            this.Close();
         }
     }
 }

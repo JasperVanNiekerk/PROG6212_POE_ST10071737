@@ -1,10 +1,10 @@
-﻿<Window x:Class="PROG6212_POE_ST10071737.MVVM.View.Login"
+﻿<Window x:Class="PROG6212_POE_ST10071737.MVVM.View.Login2View"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
         xmlns:hw="http://schemas.hpod9.com/haley/wpf"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PROG6212_POE_ST10071737.MVVM.View"
         xmlns:View="clr-namespace:PROG6212_POE_ST10071737.MVVM.View"
         xmlns:ViewModel="clr-namespace:PROG6212_POE_ST10071737.MVVM.ViewModel"
@@ -22,7 +22,6 @@
         BorderBrush="Transparent">
     <Grid>
         <Canvas>
-
             <Canvas.Effect>
                 <DropShadowEffect Color="LightBlue"
                                   BlurRadius="20"
@@ -31,29 +30,34 @@
             </Canvas.Effect>
 
             <!--Shapes-->
-            
+
             <Polygon Points="0,0 500,0 600,300 100,300"
                      Stroke="LightBlue"
                      StrokeThickness="3"
                      Canvas.Left="0"
                      Canvas.Top="0"/>
 
-
             <View:CoreSmall x:Name="CS"
                             Canvas.Left="50"
-                            Canvas.Top="25"/>
+                            Canvas.Top="50"/>
 
             <Polygon Points="0,0 10,20 140,20 10,20"
                      StrokeThickness="3"
                      Stroke="LightBlue"
-                     Canvas.Top="125"
+                     Canvas.Top="100"
                      Canvas.Left="230"/>
 
             <Polygon Points="0,0 10,20 140,20 10,20"
                      StrokeThickness="3"
                      Stroke="LightBlue"
-                     Canvas.Top="175"
+                     Canvas.Top="150"
                      Canvas.Left="255"/>
+
+            <Polygon Points="0,0 10,20 140,20 10,20"
+                     StrokeThickness="3"
+                     Stroke="LightBlue"
+                     Canvas.Top="200"
+                     Canvas.Left="280"/>
 
             <Polygon Points="0,0 120,0 130,30 10,30"
                      Stroke="LightBlue"
@@ -61,42 +65,53 @@
                      Canvas.Top="260"
                      Canvas.Left="455"/>
 
-            <Polygon Points="0,0 120,0 130,30 10,30"
-                     Stroke="LightBlue"
-                     StrokeThickness="2"
-                     Canvas.Top="260"
-                     Canvas.Left="97"/>
+            <!--Functionality-->
 
-            <!--UI elements-->
-
-            <TextBox Text="Login"
+            <TextBox x:Name="NameTB"
                      Foreground="LightBlue"
                      Background="Transparent"
                      BorderThickness="0"
                      BorderBrush="Transparent"
                      FontSize="25"
+                     Text="Name"
                      Width="155"
                      Height="40"
                      TextAlignment="Left"
-                     Canvas.Top="109"
-                     Canvas.Left="242"
+                     Canvas.Top="84"
+                     Canvas.Left="241"
                      CaretBrush="LightBlue"/>
 
-            <PasswordBox PasswordChar="*"
-                         Foreground="LightBlue"
-                         Background="Transparent"
-                         BorderThickness="0"
-                         BorderBrush="Transparent"
-                         FontSize="25"
-                         Width="150"
-                         Height="40"
-                         HorizontalContentAlignment="Left"
-                         Canvas.Top="160"
-                         Canvas.Left="265"
-                         CaretBrush="LightBlue"/>
+            <TextBox x:Name="SurameTB"
+                     Foreground="LightBlue"
+                     Background="Transparent"
+                     BorderThickness="0"
+                     BorderBrush="Transparent"
+                     FontSize="25"
+                     Text="Surame"
+                     Width="155"
+                     Height="40"
+                     TextAlignment="Left"
+                     Canvas.Top="134"
+                     Canvas.Left="266"
+                     CaretBrush="LightBlue"/>
 
-            <Button Content="ENTER"
-                    x:Name="EnterBTN"
+
+            <TextBox x:Name="SemesterTB"
+                     Foreground="LightBlue"
+                     Background="Transparent"
+                     BorderThickness="0"
+                     BorderBrush="Transparent"
+                     FontSize="25"
+                     Text="Semester"
+                     Width="155"
+                     Height="40"
+                     TextAlignment="Left"
+                     Canvas.Top="184"
+                     Canvas.Left="291"
+                     CaretBrush="LightBlue"/>
+
+            <Button Content="Next"
+                    x:Name="NextBTN"
                     Foreground="LightBlue"
                     Background="Transparent"
                     BorderBrush="Transparent"
@@ -105,7 +120,7 @@
                     Height="30"
                     Canvas.Top="260"
                     Canvas.Left="455"
-                    Click="EnterBTN_Click">
+                    Click="NextBTN_Click">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Template">
@@ -124,34 +139,6 @@
                 </Button.Style>
             </Button>
 
-            <Button Content="Sign up"
-                    x:Name="SignUpBTN"
-                    Foreground="LightBlue"
-                    Background="Transparent"
-                    BorderBrush="Transparent"
-                    BorderThickness="0"
-                    Width="130"
-                    Height="30"
-                    Canvas.Top="260"
-                    Canvas.Left="97"
-                    Click="SignUpBTN_Click">
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="Button">
-                                    <Border Background="{TemplateBinding Background}"
-                                            BorderBrush="{TemplateBinding BorderBrush}"
-                                            BorderThickness="{TemplateBinding BorderThickness}">
-                                        <ContentPresenter HorizontalAlignment="Center"
-                                                          VerticalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </Button.Style>
-            </Button>
         </Canvas>
     </Grid>
 </Window>

@@ -10,6 +10,12 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Themes/HomeradioBTNStyle.xaml"/>
+                <ResourceDictionary Source="Themes/SettingsButtonStyle.xaml"/>
+                <ResourceDictionary Source="Themes/DatePickerTextBoxStyle.xaml"/>
+                <ResourceDictionary Source="Themes/SemesterDatePickerStyle.xaml"/>
+                <ResourceDictionary Source="Themes/MyCalenderStyle.xaml"/>
+                <ResourceDictionary Source="Themes/CalendarCalendarItemStyle.xaml"/>
+                <ResourceDictionary Source="Themes/CalendarDayButtonStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type ViewModel:StudyManagerViewModel}">
@@ -30,6 +36,10 @@
 
             <DataTemplate DataType="{x:Type ViewModel:LoadingWindowViewModel}">
                 <View:LoadingWindow/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type ViewModel:SettingsViewModel}">
+                <View:SettingsView/>
             </DataTemplate>
 
             <Boolean:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
