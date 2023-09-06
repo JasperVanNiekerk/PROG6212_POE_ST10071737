@@ -1,19 +1,6 @@
-﻿using Microsoft.Xaml.Behaviors;
-using PROG6212_POE_ST10071737.MVVM.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PROG6212_POE_ST10071737.MVVM.View
 {
@@ -22,28 +9,59 @@ namespace PROG6212_POE_ST10071737.MVVM.View
     /// </summary>
     public partial class MyDatePicker : UserControl
     {
+        //___________________________________________________________________________________________________________
+        //__________________________________________Constructors_____________________________________________________
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public MyDatePicker()
         {
             InitializeComponent();
             Loaded += MainWindow_Loaded;
         }
+        //___________________________________________________________________________________________________________
 
+        //___________________________________________________________________________________________________________
+        //_____________________________________________Methods_______________________________________________________
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// method to set the lable of the date picker to the current datetime day value
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             this.DayLBL.Content = DateTime.Now.Day.ToString();
         }
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// Event for when the selected date of the calendar is changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DatePickCalendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
             string customDateFormat = "yyyy-MM-dd";
             DispalyDateTB.Text = DatePickCalendar.SelectedDate.Value.ToString(customDateFormat);
             calendarPopup.IsOpen = false;
         }
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// Event for the Calendar open button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CalendarOpenBTN_Click(object sender, RoutedEventArgs e)
         {
-            
+
             calendarPopup.IsOpen = true;
         }
+        //___________________________________________________________________________________________________________
     }
 }
+//____________________________________EOF_________________________________________________________________________

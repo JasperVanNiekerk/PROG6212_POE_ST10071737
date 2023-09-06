@@ -1,16 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace PROG6212_POE_ST10071737.MVVM.View
 {
@@ -19,13 +8,38 @@ namespace PROG6212_POE_ST10071737.MVVM.View
     /// </summary>
     public partial class Login : Window
     {
-        private Boolean ButtonWasClicked = false;
+        //___________________________________________________________________________________________________________
+        //__________________________________________Parameters_______________________________________________________
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// stores whether one of the two buttons was clicked
+        /// </summary>
+        private Boolean ButtonWasClicked = false;
+        //___________________________________________________________________________________________________________
+
+        //___________________________________________________________________________________________________________
+        //__________________________________________Constructors_____________________________________________________
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
         public Login()
         {
             InitializeComponent();
         }
+        //___________________________________________________________________________________________________________
 
+        //___________________________________________________________________________________________________________
+        //_____________________________________________Methods_______________________________________________________
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// Event for the Enter Button that opens the loadingView
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EnterBTN_Click(object sender, RoutedEventArgs e)
         {
             if (!ButtonWasClicked)
@@ -37,7 +51,14 @@ namespace PROG6212_POE_ST10071737.MVVM.View
             }
 
         }
+        //___________________________________________________________________________________________________________
 
+
+        /// <summary>
+        /// Event for the Sign up button that opens up the secondary login view
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SignUpBTN_Click(object sender, RoutedEventArgs e)
         {
             if (!ButtonWasClicked)
@@ -48,5 +69,7 @@ namespace PROG6212_POE_ST10071737.MVVM.View
                 ButtonWasClicked = true;
             }
         }
+        //___________________________________________________________________________________________________________
     }
 }
+//____________________________________EOF_________________________________________________________________________

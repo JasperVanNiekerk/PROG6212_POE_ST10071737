@@ -1,20 +1,30 @@
 ﻿using PROG6212_POE_ST10071737.Core;
-using PROG6212_POE_ST10071737.MVVM.View;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Threading;
 
 namespace PROG6212_POE_ST10071737.MVVM.ViewModel
 {
     internal class LoadingWindowViewModel : ObservableObject
     {
+        //___________________________________________________________________________________________________________
+        //__________________________________________Parameters_______________________________________________________
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// new dispatch timer for the progress bar
+        /// </summary>
         private DispatcherTimer timer;
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// Percentage of the progress bar
+        /// </summary>
         private int currentProgress = 0;
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// Percentage of the progress bar
+        /// </summary>
         public int CurrentProgress
         {
             get { return currentProgress; }
@@ -28,9 +38,17 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
                 }
             }
         }
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// String display of the current progress
+        /// </summary>
         private String progressString;
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// String display of the current progress
+        /// </summary>
         public String ProgressString
         {
             get { return progressString; }
@@ -38,12 +56,24 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             {
                 progressString = value;
                 OnPropertyChanged(nameof(ProgressString));
-                
+
             }
         }
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// event to be called once the progress bar is done
+        /// </summary>
         public event EventHandler ProgressDone;
+        //___________________________________________________________________________________________________________
 
+        //___________________________________________________________________________________________________________
+        //__________________________________________Constructors_____________________________________________________
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public LoadingWindowViewModel()
         {
             timer = new DispatcherTimer();
@@ -51,9 +81,17 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             timer.Tick += Timer_Tick;
             timer.Start();
         }
+        //___________________________________________________________________________________________________________
 
+        //___________________________________________________________________________________________________________
+        //_____________________________________________Methods_______________________________________________________
+        //___________________________________________________________________________________________________________
 
-
+        /// <summary>
+        /// Event for the dispatch timer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Timer_Tick(object sender, EventArgs e)
         {
             // Simulate loading progress
@@ -69,5 +107,7 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
                 timer.Stop();
             }
         }
+        //___________________________________________________________________________________________________________
     }
 }
+//____________________________________EOF_________________________________________________________________________

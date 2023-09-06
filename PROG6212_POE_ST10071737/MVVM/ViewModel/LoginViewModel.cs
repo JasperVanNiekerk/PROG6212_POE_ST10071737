@@ -10,20 +10,8 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
 {
     internal class LoginViewModel
     {
-        public RelayCommand LoginCommand { get; private set; }
-
-        public MainWindowViewModel MainWindowViewModel { get; set; }
-
         public LoginViewModel() 
         {
-            LoginCommand = new RelayCommand(this.LoginUser);
-        }
-
-        private void LoginUser(object p)
-        {
-            var MainWindow = new MainWindow();
-            MainWindow.Show();
-
         }
     }
 }

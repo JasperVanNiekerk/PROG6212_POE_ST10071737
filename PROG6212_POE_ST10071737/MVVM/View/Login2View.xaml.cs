@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace PROG6212_POE_ST10071737.MVVM.View
 {
@@ -19,16 +7,35 @@ namespace PROG6212_POE_ST10071737.MVVM.View
     /// </summary>
     public partial class Login2View : Window
     {
+        //___________________________________________________________________________________________________________
+        //__________________________________________Constructors_____________________________________________________
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// Default constructor 
+        /// </summary>
         public Login2View()
         {
             InitializeComponent();
         }
+        //___________________________________________________________________________________________________________
 
+        //___________________________________________________________________________________________________________
+        //_____________________________________________Methods_______________________________________________________
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// Event for the Next Button that opens the SemesterInfo view
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NextBTN_Click(object sender, RoutedEventArgs e)
         {
             var Semester = new SemesterInfoView();
             Semester.Show();
             this.Close();
         }
+        //___________________________________________________________________________________________________________
     }
 }
+//____________________________________EOF_________________________________________________________________________
