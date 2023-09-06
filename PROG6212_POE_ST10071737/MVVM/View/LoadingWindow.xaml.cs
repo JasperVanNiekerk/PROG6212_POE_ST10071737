@@ -15,13 +15,13 @@ namespace PROG6212_POE_ST10071737.MVVM.View
             var ViewModel = new LoadingWindowViewModel();
             DataContext = ViewModel;
 
-            ViewModel.ProgressDone += ViewMdel_ProgressDone;
+            ViewModel.ProgressDone += ViewModel_ProgressDone;
         }
 
-        private void ViewMdel_ProgressDone(object sender, EventArgs e)
+        private void ViewModel_ProgressDone(object sender, EventArgs e)
         {
-            var login = new Login();
-            login.Show();
+            var mainWindow = new MainWindow();
+            mainWindow.Show();
             this.Close();
         }
     }

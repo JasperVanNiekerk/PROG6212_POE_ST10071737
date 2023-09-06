@@ -303,9 +303,6 @@
     <Folder Include="MVVM\Model\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Notes.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\arc1.png" />
   </ItemGroup>
   <ItemGroup>
@@ -316,9 +313,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\arc4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="WhatsApp_Image_2023-08-28_at_12.50.39-removebg-preview.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="jasper_icon.ico" />

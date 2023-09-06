@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,13 @@ namespace PROG6212_POE_ST10071737.MVVM.View
         public SemesterInfoView()
         {
             InitializeComponent();
+        }
+
+        private void NextBTN_Click(object sender, RoutedEventArgs e)
+        {
+            var login = new Login();
+            login.Show();
+            this.Close();
         }
     }
 }

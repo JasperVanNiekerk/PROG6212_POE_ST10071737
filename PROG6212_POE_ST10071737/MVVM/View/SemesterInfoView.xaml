@@ -58,6 +58,12 @@
                      Canvas.Top="200"
                      Canvas.Left="280"/>
 
+            <Polygon Points="0,0 120,0 130,30 10,30"
+                     Stroke="LightBlue"
+                     StrokeThickness="2"
+                     Canvas.Top="260"
+                     Canvas.Left="455"/>
+
             <!--Functionality-->
 
             <TextBox x:Name="SemesterNumTB"
@@ -90,6 +96,35 @@
 
             <View:MyDatePicker Canvas.Top="180"
                                Canvas.Left="291"/>
+
+            <Button Content="Next"
+                    x:Name="NextBTN"
+                    Foreground="LightBlue"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    Width="130"
+                    Height="30"
+                    Canvas.Top="260"
+                    Canvas.Left="455"
+                    Click="NextBTN_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}">
+                                        <ContentPresenter HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
 
         </Canvas>
     </Grid>

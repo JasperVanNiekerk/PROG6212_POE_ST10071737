@@ -20,6 +20,11 @@
         WindowStartupLocation="CenterScreen"
         BorderThickness="0"
         BorderBrush="Transparent">
+
+    <Window.DataContext>
+        <ViewModel:LoginViewModel/>
+    </Window.DataContext>
+    
     <Grid>
         <Canvas>
 

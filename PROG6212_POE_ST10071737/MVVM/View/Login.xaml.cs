@@ -19,6 +19,8 @@ namespace PROG6212_POE_ST10071737.MVVM.View
     /// </summary>
     public partial class Login : Window
     {
+        private Boolean ButtonWasClicked = false;
+
         public Login()
         {
             InitializeComponent();
@@ -26,16 +28,25 @@ namespace PROG6212_POE_ST10071737.MVVM.View
 
         private void EnterBTN_Click(object sender, RoutedEventArgs e)
         {
-            var MainWinow = new MainWindow();
-            MainWinow.Show();
-            this.Close();
+            if (!ButtonWasClicked)
+            {
+                var Loading = new LoadingWindow();
+                this.Close();
+                Loading.Show();
+                ButtonWasClicked = true;
+            }
+
         }
 
         private void SignUpBTN_Click(object sender, RoutedEventArgs e)
         {
-            var Login2view = new Login2View();
-            Login2view.Show();
-            this.Close();
+            if (!ButtonWasClicked)
+            {
+                var Login2view = new Login2View();
+                this.Close();
+                Login2view.Show();
+                ButtonWasClicked = true;
+            }
         }
     }
 }
