@@ -127,6 +127,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MVVM\Model\ModuleModel.cs" />
     <Compile Include="MVVM\ViewModel\LoadingWindowViewModel.cs" />
     <Compile Include="MVVM\ViewModel\Login2ViewModel.cs" />
     <Compile Include="MVVM\ViewModel\LoginViewModel.cs" />
@@ -300,7 +301,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Fonts\" />
-    <Folder Include="MVVM\Model\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\arc1.png" />
