@@ -31,6 +31,7 @@ namespace PROG6212_POE_ST10071737.MVVM.View
         /// <param name="e"></param>
         private void NextBTN_Click(object sender, RoutedEventArgs e)
         {
+            
             var Semester = new SemesterInfoView();
             Semester.Show();
             this.Close();

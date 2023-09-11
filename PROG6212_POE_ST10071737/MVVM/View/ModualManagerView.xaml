@@ -4,12 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PROG6212_POE_ST10071737.MVVM.View"
+             xmlns:ViewModel="clr-namespace:PROG6212_POE_ST10071737.MVVM.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="400" 
              d:DesignWidth="700">
+
+    <UserControl.DataContext>
+        <ViewModel:ModuleManagerViewModel/>
+    </UserControl.DataContext>
+    
     <Grid>
         <StackPanel>
-
             <StackPanel.Effect>
                 <DropShadowEffect Color="LightBlue"
                                   BlurRadius="20"
@@ -17,19 +22,27 @@
                                   ShadowDepth="0"/>
             </StackPanel.Effect>
 
+            <Border Height="25"/>
+            
             <Canvas Height="150">
 
                 <Polygon Points="0,0 400,0 505,150 105,150"
                      Stroke="LightBlue" 
                      StrokeThickness="3"/>
 
-                <TextBlock x:Name="QuestionTB"
-                           Foreground="LightBlue"
-                           Text="Hello world this is a question"
-                           Width="295"
-                           Height="150"
-                           TextAlignment="Center"
-                           Canvas.Left="105"/>
+                <TextBox x:Name="QuestionTB"
+                         Foreground="LightBlue"
+                         Text="{Binding Question}"
+                         Background="Transparent"
+                         BorderThickness="0"
+                         Width="295"
+                         Height="150"
+                         TextAlignment="Center"
+                         Canvas.Left="105"
+                         VerticalContentAlignment="Center"
+                         TextWrapping="Wrap"
+                         AcceptsReturn="True"
+                         IsReadOnly="True"/>
 
                 <Rectangle Width="120"
                            Height="40"
@@ -37,6 +50,8 @@
                            Stroke="LightBlue"
                            Canvas.Top="16.5"
                            Canvas.Left="505"/>
+                
+
 
                 <TextBlock x:Name="SemesterTB"
                            Height="30"
@@ -70,6 +85,17 @@
                         Canvas.Top="35.5"
                         Canvas.Left="623"/>
 
+                <Button x:Name="SemesterCreateBTN"
+                        Width="40"
+                        Height="40"
+                        Background="Transparent"
+                        BorderBrush="LightBlue"
+                        Foreground="LightBlue"
+                        BorderThickness="2"
+                        Content="New"
+                        Canvas.Top="16.5"
+                        Canvas.Left="651"/>
+
             </Canvas>
 
             <Border Height="50"/>
@@ -82,13 +108,17 @@
 
                 <TextBox x:Name="InputTB"
                          Foreground="LightBlue"
-                         Text="Hello world this is the awnser"
+                         Text="{Binding Input}"
                          Background="Transparent"
                          BorderThickness="0"
                          Width="295"
                          Height="150"
                          TextAlignment="Center"
-                         Canvas.Left="210"/>
+                         Canvas.Left="160"
+                         VerticalContentAlignment="Center"
+                         TextWrapping="Wrap"
+                         AcceptsReturn="True"
+                         CaretBrush="LightBlue"/>
 
 
                 <Button x:Name="NextBTN"
@@ -100,7 +130,8 @@
                         BorderThickness="2"
                         Content="NEXT"
                         Canvas.Bottom="20"
-                        Canvas.Left="553"/>
+                        Canvas.Left="553"
+                        Command="{Binding NextBTNCommand}"/>
 
             </Canvas>
 

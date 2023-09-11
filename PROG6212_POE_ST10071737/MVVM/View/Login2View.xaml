@@ -20,6 +20,11 @@
         WindowStartupLocation="CenterScreen"
         BorderThickness="0"
         BorderBrush="Transparent">
+
+    <Window.DataContext>
+        <ViewModel:Login2ViewModel/>
+    </Window.DataContext>
+    
     <Grid>
         <Canvas>
             <Canvas.Effect>
@@ -73,7 +78,7 @@
                      BorderThickness="0"
                      BorderBrush="Transparent"
                      FontSize="25"
-                     Text="Name"
+                     Text="{Binding StudentName}"
                      Width="155"
                      Height="40"
                      TextAlignment="Left"
@@ -87,7 +92,7 @@
                      BorderThickness="0"
                      BorderBrush="Transparent"
                      FontSize="25"
-                     Text="Surame"
+                     Text="{Binding StudentSurname}"
                      Width="155"
                      Height="40"
                      TextAlignment="Left"
@@ -102,7 +107,7 @@
                      BorderThickness="0"
                      BorderBrush="Transparent"
                      FontSize="25"
-                     Text="Semester"
+                     Text="{Binding StudentPassword}"
                      Width="155"
                      Height="40"
                      TextAlignment="Left"
@@ -120,7 +125,8 @@
                     Height="30"
                     Canvas.Top="260"
                     Canvas.Left="455"
-                    Click="NextBTN_Click">
+                    Click="NextBTN_Click"
+                    Command="{Binding NextBTNCommand}">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Template">

@@ -12,7 +12,7 @@
         mc:Ignorable="d"
         Title="MainWindow" 
         Height="650" 
-        Width="900"
+        Width="910"
         WindowStyle="None"
         hm:WindowBlurAP.IsEnabled="true"
         AllowsTransparency="True"

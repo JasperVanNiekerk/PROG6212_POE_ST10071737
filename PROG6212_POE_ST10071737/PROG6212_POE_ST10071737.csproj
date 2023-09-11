@@ -127,7 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MVVM\Model\CurrentStudentModel.cs" />
     <Compile Include="MVVM\Model\ModuleModel.cs" />
+    <Compile Include="MVVM\Model\SemesterModel.cs" />
+    <Compile Include="MVVM\Model\StudentModel.cs" />
     <Compile Include="MVVM\ViewModel\LoadingWindowViewModel.cs" />
     <Compile Include="MVVM\ViewModel\Login2ViewModel.cs" />
     <Compile Include="MVVM\ViewModel\LoginViewModel.cs" />
@@ -252,7 +255,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MVVM\ViewModel\MainWindowViewModel.cs" />
-    <Compile Include="MVVM\ViewModel\ModualManagerViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\ModuleManagerViewModel.cs" />
     <Compile Include="MVVM\ViewModel\ProductivityManagerViewModel.cs" />
     <Compile Include="MVVM\ViewModel\StudyManagerViewModel.cs" />
     <Compile Include="MVVM\View\CoreSmall.xaml.cs">

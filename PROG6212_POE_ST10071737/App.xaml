@@ -22,7 +22,7 @@
                 <View:StudyManagerView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type ViewModel:ModualManagerViewModel}">
+            <DataTemplate DataType="{x:Type ViewModel:ModuleManagerViewModel}">
                 <View:ModualManagerView/>
             </DataTemplate>
 

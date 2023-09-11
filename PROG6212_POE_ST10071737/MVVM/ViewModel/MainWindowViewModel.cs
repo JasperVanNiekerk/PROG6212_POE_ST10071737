@@ -38,9 +38,9 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         //___________________________________________________________________________________________________________
 
         /// <summary>
-        /// creates a new instance of the ModualManagerViewModel
+        /// creates a new instance of the ModuleManagerViewModel
         /// </summary>
-        public ModualManagerViewModel ModualManagerVM { get; set; }
+        public ModuleManagerViewModel ModualManagerVM { get; set; }
         //___________________________________________________________________________________________________________
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             IsModualManagerVisible = false;
             IsProductivityManagerVisible = false;
             IsSettingsVisible = false;
-            ModualManagerVM = new ModualManagerViewModel();
+            ModualManagerVM = new ModuleManagerViewModel();
             StudyManagerVM = new StudyManagerViewModel();
             ProductivityManagerVM = new ProductivityManagerViewModel();
             SettingsVM = new SettingsViewModel();
