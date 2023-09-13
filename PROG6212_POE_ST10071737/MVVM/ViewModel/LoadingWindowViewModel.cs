@@ -1,5 +1,7 @@
 ﻿using PROG6212_POE_ST10071737.Core;
+using PROG6212_POE_ST10071737.MVVM.View;
 using System;
+using System.Windows;
 using System.Windows.Threading;
 
 namespace PROG6212_POE_ST10071737.MVVM.ViewModel
@@ -98,13 +100,35 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             if (CurrentProgress < 100)
             {
                 Random random = new Random();
-                CurrentProgress += 1; //random.Next(1, 6);
+                CurrentProgress += random.Next(1, 6);
                 ProgressString = currentProgress.ToString() + "%";
             }
             else
             {
                 // Loading completed, stop the timer
                 timer.Stop();
+                this.ChangeWindows();
+            }
+        }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// method to switch windows
+        /// </summary>
+        /// <param name="newWindow"></param>
+        private void ChangeWindows()
+        {
+
+            var mainWindow = new MainWindow();
+            mainWindow.Show();
+
+
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window is LoadingWindow)
+                {
+                    window.Close();
+                }
             }
         }
         //___________________________________________________________________________________________________________

@@ -115,37 +115,36 @@
 
             <!--Top display-->
             
-            <StackPanel Orientation="Horizontal"
-                        Grid.Row="0"
-                        Grid.Column="3">
+            <Canvas Grid.Row="0"
+                    Grid.Column="3">
 
-                <StackPanel.Effect>
+                <Canvas.Effect>
                     <DropShadowEffect Color="LightBlue"
                                       BlurRadius="20"
                                       Opacity="0.5"
                                       ShadowDepth="0"/>
-                </StackPanel.Effect>
+                </Canvas.Effect>
 
-                <TextBlock Text="Your Name Here"
+                <TextBlock Text="{Binding CurrentStudentName}"
                            Foreground="LightBlue"
                            FontSize="25"
                            TextAlignment="Center"
                            Height="50"
                            Margin="0,70,0,0"
+                           Canvas.Left="0"
                            Visibility="{Binding IsStudyManagerVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
-                <Border Width="270"/>
-
-                <TextBlock Text="Time/date"
+                <TextBlock Text="YYYY/MM/DD hh/mm/ss"
                            x:Name="dateTimeTB"
                            Foreground="LightBlue"
                            FontSize="20"
                            Height="50"
                            TextAlignment="Center"
                            Margin="0,80,30,0"
+                           Canvas.Left="420"
                            Visibility="{Binding IsSettingsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
-            </StackPanel>
+            </Canvas>
 
             <!--CurrentView-->
             

@@ -125,7 +125,6 @@
                     Height="30"
                     Canvas.Top="260"
                     Canvas.Left="455"
-                    Click="NextBTN_Click"
                     Command="{Binding NextBTNCommand}">
                 <Button.Style>
                     <Style TargetType="Button">

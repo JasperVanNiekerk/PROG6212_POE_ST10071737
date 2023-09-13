@@ -1,5 +1,7 @@
-﻿using System;
+﻿using PROG6212_POE_ST10071737.MVVM.ViewModel;
+using System;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace PROG6212_POE_ST10071737.MVVM.View
 {
@@ -8,23 +10,6 @@ namespace PROG6212_POE_ST10071737.MVVM.View
     /// </summary>
     public partial class Login : Window
     {
-        //___________________________________________________________________________________________________________
-        //__________________________________________Parameters_______________________________________________________
-        //___________________________________________________________________________________________________________
-
-        /// <summary>
-        /// stores whether one of the two buttons was clicked
-        /// </summary>
-        private Boolean ButtonWasClicked = false;
-        //___________________________________________________________________________________________________________
-
-        //___________________________________________________________________________________________________________
-        //__________________________________________Constructors_____________________________________________________
-        //___________________________________________________________________________________________________________
-
-        /// <summary>
-        /// Default Constructor
-        /// </summary>
         public Login()
         {
             InitializeComponent();
@@ -36,38 +21,21 @@ namespace PROG6212_POE_ST10071737.MVVM.View
         //___________________________________________________________________________________________________________
 
         /// <summary>
-        /// Event for the Enter Button that opens the loadingView
+        /// Event to get the Password from the PasswordBox
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void EnterBTN_Click(object sender, RoutedEventArgs e)
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            if (!ButtonWasClicked)
+            var viewModel = DataContext as LoginViewModel;
+            if(viewModel != null)
             {
-                var Loading = new LoadingWindow();
-                this.Close();
-                Loading.Show();
-                ButtonWasClicked = true;
+                viewModel.Password = ((PasswordBox)sender).Password;
             }
 
-        }
-        //___________________________________________________________________________________________________________
-
-
-        /// <summary>
-        /// Event for the Sign up button that opens up the secondary login view
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void SignUpBTN_Click(object sender, RoutedEventArgs e)
-        {
-            if (!ButtonWasClicked)
-            {
-                var Login2view = new Login2View();
-                this.Close();
-                Login2view.Show();
-                ButtonWasClicked = true;
-            }
+            // Im gonna be honest i know this is not the correct way of doing this 
+            // hopefully by the time i hand in part two i can do it better
+            //but for now im sorry but i just want this to work
         }
         //___________________________________________________________________________________________________________
     }

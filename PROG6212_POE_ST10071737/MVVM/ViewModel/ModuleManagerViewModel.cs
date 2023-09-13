@@ -136,6 +136,12 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         private double ModuleHours = 0;
         //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// stores the Current SemesterNumber
+        /// </summary>
+        private int SemesterCounter = 0;
+        //___________________________________________________________________________________________________________
+
         //___________________________________________________________________________________________________________
         //______________________________________________COMMANDS_____________________________________________________
         //___________________________________________________________________________________________________________
@@ -170,8 +176,9 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
 
         private void LoadUI()
         {
-            //set the current semester her dumbass
-            //this.SemesterString = "Semester " + this.CurrentSemester.ReturnSemesterNumber(); 
+            var CurrentStudent = CurrentStudentModel.Instance;
+            this.CurrentSemester = CurrentStudent.GetCurrentSemester(SemesterCounter);
+            this.SemesterString = "Semester " + this.CurrentSemester.ReturnSemesterNumber(); 
             this.Question = "Would you like to add a Module to " + this.SemesterString + "\r\nYes/No";
             this.Input = "Answer Here";
 
@@ -228,9 +235,8 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         /// </summary>
         private void AddNewModule()
         {
-            //CurrentSemester.AddModule(this.ModuleCode, this.ModuleName, this.ModuleCredits, this.ModuleHours);
-            var MessageBoxTest = this.ModuleCode + this.ModuleName + this.ModuleCredits + this.ModuleHours;
-            MessageBox.Show(MessageBoxTest);
+            var CurrentStudent = CurrentStudentModel.Instance;
+            CurrentStudent.AddModuleToStudentSemester(this.SemesterCounter, this.ModuleCode, this.ModuleName, this.ModuleCredits, this.ModuleHours);
         }
         //___________________________________________________________________________________________________________
 

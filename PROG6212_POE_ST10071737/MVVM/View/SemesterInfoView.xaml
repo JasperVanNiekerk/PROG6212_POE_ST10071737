@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:PROG6212_POE_ST10071737.MVVM.View"
         xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
         xmlns:hw="http://schemas.hpod9.com/haley/wpf"
+        xmlns:ViewModel="clr-namespace:PROG6212_POE_ST10071737.MVVM.ViewModel"
         xmlns:View="clr-namespace:PROG6212_POE_ST10071737.MVVM.View"
         mc:Ignorable="d"
         Title="Login" 
@@ -19,6 +20,12 @@
         WindowStartupLocation="CenterScreen"
         BorderThickness="0"
         BorderBrush="Transparent">
+
+    <Window.DataContext>
+        <ViewModel:SemesterInfoViewModel/>
+    </Window.DataContext>
+    
+    
     <Grid>
         <Canvas>
             <Canvas.Effect>
@@ -66,16 +73,31 @@
 
             <!--Functionality-->
 
+            <TextBox x:Name="SemesterTB"
+                     Foreground="LightBlue"
+                     Background="Transparent"
+                     BorderThickness="0"
+                     BorderBrush="Transparent"
+                     FontSize="25"
+                     Text="Semester"
+                     Width="110"
+                     Height="40"
+                     TextAlignment="Left"
+                     Canvas.Top="84"
+                     Canvas.Left="241"
+                     CaretBrush="LightBlue"/>
+
             <TextBox x:Name="SemesterNumTB"
                      Foreground="LightBlue"
                      Background="Transparent"
                      BorderThickness="0"
                      BorderBrush="Transparent"
                      FontSize="25"
-                     Text="Semester 1"
-                     Width="155"
+                     Text="{Binding SemesterNum}"
+                     MaxLength="2"
+                     Width="135"
                      Height="40"
-                     TextAlignment="Left"
+                     TextAlignment="right"
                      Canvas.Top="84"
                      Canvas.Left="241"
                      CaretBrush="LightBlue"/>
@@ -86,7 +108,22 @@
                      BorderThickness="0"
                      BorderBrush="Transparent"
                      FontSize="25"
-                     Text="10 weeks"
+                     Text="weeks"
+                     Width="110"
+                     Height="40"
+                     TextAlignment="Left"
+                     Canvas.Top="134"
+                     Canvas.Left="300"
+                     CaretBrush="LightBlue"/>
+
+            <TextBox x:Name="semesterWeeksNumTB"
+                     Foreground="LightBlue"
+                     Background="Transparent"
+                     BorderThickness="0"
+                     BorderBrush="Transparent"
+                     FontSize="25"
+                     Text="{Binding SemesterWeeksNum}"
+                     MaxLength="2"
                      Width="155"
                      Height="40"
                      TextAlignment="Left"
@@ -95,8 +132,9 @@
                      CaretBrush="LightBlue"/>
 
             <View:MyDatePicker Canvas.Top="180"
-                               Canvas.Left="291"/>
-
+                               Canvas.Left="291"
+                               DateContent="{Binding Path=SemesterStartDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            
             <Button Content="Next"
                     x:Name="NextBTN"
                     Foreground="LightBlue"
@@ -107,7 +145,7 @@
                     Height="30"
                     Canvas.Top="260"
                     Canvas.Left="455"
-                    Click="NextBTN_Click">
+                    Command="{Binding NextBTNCommand}">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Template">

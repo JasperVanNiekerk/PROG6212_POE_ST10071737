@@ -1,4 +1,5 @@
 ﻿using PROG6212_POE_ST10071737.Core;
+using PROG6212_POE_ST10071737.MVVM.Model;
 using System;
 using System.Windows.Threading;
 
@@ -10,6 +11,24 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         //__________________________________________Parameters_______________________________________________________
         //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// stores the current Students full name for display
+        /// </summary>
+        private string _currentStudentName;
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// stores the current Students full name for display
+        /// </summary>
+        public string CurrentStudentName
+        {
+            get { return _currentStudentName; }
+            set
+            {
+                _currentStudentName = value;
+                OnPropertyChanged(nameof(CurrentStudentName));
+            }
+        }
         //___________________________________________________________________________________________________________
 
         /// <summary>
@@ -196,11 +215,16 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             IsModualManagerVisible = false;
             IsProductivityManagerVisible = false;
             IsSettingsVisible = false;
+
             ModualManagerVM = new ModuleManagerViewModel();
             StudyManagerVM = new StudyManagerViewModel();
             ProductivityManagerVM = new ProductivityManagerViewModel();
             SettingsVM = new SettingsViewModel();
+
             CurrentView = StudyManagerVM;
+
+            var currentstudent = CurrentStudentModel.Instance;
+            CurrentStudentName = currentstudent.ReturnCurrentStudentFullName();
 
             ModualManagerViewCommand = new RelayCommand(o =>
             {

@@ -10,6 +10,25 @@ namespace PROG6212_POE_ST10071737.MVVM.View
     public partial class MyDatePicker : UserControl
     {
         //___________________________________________________________________________________________________________
+        //__________________________________________Parameters_______________________________________________________
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// Dependency Property for binding to the DisplayDateTB
+        /// </summary>
+        public static DependencyProperty SelectedDate = DependencyProperty.Register("DateContent",
+                                                                                    typeof(DateTime),
+                                                                                    typeof(MyDatePicker));
+        //___________________________________________________________________________________________________________
+
+        public DateTime DateContent
+        {
+            get { return (DateTime)GetValue(SelectedDate); }
+            set { SetValue(SelectedDate, value); }
+
+        }
+
+        //___________________________________________________________________________________________________________
         //__________________________________________Constructors_____________________________________________________
         //___________________________________________________________________________________________________________
 
@@ -46,7 +65,8 @@ namespace PROG6212_POE_ST10071737.MVVM.View
         private void DatePickCalendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
             string customDateFormat = "yyyy-MM-dd";
-            DispalyDateTB.Text = DatePickCalendar.SelectedDate.Value.ToString(customDateFormat);
+            DisplayDateTB.Text = DatePickCalendar.SelectedDate.Value.ToString(customDateFormat);
+            DateContent = DatePickCalendar.SelectedDate.Value;
             calendarPopup.IsOpen = false;
         }
         //___________________________________________________________________________________________________________

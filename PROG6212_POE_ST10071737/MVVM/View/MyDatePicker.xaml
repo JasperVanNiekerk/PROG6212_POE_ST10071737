@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:ViewModel="clr-namespace:PROG6212_POE_ST10071737.MVVM.ViewModel"
              xmlns:local="clr-namespace:PROG6212_POE_ST10071737.MVVM.View"
+             x:Name="root"
              mc:Ignorable="d" 
              d:DesignHeight="40" 
              d:DesignWidth="190">
@@ -12,13 +13,14 @@
     <Grid>
         <StackPanel Orientation="Horizontal">
             
-            <TextBox x:Name="DispalyDateTB"
+            <TextBox x:Name="DisplayDateTB"
                      Width="150"
                      Background="Transparent"
                      Foreground="LightBlue"
                      CaretBrush="LightBlue"
                      BorderThickness="0"
-                     Text="Select a date"
+                     BorderBrush="Transparent"
+                     Text="Select a Date"
                      FontSize="25"
                      HorizontalContentAlignment="Left"
                      VerticalContentAlignment="Center"/>
@@ -35,7 +37,7 @@
                                Canvas.Top="7.5"
                                Canvas.Left="7.5"/>
 
-                    <Ellipse Width="7.5"
+                    <Ellipse Width="7"
                              Height="7.5"
                              Stroke="LightBlue"
                              Canvas.Top="7.5"

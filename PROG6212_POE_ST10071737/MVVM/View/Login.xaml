@@ -74,7 +74,7 @@
 
             <!--UI elements-->
 
-            <TextBox Text="Login"
+            <TextBox Text="{Binding Username}"
                      Foreground="LightBlue"
                      Background="Transparent"
                      BorderThickness="0"
@@ -87,7 +87,8 @@
                      Canvas.Left="242"
                      CaretBrush="LightBlue"/>
 
-            <PasswordBox PasswordChar="*"
+            <PasswordBox x:Name="LoginPasswordBox"
+                         PasswordChar="*"
                          Foreground="LightBlue"
                          Background="Transparent"
                          BorderThickness="0"
@@ -98,7 +99,17 @@
                          HorizontalContentAlignment="Left"
                          Canvas.Top="160"
                          Canvas.Left="265"
-                         CaretBrush="LightBlue"/>
+                         CaretBrush="LightBlue"
+                         PasswordChanged="PasswordBox_PasswordChanged"/>
+
+            <TextBlock x:Name="ErrorLable"
+                       Foreground="LightBlue"
+                       Width="200"
+                       Canvas.Left="240"
+                       Canvas.Top="220"
+                       Text="{Binding ErrorLabel}"
+                       TextWrapping="Wrap"
+                       TextAlignment="Center"/>
 
             <Button Content="ENTER"
                     x:Name="EnterBTN"
@@ -110,7 +121,7 @@
                     Height="30"
                     Canvas.Top="260"
                     Canvas.Left="455"
-                    Click="EnterBTN_Click">
+                    Command="{Binding EnterBTNCommand}">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Template">
@@ -139,7 +150,7 @@
                     Height="30"
                     Canvas.Top="260"
                     Canvas.Left="97"
-                    Click="SignUpBTN_Click">
+                    Command="{Binding SignUpBTNCommand}">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Template">

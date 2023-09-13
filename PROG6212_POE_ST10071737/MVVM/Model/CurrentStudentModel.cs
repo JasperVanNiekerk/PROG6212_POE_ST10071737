@@ -1,4 +1,6 @@
-﻿namespace PROG6212_POE_ST10071737.MVVM.Model
+﻿using System;
+
+namespace PROG6212_POE_ST10071737.MVVM.Model
 {
     public sealed class CurrentStudentModel
     {
@@ -78,9 +80,53 @@
         }
         //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// Method to return the current students full name
+        /// </summary>
+        /// <returns></returns>
         public string ReturnCurrentStudentFullName()
         {
-            return this.CurrentStudent.ReturnFullName();
+            if (this.CurrentStudent.ReturnFullName() != string.Empty)
+            {
+                return this.CurrentStudent.ReturnFullName();
+            }
+            else
+            {
+                return "your Name here";
+            }
+
+        }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// method to validate the current student
+        /// </summary>
+        /// <param name="login"></param>
+        /// <param name="Password"></param>
+        /// <returns></returns>
+        public Boolean ValidateCurrentUser(string login, string Password)
+        {
+            if (CurrentStudent.ReturnName().Equals(login) && CurrentStudent.ReturnPassWord().Equals(Password))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+        //___________________________________________________________________________________________________________
+
+        public SemesterModel GetCurrentSemester(int SemesesterNum)
+        {
+            return CurrentStudent.GetSemester(SemesesterNum);
+        }
+
+        public void AddModuleToStudentSemester(int semesterNum, string MC, string MN, int MCredits, double MCHPW)
+        {
+            var CurrentSemesters = CurrentStudent.GetStudentSemesters();
+            CurrentSemesters[semesterNum].AddModule(MC, MN, MCredits, MCHPW);
         }
     }
 }

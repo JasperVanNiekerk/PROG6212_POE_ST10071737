@@ -1,5 +1,6 @@
 ﻿using PROG6212_POE_ST10071737.Core;
 using PROG6212_POE_ST10071737.MVVM.Model;
+using PROG6212_POE_ST10071737.MVVM.View;
 using System.Windows;
 
 namespace PROG6212_POE_ST10071737.MVVM.ViewModel
@@ -107,7 +108,7 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             var Student = new StudentModel(StudentName, StudentSurname, StudentPassword);
             var currentStudent = CurrentStudentModel.Instance;
             currentStudent.SetCurrentStudent(Student);
-            MessageBox.Show("hello " + currentStudent.ReturnCurrentStudentFullName());
+            this.ChangeWindows();
         }
         //___________________________________________________________________________________________________________
 
@@ -117,7 +118,28 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             this.StudentSurname = "Surname";
             this.StudentPassword = "Password";
         }
+        //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// method to switch windows
+        /// </summary>
+        /// <param name="newWindow"></param>
+        private void ChangeWindows()
+        {
+
+            var Semester = new SemesterInfoView();
+            Semester.Show();
+
+
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window is Login2View)
+                {
+                    window.Close();
+                }
+            }
+        }
+        //___________________________________________________________________________________________________________
     }
 }
 //____________________________________EOF_________________________________________________________________________

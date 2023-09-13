@@ -70,6 +70,26 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         //___________________________________________________________________________________________________________
 
         /// <summary>
+        /// returns the name of the student
+        /// </summary>
+        /// <returns></returns>
+        public string ReturnName()
+        {
+            return this.StudentName;
+        }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// returns the Full name of the student
+        /// </summary>
+        /// <returns></returns>
+        public string ReturnPassWord()
+        {
+            return this.StudentPassword;
+        }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
         /// method to add a semester to the students semester list
         /// </summary>
         /// <param name="semester"></param>
@@ -78,6 +98,28 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
             this.StudentSemesters.Add(semester);
         }
         //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// gets the semester based on the semesterNum param
+        /// </summary>
+        /// <param name="semesterNum"></param>
+        /// <returns></returns>
+        public SemesterModel GetSemester(int semesterNum)
+        {
+            return this.StudentSemesters[semesterNum];
+        }
+        //___________________________________________________________________________________________________________
+
+        public void AddModuleToStudentSemester(int semesterNum, string MC, string MN, int MCredits, double MCHPW)
+        {
+            this.StudentSemesters[semesterNum].AddModule(MC, MN, MCredits, MCHPW);
+        }
+
+        public ObservableCollection<SemesterModel> GetStudentSemesters()
+        {
+            return this.StudentSemesters;
+        }
+
     }
 }
 //____________________________________EOF_________________________________________________________________________
