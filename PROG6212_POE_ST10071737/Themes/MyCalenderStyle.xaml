@@ -31,7 +31,7 @@
                 <ControlTemplate TargetType="{x:Type Calendar}">
                     <Border hm:WindowBlurAP.IsEnabled="True"
                             Background="Black"
-                            Opacity="0.5">
+                            Opacity="0.75">
                         <StackPanel x:Name="PART_Root" HorizontalAlignment="Center">
                             <CalendarItem x:Name="PART_CalendarItem" 
                                       Style="{DynamicResource CalendarCalendarItemStyle}"/>

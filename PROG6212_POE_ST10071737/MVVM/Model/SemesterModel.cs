@@ -28,6 +28,12 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         //___________________________________________________________________________________________________________
 
         /// <summary>
+        /// stores the amount of weeks in the semester
+        /// </summary>
+        private String SemesterNumString { get; set; }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
         /// stores a list of modules in the semester
         /// </summary>
         private ObservableCollection<ModuleModel> SemesterModules { get; set; } = new ObservableCollection<ModuleModel>();
@@ -56,6 +62,7 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
             this.SemesterNumber = SN;
             this.SemesterStartDate = SSD;
             this.SemesterWeeksAmount = SWA;
+            this.SemesterNumString = "Semester " + SN;
         }
         //___________________________________________________________________________________________________________
 
@@ -63,10 +70,25 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         //_____________________________________________Methods_______________________________________________________
         //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// returns the Semester number
+        /// </summary>
+        /// <returns></returns>
         public int ReturnSemesterNumber()
         {
             return this.SemesterNumber;
         }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// returns the SemesterNum String
+        /// </summary>
+        /// <returns></returns>
+        public string ReturnSemesterNumString()
+        {
+            return this.SemesterNumString;
+        }
+        //___________________________________________________________________________________________________________
 
         /// <summary>
         /// Method to add Module to semester
@@ -74,10 +96,15 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         /// <param name="module"></param>
         public void AddModule(string MC, string MN, int MCredits, double MCHPW)
         {
-            var module = new ModuleModel(MC,MN,MCredits,MCHPW,this.SemesterStartDate);
+            var module = new ModuleModel(MC, MN, MCredits, MCHPW, this.SemesterStartDate);
             this.SemesterModules.Add(module);
         }
         //___________________________________________________________________________________________________________
+
+        public override string ToString()
+        {
+            return this.SemesterNumString;
+        }
     }
 }
 //____________________________________EOF_________________________________________________________________________

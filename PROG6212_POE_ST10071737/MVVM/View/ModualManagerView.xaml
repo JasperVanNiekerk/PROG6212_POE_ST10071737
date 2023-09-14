@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PROG6212_POE_ST10071737.MVVM.View"
              xmlns:ViewModel="clr-namespace:PROG6212_POE_ST10071737.MVVM.ViewModel"
+             xmlns:View="clr-namespace:PROG6212_POE_ST10071737.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="400" 
              d:DesignWidth="700">
@@ -12,7 +13,7 @@
     <UserControl.DataContext>
         <ViewModel:ModuleManagerViewModel/>
     </UserControl.DataContext>
-    
+
     <Grid>
         <StackPanel>
             <StackPanel.Effect>
@@ -23,7 +24,7 @@
             </StackPanel.Effect>
 
             <Border Height="25"/>
-            
+
             <Canvas Height="150">
 
                 <Polygon Points="0,0 400,0 505,150 105,150"
@@ -38,52 +39,24 @@
                          Width="295"
                          Height="150"
                          TextAlignment="Center"
+                         FontSize="20"
                          Canvas.Left="105"
                          VerticalContentAlignment="Center"
                          TextWrapping="Wrap"
                          AcceptsReturn="True"
                          IsReadOnly="True"/>
 
-                <Rectangle Width="120"
-                           Height="40"
-                           StrokeThickness="2"
-                           Stroke="LightBlue"
-                           Canvas.Top="16.5"
-                           Canvas.Left="505"/>
-                
-
-
-                <TextBlock x:Name="SemesterTB"
-                           Height="30"
-                           Width="110"
-                           Canvas.Top="20"
-                           Canvas.Left="510"
-                           Foreground="LightBlue"
-                           Text="Semester 1"
-                           Margin="5,5,0,0"
-                           FontSize="16"/>
-
-                <Button x:Name="SemesterPlusBTN"
-                        Width="30"
-                        Height="21"
-                        Background="Transparent"
-                        BorderBrush="LightBlue"
-                        Foreground="LightBlue"
-                        BorderThickness="2"
-                        Content="+"
-                        Canvas.Top="16.5"
-                        Canvas.Left="623"/>
-
-                <Button x:Name="SemesterMinusBTN"
-                        Width="30"
-                        Height="21"
-                        Background="Transparent"
-                        BorderBrush="LightBlue"
-                        Foreground="LightBlue"
-                        BorderThickness="2"
-                        Content="-"
-                        Canvas.Top="35.5"
-                        Canvas.Left="623"/>
+                <ComboBox Width="150"
+                          Height="40"
+                          Style="{DynamicResource MyComboBoxStyle}"
+                          Foreground="LightBlue"
+                          SelectedIndex="0"
+                          Canvas.Left="501"
+                          Canvas.Top="16.5"
+                          FontSize="25"
+                          ItemsSource="{Binding CurrentStudentSemesters}"
+                          SelectedItem="{Binding CurrentSemester}"
+                          />
 
                 <Button x:Name="SemesterCreateBTN"
                         Width="40"
@@ -94,7 +67,65 @@
                         BorderThickness="2"
                         Content="New"
                         Canvas.Top="16.5"
-                        Canvas.Left="651"/>
+                        Canvas.Left="651"
+                        Command="{Binding NewBTNCommand}"/>
+                
+                <Popup x:Name="SemesterPopUp"
+                       AllowsTransparency="True"
+                       IsOpen="{Binding SemesterPopUpBool}"
+                       PlacementTarget="{Binding ElementName=SemesterCreateBTN}">
+                    
+                    <Border Background="black"
+                            Opacity="0.75"
+                            Width="200"
+                            Height="100"
+                            Canvas.Top="60"
+                            Canvas.Left="520"
+                            BorderBrush="LightBlue"
+                            BorderThickness="2">
+
+                        <StackPanel >
+
+                            <Canvas Height="50">
+                                
+                                <TextBox x:Name="semesterWeeksTB"
+                                         Foreground="LightBlue"
+                                         Background="Transparent"
+                                         BorderThickness="0"
+                                         BorderBrush="Transparent"
+                                         FontSize="25"
+                                         Text="weeks"
+                                         Width="110"
+                                         Height="40"
+                                         TextAlignment="Left"
+                                         Canvas.Top="5"
+                                         Canvas.Left="35"
+                                         CaretBrush="LightBlue"/>
+
+                                <TextBox x:Name="semesterWeeksNumTB"
+                                         Foreground="LightBlue"
+                                         Background="Transparent"
+                                         BorderThickness="0"
+                                         BorderBrush="Transparent"
+                                         FontSize="25"
+                                         Text="{Binding NewSemesterWeekNum}"
+                                         MaxLength="2"
+                                         Width="155"
+                                         Height="40"
+                                         TextAlignment="Left"
+                                         Canvas.Top="5"
+                                         Canvas.Left="0"
+                                         CaretBrush="LightBlue"/>
+
+                            </Canvas>
+
+                            <View:MyDatePicker DateContent="{Binding NewSemesterStartDate}"/>
+
+                        </StackPanel>
+
+                    </Border>
+                </Popup>
+                
 
             </Canvas>
 
@@ -114,6 +145,7 @@
                          Width="295"
                          Height="150"
                          TextAlignment="Center"
+                         FontSize="20"
                          Canvas.Left="160"
                          VerticalContentAlignment="Center"
                          TextWrapping="Wrap"

@@ -1,7 +1,7 @@
 ﻿using PROG6212_POE_ST10071737.Core;
 using PROG6212_POE_ST10071737.MVVM.Model;
 using System;
-using System.Windows;
+using System.Collections.ObjectModel;
 
 namespace PROG6212_POE_ST10071737.MVVM.ViewModel
 {
@@ -52,27 +52,6 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         //___________________________________________________________________________________________________________
 
         /// <summary>
-        /// stores the current Semester as a string
-        /// </summary>
-        private string _semesterString;
-        //___________________________________________________________________________________________________________
-
-        /// <summary>
-        /// stores the current Semester as a string
-        /// </summary>
-        public string SemesterString
-        {
-            get { return _semesterString; }
-            set
-            {
-                _semesterString = value;
-                OnPropertyChanged(nameof(SemesterString));
-            }
-
-        }
-        //___________________________________________________________________________________________________________
-
-        /// <summary>
         /// stores the current semester
         /// </summary>
         private SemesterModel _currentSemester;
@@ -88,21 +67,108 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             {
                 _currentSemester = value;
                 OnPropertyChanged(nameof(CurrentSemester));
+                this.Question = "Would you like to add a Module to " + this.CurrentSemester.ReturnSemesterNumString() + "\r\nYes/No";
             }
         }
         //___________________________________________________________________________________________________________
 
-        //___________________________________________________________________________________________________________
-        //__________________________________________Constructors_____________________________________________________
+        /// <summary>
+        /// stores the SemesterPopup IsOpen State
+        /// </summary>
+        private Boolean _semesterPopUpBool;
         //___________________________________________________________________________________________________________
 
         /// <summary>
-        /// Constructor
+        /// stores the SemesterPopup IsOpen State
         /// </summary>
-        public ModuleManagerViewModel()
+        public Boolean SemesterPopUpBool
         {
-            this.LoadUI();
-            this.NextBTNCommand = new RelayCommand(QuestionCycle);
+            get { return _semesterPopUpBool; }
+            set
+            {
+                _semesterPopUpBool = value;
+                OnPropertyChanged(nameof(SemesterPopUpBool));
+            }
+        }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// Stores the new semester Number
+        /// </summary>
+        private int _newSemesterNum;
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// Stores the new semester Number
+        /// </summary>
+        public int NewSemesterNum
+        {
+            get { return _newSemesterNum; }
+            set
+            {
+                _newSemesterNum = value;
+                OnPropertyChanged(nameof(NewSemesterNum));
+            }
+        }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// Stores the New semester week num
+        /// </summary>
+        private int _newSemesterWeekNum;
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// Stores the New semester week num
+        /// </summary>
+        public int NewSemesterWeekNum
+        {
+            get { return _newSemesterWeekNum; }
+            set
+            {
+                _newSemesterWeekNum = value;
+                OnPropertyChanged(nameof(NewSemesterWeekNum));
+            }
+        }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// stores the New semester Start date
+        /// </summary>
+        private DateTime _newSemesterStartDate;
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// stores the New semester Start date
+        /// </summary>
+        public DateTime NewSemesterStartDate
+        {
+            get { return _newSemesterStartDate; }
+            set
+            {
+                _newSemesterStartDate = value;
+                OnPropertyChanged(nameof(NewSemesterStartDate));
+            }
+        }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// stores the current students Semesters
+        /// </summary>
+        private ObservableCollection<SemesterModel> _currentStudentSemesters;
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// stores the current students Semesters
+        /// </summary>
+        public ObservableCollection<SemesterModel> CurrentStudentSemesters
+        {
+            get { return _currentStudentSemesters; }
+            set
+            {
+                _currentStudentSemesters = value;
+                OnPropertyChanged(nameof(CurrentStudentSemesters));
+            }
         }
         //___________________________________________________________________________________________________________
 
@@ -143,6 +209,21 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         //___________________________________________________________________________________________________________
 
         //___________________________________________________________________________________________________________
+        //__________________________________________Constructors_____________________________________________________
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public ModuleManagerViewModel()
+        {
+            this.LoadUI();
+            this.NextBTNCommand = new RelayCommand(QuestionCycle);
+            this.NewBTNCommand = new RelayCommand(ToggleSemesterPopUp);
+        }
+        //___________________________________________________________________________________________________________
+
+        //___________________________________________________________________________________________________________
         //______________________________________________COMMANDS_____________________________________________________
         //___________________________________________________________________________________________________________
 
@@ -158,30 +239,21 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         public RelayCommand NewBTNCommand { get; private set; }
         //___________________________________________________________________________________________________________
 
-        /// <summary>
-        /// Relay command for the Plus Button
-        /// </summary>
-        public RelayCommand PlusBTNCommand { get; private set; }
-        //___________________________________________________________________________________________________________
-
-        /// <summary>
-        /// Relay command for the Minus Button
-        /// </summary>
-        public RelayCommand MinusBTNCommand { get; private set; }
-        //___________________________________________________________________________________________________________
-
         //___________________________________________________________________________________________________________
         //_____________________________________________Methods_______________________________________________________
         //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// Sets variables for the Start up of the View
+        /// </summary>
         private void LoadUI()
         {
             var CurrentStudent = CurrentStudentModel.Instance;
-            this.CurrentSemester = CurrentStudent.GetCurrentSemester(SemesterCounter);
-            this.SemesterString = "Semester " + this.CurrentSemester.ReturnSemesterNumber(); 
-            this.Question = "Would you like to add a Module to " + this.SemesterString + "\r\nYes/No";
-            this.Input = "Answer Here";
-
+            this.CurrentStudentSemesters = new ObservableCollection<SemesterModel>(CurrentStudent.GetCurrentStudentSemesters());
+            this.CurrentSemester = this.CurrentStudentSemesters[0];
+            this.SemesterCounter = this.CurrentSemester.ReturnSemesterNumber();
+            this.Question = "Would you like to add a Module to " + this.CurrentSemester.ReturnSemesterNumString() + "\r\nYes/No";
+            this.Input = "Please answer Here";
         }
         //___________________________________________________________________________________________________________
 
@@ -223,7 +295,7 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             {
                 this.ModuleHours = double.Parse(this.Input);
                 this.AddNewModule();
-                this.Question = "Would you like to add a Module to " + this.SemesterString + "\r\nYes/No";
+                this.Question = "Would you like to add a Module to " + this.CurrentSemester.ReturnSemesterNumString() + "\r\nYes/No";
                 this.QuestionCount = 0;
                 this.Input = "Answer Here";
             }
@@ -239,6 +311,38 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             CurrentStudent.AddModuleToStudentSemester(this.SemesterCounter, this.ModuleCode, this.ModuleName, this.ModuleCredits, this.ModuleHours);
         }
         //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// method to toggle the New Semester pop up open and closed
+        /// </summary>
+        /// <param name="p"></param>
+        public void ToggleSemesterPopUp(object p)
+        {
+            if (this.SemesterPopUpBool)
+            {
+                this.SemesterPopUpBool = false;
+                this.AddNewSemester();
+                this.LoadUI();
+            }
+            else
+            {
+                this.SemesterPopUpBool = true;
+            }
+        }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// Adds a New Semester to the current Student
+        /// </summary>
+        public void AddNewSemester()
+        {
+            var CurrentStudent = CurrentStudentModel.Instance;
+            var NewSemester = new SemesterModel(this.SemesterCounter + 1, this.NewSemesterStartDate, this.NewSemesterWeekNum);
+            CurrentStudent.AddSemesterToStudent(NewSemester);
+            
+        }
+        //___________________________________________________________________________________________________________
+
 
     }
 }

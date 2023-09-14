@@ -16,6 +16,7 @@
                 <ResourceDictionary Source="Themes/MyCalenderStyle.xaml"/>
                 <ResourceDictionary Source="Themes/CalendarCalendarItemStyle.xaml"/>
                 <ResourceDictionary Source="Themes/CalendarDayButtonStyle.xaml"/>
+                <ResourceDictionary Source="Themes/MyComboBoxStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type ViewModel:StudyManagerViewModel}">

@@ -90,6 +90,16 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         //___________________________________________________________________________________________________________
 
         /// <summary>
+        /// returns the Semester list of the student
+        /// </summary>
+        /// <returns></returns>
+        public ObservableCollection<SemesterModel> ReturnStudentSemesters()
+        {
+            return this.StudentSemesters;
+        }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
         /// method to add a semester to the students semester list
         /// </summary>
         /// <param name="semester"></param>
@@ -100,26 +110,18 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         //___________________________________________________________________________________________________________
 
         /// <summary>
-        /// gets the semester based on the semesterNum param
+        /// Adds a Module to the specified semester
         /// </summary>
         /// <param name="semesterNum"></param>
-        /// <returns></returns>
-        public SemesterModel GetSemester(int semesterNum)
-        {
-            return this.StudentSemesters[semesterNum];
-        }
-        //___________________________________________________________________________________________________________
-
+        /// <param name="MC"></param>
+        /// <param name="MN"></param>
+        /// <param name="MCredits"></param>
+        /// <param name="MCHPW"></param>
         public void AddModuleToStudentSemester(int semesterNum, string MC, string MN, int MCredits, double MCHPW)
         {
             this.StudentSemesters[semesterNum].AddModule(MC, MN, MCredits, MCHPW);
         }
-
-        public ObservableCollection<SemesterModel> GetStudentSemesters()
-        {
-            return this.StudentSemesters;
-        }
-
+        //___________________________________________________________________________________________________________
     }
 }
 //____________________________________EOF_________________________________________________________________________
