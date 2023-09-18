@@ -4,27 +4,99 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PROG6212_POE_ST10071737.MVVM.View"
+             xmlns:ViewModel="clr-namespace:PROG6212_POE_ST10071737.MVVM.ViewModel"
+             xmlns:View="clr-namespace:PROG6212_POE_ST10071737.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="400" 
              d:DesignWidth="700"
              Background="Transparent">
+
+    <UserControl.DataContext>
+        <ViewModel:StudyManagerViewModel/>
+    </UserControl.DataContext>
+
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-        <Ellipse Width="175"
-                 Height="175"
-                 StrokeThickness="3"
-                 Stroke="LightBlue">
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="20"
+                              ShadowDepth="0"
+                              Color="LightBlue"
+                              Opacity="0.5"/>
+        </Grid.Effect>
 
-            <Ellipse.Fill>
-                <RadialGradientBrush>
-                    <GradientStop Color="Transparent"
-                                  Offset="2"/>
-                    <GradientStop Color="LightBlue"
-                                  Offset="0"/>
-                </RadialGradientBrush>
-            </Ellipse.Fill>
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="0,0,10,0">
+
+            <ComboBox Width="150"
+                          Height="40"
+                          Style="{DynamicResource MyComboBoxStyle}"
+                          Foreground="LightBlue"
+                          SelectedIndex="0"
+                          Canvas.Left="501"
+                          Canvas.Top="16.5"
+                          FontSize="25"
+                          ItemsSource="{Binding Semesters}"
+                          SelectedItem="{Binding CurrentSemester}"/>
+
+        </StackPanel>
+        
+        <Canvas Grid.Row="1"
+                Visibility="{Binding ErrorLabelVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+
+            <TextBox Width="300"
+                     Height="200"
+                     Canvas.Left="200"
+                     Canvas.Top="75"
+                     Text="You do not have any modules in this semester please add some and come back"
+                     Foreground="LightBlue"
+                     FontSize="20"
+                     Background="Transparent"
+                     BorderBrush="Transparent"
+                     IsReadOnly="True"
+                     IsHitTestVisible="False"
+                     TextWrapping="Wrap"
+                     HorizontalContentAlignment="Center"
+                     VerticalContentAlignment="Center"/>
+
             
-        </Ellipse>
 
+        </Canvas>
+
+        <ItemsControl ItemsSource="{Binding Modules, Mode=TwoWay}"
+                      Width="700"
+                      Height="350"
+                      Grid.Row="1"
+                      Visibility="{Binding ItemControlVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                    <StackPanel/>
+                </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        
+                    <Button Background="Transparent"
+                            Foreground="LightBlue"
+                            BorderBrush="LightBlue"
+                            BorderThickness="2"
+                            MaxWidth="150"
+                            MaxHeight="75"
+                            FontSize="20"
+                            Content="{Binding}"
+                            Command="{Binding ModuleCommand}"/>
+                        
+                </DataTemplate>
+                </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        
     </Grid>
+    
 </UserControl>

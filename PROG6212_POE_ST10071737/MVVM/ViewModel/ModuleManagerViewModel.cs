@@ -2,6 +2,7 @@
 using PROG6212_POE_ST10071737.MVVM.Model;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace PROG6212_POE_ST10071737.MVVM.ViewModel
 {
@@ -308,7 +309,8 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         private void AddNewModule()
         {
             var CurrentStudent = CurrentStudentModel.Instance;
-            CurrentStudent.AddModuleToStudentSemester(this.SemesterCounter, this.ModuleCode, this.ModuleName, this.ModuleCredits, this.ModuleHours);
+            int index = CurrentStudentSemesters.ToList().FindIndex(obj => obj.ReturnSemesterNumber() == CurrentSemester.ReturnSemesterNumber());
+            CurrentStudent.AddModuleToStudentSemester(index, this.ModuleCode, this.ModuleName, this.ModuleCredits, this.ModuleHours);
         }
         //___________________________________________________________________________________________________________
 

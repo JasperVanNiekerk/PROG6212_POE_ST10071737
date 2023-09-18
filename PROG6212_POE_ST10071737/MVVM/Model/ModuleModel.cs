@@ -1,9 +1,12 @@
-﻿using System;
+﻿using PROG6212_POE_ST10071737.Core;
+using System;
 using System.Globalization;
+using System.Windows;
+using System.Windows.Input;
 
 namespace PROG6212_POE_ST10071737.MVVM.Model
 {
-    internal class ModuleModel
+    public class ModuleModel : ObservableObject
     {
         //___________________________________________________________________________________________________________
         //__________________________________________Parameters_______________________________________________________
@@ -12,7 +15,7 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         /// <summary>
         /// stores the module code
         /// </summary>
-        private string ModuleCode { get; set; }
+        public string ModuleCode { get; private set; }
         //___________________________________________________________________________________________________________
 
         /// <summary>
@@ -96,6 +99,24 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
             this.ModuleStartDate = MSD;
         }
         //___________________________________________________________________________________________________________
+
+        //___________________________________________________________________________________________________________
+        //______________________________________________COMMANDS_____________________________________________________
+        //___________________________________________________________________________________________________________
+
+        private RelayCommand moduleCommand;
+
+        public ICommand ModuleCommand
+        {
+            get
+            {
+                if (moduleCommand == null)
+                {
+                    moduleCommand = new RelayCommand(param => DisplayModule());
+                }
+                return moduleCommand;
+            }
+        }
 
         //___________________________________________________________________________________________________________
         //_____________________________________________Methods_______________________________________________________
@@ -232,6 +253,24 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
             return cal.GetWeekOfYear(date, dfi.CalendarWeekRule, dfi.FirstDayOfWeek);
         }
         //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// set what is displayed when the module is displayed as a string
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return this.ModuleCode;
+        }
+        //___________________________________________________________________________________________________________
+
+        private void DisplayModule()
+        {
+            MessageBox.Show($"Module Code: {ModuleCode}\r\n" +
+                            $"Module Name: {ModuleName}\r\n" +
+                            $"Module Credits: {ModuleCredits}\r\n" +
+                            $"Module class hours: {ModuleClassHourPerWeek}");
+        }
     }
 }
 //____________________________________EOF_________________________________________________________________________

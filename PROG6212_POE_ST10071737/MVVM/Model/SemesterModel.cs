@@ -105,6 +105,17 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         {
             return this.SemesterNumString;
         }
+        //___________________________________________________________________________________________________________
+
+        public ObservableCollection<ModuleModel> ReturnSemesterModules()
+        {
+            return this.SemesterModules;
+        }
+
+        public int SemesterModulesCount()
+        {
+            return this.SemesterModules.Count;  
+        }
     }
 }
 //____________________________________EOF_________________________________________________________________________
