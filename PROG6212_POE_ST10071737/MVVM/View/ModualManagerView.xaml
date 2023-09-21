@@ -68,7 +68,26 @@
                         Content="New"
                         Canvas.Top="16.5"
                         Canvas.Left="651"
-                        Command="{Binding NewBTNCommand}"/>
+                        Command="{Binding NewBTNCommand}">
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+
+                </Button>
                 
                 <Popup x:Name="SemesterPopUp"
                        AllowsTransparency="True"
@@ -163,7 +182,26 @@
                         Content="NEXT"
                         Canvas.Bottom="20"
                         Canvas.Left="553"
-                        Command="{Binding NextBTNCommand}"/>
+                        Command="{Binding NextBTNCommand}">
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+
+                </Button>
 
             </Canvas>
 

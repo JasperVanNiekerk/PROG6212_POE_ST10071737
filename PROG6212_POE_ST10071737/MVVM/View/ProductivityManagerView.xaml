@@ -4,11 +4,113 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PROG6212_POE_ST10071737.MVVM.View"
+             xmlns:ViewModel="clr-namespace:PROG6212_POE_ST10071737.MVVM.ViewModel"
+             xmlns:View="clr-namespace:PROG6212_POE_ST10071737.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="400" 
              d:DesignWidth="700">
+
+    <UserControl.DataContext>
+        <ViewModel:ProductivityManagerViewModel/>
+    </UserControl.DataContext>
+    
     <Grid>
-        <Label Content="Productivity"  
-               Foreground="LightBlue"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="20"
+                              ShadowDepth="0"
+                              Color="LightBlue"
+                              Opacity="0.5"/>
+        </Grid.Effect>
+
+        <Canvas Grid.Row="0">
+            
+            <Label Height="50"
+                   Width="150"
+                   Foreground="LightBlue"
+                   FontSize="25"
+                   Content="{Binding SemesterString}"/>
+
+            <ComboBox Width="150"
+                      Height="40"
+                      Style="{DynamicResource MyComboBoxStyle}"
+                      Foreground="LightBlue"
+                      SelectedIndex="0"
+                      Canvas.Left="545"
+                      Canvas.Top="5"
+                      FontSize="25"
+                      ItemsSource="{Binding Semesters}"
+                      SelectedItem="{Binding CurrentSemester}"/>
+
+        </Canvas>
+
+        <Canvas Grid.Row="1"
+                Visibility="{Binding ErrorLabelVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+
+            <TextBox Width="300"
+                     Height="200"
+                     Canvas.Left="200"
+                     Canvas.Top="75"
+                     Text="You do not have any modules in this semester please add some and come back"
+                     Foreground="LightBlue"
+                     FontSize="20"
+                     Background="Transparent"
+                     BorderBrush="Transparent"
+                     IsReadOnly="True"
+                     IsHitTestVisible="False"
+                     TextWrapping="Wrap"
+                     HorizontalContentAlignment="Center"
+                     VerticalContentAlignment="Center"/>
+
+        </Canvas>
+
+        <ItemsControl ItemsSource="{Binding Modules, Mode=TwoWay}"
+                      Width="700"
+                      Height="350"
+                      Grid.Row="1"
+                      Visibility="{Binding ItemControlVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{Binding}"
+                           Foreground="LightBlue"
+                           FontSize="20"/>
+                        <ProgressBar Height="20"
+                                     Width="400"
+                                     Maximum="{Binding ModuleTotalSSHours}"
+                                     Background="Transparent"
+                                     Foreground="LightBlue"
+                                     BorderBrush="LightBlue"
+                                     BorderThickness="2"
+                                     Value="{Binding ModuleTotalSSHoursDone}"
+                                     Style="{Binding ProgressBarStyle}"/>
+                        <Label Content="{Binding ModuleTotalSSHours}"
+                               Foreground="LightBlue"
+                               FontSize="20"/>
+                        <Label Content="/"
+                               Foreground="LightBlue"
+                               FontSize="20"/>
+                        <Label Content="{Binding ModuleTotalSSHoursDone}"
+                               Foreground="LightBlue"
+                               FontSize="20"/>
+                        <Label Content="Hours done"
+                               Foreground="LightBlue"
+                               FontSize="20"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
     </Grid>
 </UserControl>

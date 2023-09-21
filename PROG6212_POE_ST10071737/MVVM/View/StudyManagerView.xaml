@@ -38,8 +38,6 @@
                           Style="{DynamicResource MyComboBoxStyle}"
                           Foreground="LightBlue"
                           SelectedIndex="0"
-                          Canvas.Left="501"
-                          Canvas.Top="16.5"
                           FontSize="25"
                           ItemsSource="{Binding Semesters}"
                           SelectedItem="{Binding CurrentSemester}"/>
@@ -68,7 +66,7 @@
 
         </Canvas>
 
-        <ItemsControl ItemsSource="{Binding Modules, Mode=TwoWay}"
+        <ItemsControl ItemsSource="{Binding ModuleWindows, Mode=TwoWay}"
                       Width="700"
                       Height="350"
                       Grid.Row="1"
@@ -82,7 +80,7 @@
 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        
+
                     <Button Background="Transparent"
                             Foreground="LightBlue"
                             BorderBrush="LightBlue"
@@ -90,8 +88,27 @@
                             MaxWidth="150"
                             MaxHeight="75"
                             FontSize="20"
-                            Content="{Binding}"
-                            Command="{Binding ModuleCommand}"/>
+                            Content="{Binding SelectedModule.ModuleCode, Mode=OneWay}"
+                            Command="{Binding ShowModuleInfoCommand}"
+                            CommandParameter="{Binding SelectedModule}">
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}">
+                                                <ContentPresenter HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
                         
                 </DataTemplate>
                 </ItemsControl.ItemTemplate>

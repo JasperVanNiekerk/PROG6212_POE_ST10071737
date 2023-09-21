@@ -252,7 +252,7 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             var CurrentStudent = CurrentStudentModel.Instance;
             this.CurrentStudentSemesters = new ObservableCollection<SemesterModel>(CurrentStudent.GetCurrentStudentSemesters());
             this.CurrentSemester = this.CurrentStudentSemesters[0];
-            this.SemesterCounter = this.CurrentSemester.ReturnSemesterNumber();
+            this.SemesterCounter = CurrentStudent.GetCurrentStudentSemesterCount();
             this.Question = "Would you like to add a Module to " + this.CurrentSemester.ReturnSemesterNumString() + "\r\nYes/No";
             this.Input = "Please answer Here";
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace PROG6212_POE_ST10071737.MVVM.Model
 {
@@ -82,6 +83,16 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         //___________________________________________________________________________________________________________
 
         /// <summary>
+        /// adds a semester to the current student
+        /// </summary>
+        /// <param name="semester"></param>
+        public int GetCurrentStudentSemesterCount()
+        {
+            return CurrentStudent.ReturnStudentSemesters().Count;
+        }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
         /// Method to return the current students full name
         /// </summary>
         /// <returns></returns>
@@ -106,14 +117,22 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         /// <returns></returns>
         public Boolean ValidateCurrentUser(string login, string Password)
         {
-            if (CurrentStudent.ReturnName().Equals(login) && CurrentStudent.ReturnPassWord().Equals(Password))
+            if (CurrentStudent != null)
             {
-                return true;
+                if (CurrentStudent.ReturnName().Equals(login) && CurrentStudent.ReturnPassWord().Equals(Password))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
             {
                 return false;
             }
+
         }
         //___________________________________________________________________________________________________________
 
@@ -141,6 +160,59 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         }
         //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// deletes a module from the current student
+        /// </summary>
+        /// <param name="module"></param>
+        public void DeleteModule(ModuleModel module)
+        {
+            var searchedSemester = module.ModuleSemesterNum;
+            var moduleSemester = CurrentStudent.ReturnStudentSemesters().FirstOrDefault(semester => semester.ReturnSemesterNumber() == searchedSemester);
+            if (moduleSemester != null)
+            {
+                moduleSemester.ReturnSemesterModules().Remove(module);
+            }
+        }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// updates module parameter of the current student
+        /// </summary>
+        /// <param name="module"></param>
+        public void UpdateModule(ModuleModel module)
+        {
+            var searchedSemester = module.ModuleSemesterNum;
+            var moduleSemester = CurrentStudent.ReturnStudentSemesters().FirstOrDefault(semester => semester.ReturnSemesterNumber() == searchedSemester);
+            if (moduleSemester != null)
+            {
+                var index = moduleSemester.ReturnSemesterModules().IndexOf(module);
+                if (index >= 0)
+                {
+                    moduleSemester.UpdateModuleInSemester(index, module);
+                }
+            }
+        }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// adds the addHours param to the module param's self study hours 
+        /// </summary>
+        /// <param name="addedHours"></param>
+        /// <param name="module"></param>
+        public void UpdateModuleStudyHours(double addedHours, ModuleModel module)
+        {
+            var searchedSemester = module.ModuleSemesterNum;
+            var moduleSemester = CurrentStudent.ReturnStudentSemesters().FirstOrDefault(semester => semester.ReturnSemesterNumber() == searchedSemester);
+            if (moduleSemester != null)
+            {
+                var index = moduleSemester.ReturnSemesterModules().IndexOf(module);
+                if (index >= 0)
+                {
+                    moduleSemester.UpdateModuleSSH(index, addedHours);
+                }
+            }
+        }
+        //___________________________________________________________________________________________________________
     }
 }
 //____________________________________EOF_________________________________________________________________________

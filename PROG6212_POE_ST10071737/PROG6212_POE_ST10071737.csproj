@@ -42,7 +42,7 @@
       <HintPath>..\packages\Haley.Abstractions.1.0.21\lib\netstandard2.0\Haley.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Haley.Extensions, Version=2.0.1.0, Culture=neutral, PublicKeyToken=9b5f4902d3fea17a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Haley.Extensions.2.1.18.3\lib\netstandard2.0\Haley.Extensions.dll</HintPath>
+      <HintPath>..\packages\Haley.Extensions.2.1.18.4\lib\netstandard2.0\Haley.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="Haley.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9b5f4902d3fea17a, processorArchitecture=MSIL">
       <HintPath>..\packages\Haley.Helpers.2.1.12.3\lib\netstandard2.0\Haley.Helpers.dll</HintPath>
@@ -51,10 +51,16 @@
       <HintPath>..\packages\Haley.IOC.3.0.15.2\lib\netstandard2.0\Haley.IOC.dll</HintPath>
     </Reference>
     <Reference Include="Haley.MVVM, Version=4.0.2.0, Culture=neutral, PublicKeyToken=9b5f4902d3fea17a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Haley.MVVM.6.3.4.6\lib\net462\Haley.MVVM.dll</HintPath>
+      <HintPath>..\packages\Haley.MVVM.6.3.4.7\lib\net462\Haley.MVVM.dll</HintPath>
     </Reference>
     <Reference Include="Haley.WPF, Version=3.0.0.0, Culture=neutral, PublicKeyToken=9b5f4902d3fea17a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Haley.WPF.5.3.4.5\lib\net462\Haley.WPF.dll</HintPath>
+      <HintPath>..\packages\Haley.WPF.5.3.4.6\lib\net462\Haley.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
@@ -134,6 +140,7 @@
     <Compile Include="MVVM\ViewModel\LoadingWindowViewModel.cs" />
     <Compile Include="MVVM\ViewModel\Login2ViewModel.cs" />
     <Compile Include="MVVM\ViewModel\LoginViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\ModuleWindowViewModel.cs" />
     <Compile Include="MVVM\ViewModel\SemesterInfoViewModel.cs" />
     <Compile Include="MVVM\ViewModel\SettingsViewModel.cs" />
     <Compile Include="MVVM\View\BigCore.xaml.cs">
@@ -147,6 +154,9 @@
     </Compile>
     <Compile Include="MVVM\View\Login2View.xaml.cs">
       <DependentUpon>Login2View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\ModuleWindow.xaml.cs">
+      <DependentUpon>ModuleWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\MyDatePicker.xaml.cs">
       <DependentUpon>MyDatePicker.xaml</DependentUpon>
@@ -197,6 +207,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVM\View\ModualManagerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\ModuleWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

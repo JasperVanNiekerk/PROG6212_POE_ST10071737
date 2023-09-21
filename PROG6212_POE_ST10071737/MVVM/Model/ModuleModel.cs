@@ -15,25 +15,25 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         /// <summary>
         /// stores the module code
         /// </summary>
-        public string ModuleCode { get; private set; }
+        public string ModuleCode { get; set; }
         //___________________________________________________________________________________________________________
 
         /// <summary>
         /// stores the module name
         /// </summary>
-        private string ModuleName { get; set; }
+        public string ModuleName { get; set; }
         //___________________________________________________________________________________________________________
 
         /// <summary>
         /// stores the module credits amount
         /// </summary>
-        private int ModuleCredits { get; set; }
+        public int ModuleCredits { get; set; }
         //___________________________________________________________________________________________________________
 
         /// <summary>
         /// stores the class hours per week for the module
         /// </summary>
-        private double ModuleClassHourPerWeek { get; set; }
+        public double ModuleClassHourPerWeek { get; set; }
         //___________________________________________________________________________________________________________
 
         /// <summary>
@@ -51,19 +51,19 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         /// <summary>
         /// stores the total amount of self study hours needed for the module
         /// </summary>
-        private double ModuleTotalSSHours { get; set; }
+        public double ModuleTotalSSHours { get; set; }
         //___________________________________________________________________________________________________________
 
         /// <summary>
         /// stores the total amount of self studied hours done for the module
         /// </summary>
-        private double ModuleTotalSSHoursDone { get; set; }
+        public double ModuleTotalSSHoursDone { get; set; }
         //___________________________________________________________________________________________________________
 
         /// <summary>
-        /// stores the Semester ID of the module
+        /// stores the Semester number of the module
         /// </summary>
-        private double ModuleSemesterID { get; set; }
+        public double ModuleSemesterNum { get; set; }
         //___________________________________________________________________________________________________________
 
         /// <summary>
@@ -90,33 +90,18 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         }
         //___________________________________________________________________________________________________________
 
-        public ModuleModel(string MC, string MN, int MCredits, double MCHPW, DateTime MSD)
+        public ModuleModel(string MC, string MN, int MCredits, double MCHPW, DateTime MSD ,int MSN)
         {
             this.ModuleCode = MC;
             this.ModuleName = MN;
             this.ModuleCredits = MCredits;
             this.ModuleClassHourPerWeek = MCHPW;
             this.ModuleStartDate = MSD;
+            this.ModuleSemesterNum = MSN;
+            this.ModuleTotalSSHours = 20;
+            this.ModuleTotalSSHoursDone = 0;
         }
         //___________________________________________________________________________________________________________
-
-        //___________________________________________________________________________________________________________
-        //______________________________________________COMMANDS_____________________________________________________
-        //___________________________________________________________________________________________________________
-
-        private RelayCommand moduleCommand;
-
-        public ICommand ModuleCommand
-        {
-            get
-            {
-                if (moduleCommand == null)
-                {
-                    moduleCommand = new RelayCommand(param => DisplayModule());
-                }
-                return moduleCommand;
-            }
-        }
 
         //___________________________________________________________________________________________________________
         //_____________________________________________Methods_______________________________________________________
@@ -154,11 +139,12 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
             //the library should have two methods one for per week ssh and one for the total ssh
             //so for that to work...........................
             //the module class should also have a variable for the start date and weeks that will be set when the modules are created
+            this.ModuleTotalSSHours = 100;
         }
         //___________________________________________________________________________________________________________
 
         /// <summary>
-        /// Metod to add the Hours param to the Self studied hours for both per week an total
+        /// Method to add the Hours param to the Self studied hours for both per week an total
         /// </summary>
         /// <param name="hours"></param>
         public void UpdateSSH(double hours)
@@ -263,14 +249,6 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
             return this.ModuleCode;
         }
         //___________________________________________________________________________________________________________
-
-        private void DisplayModule()
-        {
-            MessageBox.Show($"Module Code: {ModuleCode}\r\n" +
-                            $"Module Name: {ModuleName}\r\n" +
-                            $"Module Credits: {ModuleCredits}\r\n" +
-                            $"Module class hours: {ModuleClassHourPerWeek}");
-        }
     }
 }
 //____________________________________EOF_________________________________________________________________________

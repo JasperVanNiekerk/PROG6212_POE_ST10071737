@@ -1,0 +1,322 @@
+﻿using PROG6212_POE_ST10071737.Core;
+using PROG6212_POE_ST10071737.MVVM.Model;
+using PROG6212_POE_ST10071737.MVVM.View;
+using System;
+using System.Windows;
+
+namespace PROG6212_POE_ST10071737.MVVM.ViewModel
+{
+    internal class ModuleWindowViewModel : ObservableObject
+    {
+        //___________________________________________________________________________________________________________
+        //__________________________________________Parameters_______________________________________________________
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// stores the selected module
+        /// </summary>
+        private ModuleModel _selectedModule;
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// stores the selected module
+        /// </summary>
+        public ModuleModel SelectedModule
+        {
+            get { return _selectedModule; }
+            set
+            {
+                _selectedModule = value;
+                OnPropertyChanged(nameof(SelectedModule));
+                this.SetModuleInfo();
+            }
+        }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// stores the bool that determines if the textboxes are read only
+        /// </summary>
+        private Boolean _isEditable;
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// stores the bool that determines if the textboxes are read only
+        /// </summary>
+        public Boolean IsEditable
+        {
+            get { return _isEditable; }
+            set
+            {
+                _isEditable = value;
+                OnPropertyChanged(nameof(IsEditable));
+            }
+        }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// stores the string displayed in the Edit button
+        /// </summary>
+        private string _editBTNString;
+        //___________________________________________________________________________________________________________
+
+        public string EditBTNString
+        {
+            get { return _editBTNString; }
+            set
+            {
+                _editBTNString = value;
+                OnPropertyChanged(nameof(EditBTNString));
+            }
+        }
+        //__________________________________________________________________________________________________________
+
+        /// <summary>
+        /// store the user input for adding hours
+        /// </summary>
+        private string _hoursStudied;
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// store the user input for adding hours
+        /// </summary>
+        public string HoursStudied
+        {
+            get { return _hoursStudied; }
+            set
+            {
+                _hoursStudied = value;
+                OnPropertyChanged(nameof(HoursStudied));
+            }
+        }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// stores the selected Module's code
+        /// </summary>
+        private string _selectedModuleCode;
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// stores the selected Module's code
+        /// </summary>
+        public string SelectedModuleCode
+        {
+            get { return _selectedModuleCode; }
+            set
+            {
+                _selectedModuleCode = value;
+                OnPropertyChanged(nameof(SelectedModuleCode));
+            }
+        }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// stores the selected Module's name
+        /// </summary>
+        private string _selectedModuleName;
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// stores the selected Module's name
+        /// </summary>
+        public string SelectedModuleName
+        {
+            get { return _selectedModuleName; }
+            set
+            {
+                _selectedModuleName = value;
+                OnPropertyChanged(nameof(SelectedModuleName));
+            }
+        }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// stores the selected Module's Credits
+        /// </summary>
+        private int _selectedModuleCredits;
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// stores the selected Module's Credits
+        /// </summary>
+        public int SelectedModuleCredits
+        {
+            get { return _selectedModuleCredits; }
+            set
+            {
+                _selectedModuleCredits = value;
+                OnPropertyChanged(nameof(SelectedModuleCredits));
+            }
+        }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// stores the selected Module's Class hours
+        /// </summary>
+        private double _selectedModuleClassHours;
+        //___________________________________________________________________________________________________________
+
+        public double SelectedModuleClassHours
+        {
+            get { return _selectedModuleClassHours; }
+            set
+            {
+                _selectedModuleClassHours = value;
+                OnPropertyChanged(nameof(SelectedModuleClassHours));
+            }
+        }
+        //___________________________________________________________________________________________________________
+
+        //___________________________________________________________________________________________________________
+        //__________________________________________Constructors_____________________________________________________
+        //___________________________________________________________________________________________________________
+
+        public ModuleWindowViewModel()
+        {
+            this.IsEditable = false;
+            this.EditBTNString = "Edit";
+            this.EditCommand = new RelayCommand(EditToggle);
+            this.DeleteCommand = new RelayCommand(DeleteModule);
+            this.DoneCommand = new RelayCommand(DoneWithWindow);
+            this.AddHoursCommand = new RelayCommand(UpdateModuleSSH);
+            this.ShowModuleInfoCommand = new RelayCommand(ShowModuleInfo);
+        }
+        //___________________________________________________________________________________________________________
+
+        //___________________________________________________________________________________________________________
+        //______________________________________________COMMANDS_____________________________________________________
+        //___________________________________________________________________________________________________________
+
+        public RelayCommand EditCommand { get; private set; }
+        //___________________________________________________________________________________________________________
+
+        public RelayCommand DeleteCommand { get; private set; }
+        //___________________________________________________________________________________________________________
+
+        public RelayCommand DoneCommand { get; private set; }
+        //___________________________________________________________________________________________________________
+
+        public RelayCommand AddHoursCommand { get; private set; }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// command to show module information
+        /// </summary>
+        public RelayCommand ShowModuleInfoCommand { get; private set; }
+        //___________________________________________________________________________________________________________
+
+        //___________________________________________________________________________________________________________
+        //_____________________________________________Methods_______________________________________________________
+        //___________________________________________________________________________________________________________
+
+        private void SetModuleInfo()
+        {
+            this.SelectedModuleCode = SelectedModule.ModuleCode;
+            this.SelectedModuleName = SelectedModule.ModuleName;
+            this.SelectedModuleCredits = SelectedModule.ModuleCredits;
+            this.SelectedModuleClassHours = SelectedModule.ModuleClassHourPerWeek;
+        }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// changes the text display of the edit button and sets the IsEditable boolean appropriately
+        /// </summary>
+        /// <param name="p"></param>
+        private void EditToggle(object p)
+        {
+            if (this.IsEditable)
+            {
+                this.EditBTNString = "Editing";
+                this.IsEditable = false;
+                this.ModuleWasEdited();
+            }
+            else
+            {
+                this.EditBTNString = "Edit";
+                this.IsEditable = true;
+                this.ModuleWasEdited();
+            }
+        }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// deletes the selected module and closes the window
+        /// </summary>
+        /// <param name="p"></param>
+        private void DeleteModule(object p)
+        {
+            var currentStudent = CurrentStudentModel.Instance;
+            currentStudent.DeleteModule(SelectedModule);
+            this.ChangeWindows();
+        }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// checks if the selected module was edited, update the selected module and then closes the window
+        /// </summary>
+        /// <param name="p"></param>
+        private void DoneWithWindow(object p)
+        {
+            this.ModuleWasEdited();
+            this.ChangeWindows();
+        }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// updates the SelectedModule
+        /// </summary>
+        private void ModuleWasEdited()
+        {
+            SelectedModule.ModuleCode = this.SelectedModuleCode;
+            SelectedModule.ModuleName = this.SelectedModuleName;
+            SelectedModule.ModuleCredits = this.SelectedModuleCredits;
+            SelectedModule.ModuleClassHourPerWeek = this.SelectedModuleClassHours;
+
+            var CurrentStudent = CurrentStudentModel.Instance;
+            CurrentStudent.UpdateModule(SelectedModule);
+        }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// updates the selectedModule's self study hours
+        /// </summary>
+        /// <param name="p"></param>
+        private void UpdateModuleSSH(object p)
+        {
+            var currentStudent = CurrentStudentModel.Instance;
+            if (Double.TryParse(HoursStudied, out double hours))
+            {
+                currentStudent.UpdateModuleStudyHours(hours, SelectedModule);
+            }
+        }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// method to switch windows
+        /// </summary>
+        /// <param name="newWindow"></param>
+        private void ChangeWindows()
+        {
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window is ModuleWindow)
+                {
+                    window.Close();
+                }
+            }
+        }
+        //___________________________________________________________________________________________________________
+
+        private void ShowModuleInfo(object p)
+        {
+            if (p is ModuleModel selectedModule)
+            {
+                var SelectedModuleInfo = new ModuleWindow();
+                SelectedModuleInfo.DataContext = new ModuleWindowViewModel { SelectedModule = selectedModule };
+                SelectedModuleInfo.Show();
+            }
+        }
+        //___________________________________________________________________________________________________________
+    }
+}
+//____________________________________EOF_________________________________________________________________________

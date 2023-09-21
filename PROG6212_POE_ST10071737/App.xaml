@@ -43,6 +43,10 @@
                 <View:SettingsView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type ViewModel:ModuleWindowViewModel}">
+                <View:ModuleWindow/>
+            </DataTemplate>
+
             <Boolean:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
 
         </ResourceDictionary>

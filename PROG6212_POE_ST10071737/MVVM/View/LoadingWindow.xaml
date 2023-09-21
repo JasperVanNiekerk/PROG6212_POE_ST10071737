@@ -55,8 +55,7 @@
                          Background="Transparent"
                          Foreground="LightBlue"
                          BorderThickness="0"
-                         Value="{Binding CurrentProgress}"
-                         Style="{Binding ProgressBarStyle}"/>
+                         Value="{Binding CurrentProgress}"/>
             
 
         </Canvas>
