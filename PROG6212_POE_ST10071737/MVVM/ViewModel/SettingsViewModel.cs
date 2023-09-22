@@ -1,4 +1,5 @@
 ﻿using PROG6212_POE_ST10071737.Core;
+using PROG6212_POE_ST10071737.MVVM.Model;
 using PROG6212_POE_ST10071737.MVVM.View;
 using System;
 using System.Diagnostics;

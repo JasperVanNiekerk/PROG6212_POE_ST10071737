@@ -38,6 +38,9 @@
     <ApplicationIcon>jasper_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EASendMail, Version=7.9.1.9, Culture=neutral, PublicKeyToken=88adb80ecd66540b, processorArchitecture=MSIL">
+      <HintPath>..\packages\EASendMail.7.9.1.9\lib\net472\EASendMail.dll</HintPath>
+    </Reference>
     <Reference Include="Haley.Abstractions, Version=1.0.21.0, Culture=neutral, PublicKeyToken=9b5f4902d3fea17a, processorArchitecture=MSIL">
       <HintPath>..\packages\Haley.Abstractions.1.0.21\lib\netstandard2.0\Haley.Abstractions.dll</HintPath>
     </Reference>
@@ -127,6 +130,9 @@
     <Reference Include="System.Security.AccessControl, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.AccessControl.4.7.0\lib\net461\System.Security.AccessControl.dll</HintPath>
     </Reference>
+    <Reference Include="System.Security.Cryptography.Pkcs, Version=6.0.0.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Pkcs.6.0.1\lib\net461\System.Security.Cryptography.Pkcs.dll</HintPath>
+    </Reference>
     <Reference Include="System.Security.Cryptography.Xml, Version=7.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.Cryptography.Xml.7.0.1\lib\net462\System.Security.Cryptography.Xml.dll</HintPath>
     </Reference>
@@ -166,6 +172,7 @@
     <Compile Include="MVVM\Model\AudioPlayerSingletonModel.cs" />
     <Compile Include="MVVM\Model\CurrentStudentModel.cs" />
     <Compile Include="MVVM\Model\ModuleModel.cs" />
+    <Compile Include="MVVM\Model\MyFunSuppriseClass.cs" />
     <Compile Include="MVVM\Model\SemesterModel.cs" />
     <Compile Include="MVVM\Model\StudentModel.cs" />
     <Compile Include="MVVM\ViewModel\LoadingWindowViewModel.cs" />
