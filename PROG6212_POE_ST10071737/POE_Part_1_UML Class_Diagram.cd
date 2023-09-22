@@ -188,7 +188,7 @@
   <Class Name="PROG6212_POE_ST10071737.MVVM.ViewModel.LoginViewModel">
     <Position X="4.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>gAQAgAAAAAAACAAAIQgAAAgAAAAAAAACAAIAEAAAAAA=</HashCode>
+      <HashCode>gAQAgAAAAAAACAAAIQgAAAgAAAAAAAACAAIAEAEAAAA=</HashCode>
       <FileName>MVVM\ViewModel\LoginViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -209,11 +209,11 @@
   <Class Name="PROG6212_POE_ST10071737.MVVM.ViewModel.ModuleWindowViewModel">
     <Position X="13.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QlAACIAAJABAQIkgAAADIRCBAQEAAAgACBAAEgCAIkA=</HashCode>
+      <HashCode>QlAACIAAJABAQIkgIAgDIRCBAQEAAAgACBAAEgCAIkA=</HashCode>
       <FileName>MVVM\ViewModel\ModuleWindowViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PROG6212_POE_ST10071737.MVVM.ViewModel.ProductivityManagerViewModel" Collapsed="true">
+  <Class Name="PROG6212_POE_ST10071737.MVVM.ViewModel.ProductivityManagerViewModel">
     <Position X="18.25" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AEAAQAAAAAAAEACAIgAgAAAQAAAAgAMAAACACAAAAQA=</HashCode>
@@ -227,10 +227,10 @@
       <FileName>MVVM\ViewModel\SemesterInfoViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PROG6212_POE_ST10071737.MVVM.ViewModel.SettingsViewModel" Collapsed="true">
+  <Class Name="PROG6212_POE_ST10071737.MVVM.ViewModel.SettingsViewModel">
     <Position X="29.25" Y="8.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AIAAAIAAAAAAAAAEAAJAgAAAACAAAAAAAABAAAAkAAA=</HashCode>
       <FileName>MVVM\ViewModel\SettingsViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>

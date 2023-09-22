@@ -84,7 +84,14 @@
                      TextAlignment="Left"
                      Canvas.Top="84"
                      Canvas.Left="241"
-                     CaretBrush="LightBlue"/>
+                     CaretBrush="LightBlue">
+
+                <TextBox.ToolTip>
+                    <ToolTip Style="{StaticResource TooltipStyle}"
+                             Content="Your Name or Username"/>
+                </TextBox.ToolTip>
+
+            </TextBox>
 
             <TextBox x:Name="SurameTB"
                      Foreground="LightBlue"
@@ -98,7 +105,14 @@
                      TextAlignment="Left"
                      Canvas.Top="134"
                      Canvas.Left="266"
-                     CaretBrush="LightBlue"/>
+                     CaretBrush="LightBlue">
+
+                <TextBox.ToolTip>
+                    <ToolTip Style="{StaticResource TooltipStyle}"
+                             Content="Your surname"/>
+                </TextBox.ToolTip>
+
+            </TextBox>
 
 
             <TextBox x:Name="SemesterTB"
@@ -113,7 +127,14 @@
                      TextAlignment="Left"
                      Canvas.Top="184"
                      Canvas.Left="291"
-                     CaretBrush="LightBlue"/>
+                     CaretBrush="LightBlue">
+
+                <TextBox.ToolTip>
+                    <ToolTip Style="{StaticResource TooltipStyle}"
+                             Content="Your password"/>
+                </TextBox.ToolTip>
+
+            </TextBox>
 
             <Button Content="Next"
                     x:Name="NextBTN"

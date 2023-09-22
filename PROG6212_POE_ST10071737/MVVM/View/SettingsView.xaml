@@ -10,6 +10,11 @@
              d:DesignHeight="500" 
              d:DesignWidth="700"
              Background="Transparent">
+
+    <UserControl.DataContext>
+        <ViewModel:SettingsViewModel/>
+    </UserControl.DataContext>
+    
     <Grid>
         <Canvas>
 
@@ -26,28 +31,13 @@
 
 
             <!--Poly1-->
-            
-            <Polygon Points="0,0 100,-105 140,-105 100,-105"
-                     Stroke="LightBlue"
-                     StrokeThickness="2"
-                     Canvas.Top="185"
-                     Canvas.Left="383"/>
-
-            <!--Poly2-->
-            <Polygon Points="0,0 90,-60 130,-60 90,-60"
-                     Stroke="LightBlue"
-                     StrokeThickness="2"
-                     Canvas.Top="228"
-                     Canvas.Left="420"/>
-
-            <!--Poly3-->
             <Polygon Points="0,0 75,60 115,60 75,60"
                      Stroke="LightBlue"
                      StrokeThickness="2"
                      Canvas.Top="311"
                      Canvas.Left="390"/>
 
-            <!--Poly4-->
+            <!--Poly2-->
 
             <Polygon Points="0,0 40,110 80,110 40,110"
                      Stroke="LightBlue"
@@ -55,7 +45,7 @@
                      Canvas.Top="320"
                      Canvas.Left="370"/>
 
-            <!--Poly5-->
+            <!--Poly3-->
 
             <Polygon Points="0,0 -60,65 -100,65 -60,65"
                      Stroke="LightBlue"
@@ -63,7 +53,7 @@
                      Canvas.Top="290"
                      Canvas.Left="289"/>
 
-            <!--Poly6-->
+            <!--Poly4-->
 
             <Polygon Points="0,0 -85,-65 -125,-65 -85,-65"
                      Stroke="LightBlue"
@@ -74,40 +64,32 @@
             <!--Buttons-->
 
             <Button Style="{StaticResource SettingsButtonStyle}"
-                    Content="Talk Back"
-                    BorderThickness="0"
-                    Canvas.Top="65"
-                    Canvas.Left="535"/>
-
-            <Button Style="{StaticResource SettingsButtonStyle}"
-                    Content="Semester 1"
-                    BorderThickness="0"
-                    Canvas.Top="150"
-                    Canvas.Left="560"/>
-
-            <Button Style="{StaticResource SettingsButtonStyle}"
                     Content="Credits"
                     BorderThickness="0"
                     Canvas.Top="355"
-                    Canvas.Left="520"/>
+                    Canvas.Left="520"
+                    Command="{Binding CreditsCommand}"/>
 
             <Button Style="{StaticResource SettingsButtonStyle}"
                     Content="Exit"
                     BorderThickness="0"
                     Canvas.Top="415"
-                    Canvas.Left="460"/>
+                    Canvas.Left="460"
+                    Command="{Binding ExitCommand}"/>
 
             <Button Style="{StaticResource SettingsButtonStyle}"
                     Content="GitHub"
                     BorderThickness="0"
                     Canvas.Top="128"
-                    Canvas.Left="42"/>
+                    Canvas.Left="42"
+                    Command="{Binding GitHubCommand}"/>
 
             <Button Style="{StaticResource SettingsButtonStyle}"
                     Content="Music"
                     BorderThickness="0"
                     Canvas.Top="338"
-                    Canvas.Left="62"/>
+                    Canvas.Left="62"
+                    Command="{Binding MusicCommand}"/>
             
         </Canvas>
     </Grid>

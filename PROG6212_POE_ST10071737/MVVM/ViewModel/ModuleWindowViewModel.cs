@@ -4,6 +4,7 @@ using PROG6212_POE_ST10071737.Core;
 using PROG6212_POE_ST10071737.MVVM.Model;
 using PROG6212_POE_ST10071737.MVVM.View;
 using System;
+using System.Linq;
 using System.Windows;
 
 namespace PROG6212_POE_ST10071737.MVVM.ViewModel
@@ -136,13 +137,13 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         /// <summary>
         /// stores the selected Module's Credits
         /// </summary>
-        private int _selectedModuleCredits;
+        private string _selectedModuleCredits;
         //___________________________________________________________________________________________________________
 
         /// <summary>
         /// stores the selected Module's Credits
         /// </summary>
-        public int SelectedModuleCredits
+        public string SelectedModuleCredits
         {
             get { return _selectedModuleCredits; }
             set
@@ -156,16 +157,33 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         /// <summary>
         /// stores the selected Module's Class hours
         /// </summary>
-        private double _selectedModuleClassHours;
+        private string _selectedModuleClassHours;
         //___________________________________________________________________________________________________________
 
-        public double SelectedModuleClassHours
+        public string SelectedModuleClassHours
         {
             get { return _selectedModuleClassHours; }
             set
             {
                 _selectedModuleClassHours = value;
                 OnPropertyChanged(nameof(SelectedModuleClassHours));
+            }
+        }
+        //___________________________________________________________________________________________________________
+
+        private string _errorLabel;
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// stores the error message
+        /// </summary>
+        public string ErrorLabel
+        {
+            get { return _errorLabel; }
+            set
+            {
+                _errorLabel = value;
+                OnPropertyChanged(nameof(ErrorLabel));
             }
         }
         //___________________________________________________________________________________________________________
@@ -241,8 +259,8 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         {
             this.SelectedModuleCode = SelectedModule.ModuleCode;
             this.SelectedModuleName = SelectedModule.ModuleName;
-            this.SelectedModuleCredits = SelectedModule.ModuleCredits;
-            this.SelectedModuleClassHours = SelectedModule.ModuleClassHourPerWeek;
+            this.SelectedModuleCredits = SelectedModule.ModuleCredits.ToString();
+            this.SelectedModuleClassHours = SelectedModule.ModuleClassHourPerWeek.ToString();
         }
         //___________________________________________________________________________________________________________
 
@@ -327,13 +345,20 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         /// </summary>
         private void ModuleWasEdited()
         {
-            SelectedModule.ModuleCode = this.SelectedModuleCode;
-            SelectedModule.ModuleName = this.SelectedModuleName;
-            SelectedModule.ModuleCredits = this.SelectedModuleCredits;
-            SelectedModule.ModuleClassHourPerWeek = this.SelectedModuleClassHours;
+            if (this.SelectedModuleCredits.All(c => char.IsDigit(c)) && this.SelectedModuleCredits.All(c => char.IsDigit(c)))
+            {
+                SelectedModule.ModuleCode = this.SelectedModuleCode;
+                SelectedModule.ModuleName = this.SelectedModuleName;
+                SelectedModule.ModuleCredits = Int32.Parse(this.SelectedModuleCredits);
+                SelectedModule.ModuleClassHourPerWeek = double.Parse(this.SelectedModuleClassHours);
 
-            var CurrentStudent = CurrentStudentModel.Instance;
-            CurrentStudent.UpdateModule(SelectedModule);
+                var CurrentStudent = CurrentStudentModel.Instance;
+                CurrentStudent.UpdateModule(SelectedModule);
+            }
+            else
+            {
+                this.ErrorLabel = "Your Module credits and module class hours are invalid";
+            }
         }
         //___________________________________________________________________________________________________________
 
@@ -347,6 +372,10 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             if (Double.TryParse(HoursStudied, out double hours))
             {
                 currentStudent.UpdateModuleStudyHours(hours, SelectedModule);
+            }
+            else
+            {
+                this.ErrorLabel = "Invalid Input";
             }
             this.PieChartSetter();
         }
@@ -368,6 +397,10 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         }
         //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// method to set the Selected Module
+        /// </summary>
+        /// <param name="p"></param>
         private void ShowModuleInfo(object p)
         {
             if (p is ModuleModel selectedModule)

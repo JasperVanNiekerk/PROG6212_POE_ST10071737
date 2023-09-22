@@ -1,7 +1,12 @@
 ﻿using PROG6212_POE_ST10071737.Core;
+using PROG6212_POE_ST10071737.MVVM.Model;
 using PROG6212_POE_ST10071737.MVVM.View;
 using System;
+using System.IO;
+using System.Media;
+using System.Numerics;
 using System.Windows;
+using System.Windows.Resources;
 using System.Windows.Threading;
 
 namespace PROG6212_POE_ST10071737.MVVM.ViewModel
@@ -78,8 +83,9 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         /// </summary>
         public LoadingWindowViewModel()
         {
+            this.AudioManager();
             timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(30);
+            timer.Interval = TimeSpan.FromMilliseconds(100);
             timer.Tick += Timer_Tick;
             timer.Start();
         }
@@ -88,6 +94,25 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         //___________________________________________________________________________________________________________
         //_____________________________________________Methods_______________________________________________________
         //___________________________________________________________________________________________________________
+
+        private void AudioManager()
+        {
+            var AudioPlayer = AudioPlayerSingletonModel.Instance;
+            AudioPlayer.Pause();
+            this.Jarvis();
+        }
+
+
+        private void Jarvis()
+        {
+            var audioFilePath = "Jarvis.wav";
+
+            if (File.Exists(audioFilePath))
+            {
+                SoundPlayer player = new SoundPlayer(audioFilePath);
+                player.Play();
+            }
+        }
 
         /// <summary>
         /// Event for the dispatch timer

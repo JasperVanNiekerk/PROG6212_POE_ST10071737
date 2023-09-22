@@ -158,6 +158,13 @@
                          Height="30"
                          Canvas.Left="285"
                          Canvas.Top="225"/>
+
+                <Label Content="{Binding ErrorLabel}"
+                       FontSize="15"
+                       Foreground="LightBlue"
+                       Background="Transparent"
+                       Canvas.Left="110"
+                       Canvas.Top="260"/>
             </Canvas>
 
 
@@ -238,7 +245,10 @@
                               LegendLocation="Bottom"
                               Canvas.Top="100"
                               Foreground="LightBlue"
-                              Hoverable="False"/>
+                              Hoverable="False">
+
+                </lvc:PieChart>
+                              
 
 
 

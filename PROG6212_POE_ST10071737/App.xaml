@@ -17,6 +17,7 @@
                 <ResourceDictionary Source="Themes/CalendarCalendarItemStyle.xaml"/>
                 <ResourceDictionary Source="Themes/CalendarDayButtonStyle.xaml"/>
                 <ResourceDictionary Source="Themes/MyComboBoxStyle.xaml"/>
+                <ResourceDictionary Source="Themes/TooltipStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type ViewModel:StudyManagerViewModel}">
@@ -45,6 +46,10 @@
 
             <DataTemplate DataType="{x:Type ViewModel:ModuleWindowViewModel}">
                 <View:ModuleWindow/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type ViewModel:MyMessageBoxViewModel}">
+                <View:MyMessageBox/>
             </DataTemplate>
 
             <Boolean:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />

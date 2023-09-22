@@ -287,18 +287,34 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             }
             if (this.QuestionCount == 3 && !this.Input.Equals(string.Empty))
             {
-                this.ModuleCredits = int.Parse(this.Input);//this needs data validation
-                this.Question = "how many class hours of " + ModuleName + " do you have per week";
-                this.QuestionCount++;
-                this.Input = string.Empty;
+                if (this.Input.All(c => char.IsDigit(c)))
+                {
+                    this.ModuleCredits = int.Parse(this.Input);//this needs data validation
+                    this.Question = "how many class hours of " + ModuleName + " do you have per week";
+                    this.QuestionCount++;
+                    this.Input = string.Empty;
+                }
+                else
+                {
+                    this.Question = "Your input is invalid the Module credits need to be a number";
+                    this.Input = string.Empty;
+                }
             }
             if (this.QuestionCount == 4 && !this.Input.Equals(string.Empty))
             {
-                this.ModuleHours = double.Parse(this.Input);
-                this.AddNewModule();
-                this.Question = "Would you like to add a Module to " + this.CurrentSemester.ReturnSemesterNumString() + "\r\nYes/No";
-                this.QuestionCount = 0;
-                this.Input = "Answer Here";
+                if (this.Input.All(c => char.IsDigit(c)))
+                {
+                    this.ModuleHours = double.Parse(this.Input);
+                    this.AddNewModule();
+                    this.Question = "Would you like to add a Module to " + this.CurrentSemester.ReturnSemesterNumString() + "\r\nYes/No";
+                    this.QuestionCount = 0;
+                    this.Input = "Answer Here";
+                }
+                else
+                {
+                    this.Question = "Your input is invalid the Module class hours need to be a number";
+                    this.Input = string.Empty;
+                }
             }
         }
         //___________________________________________________________________________________________________________
@@ -341,7 +357,7 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             var CurrentStudent = CurrentStudentModel.Instance;
             var NewSemester = new SemesterModel(this.SemesterCounter + 1, this.NewSemesterStartDate, this.NewSemesterWeekNum);
             CurrentStudent.AddSemesterToStudent(NewSemester);
-            
+
         }
         //___________________________________________________________________________________________________________
 

@@ -77,6 +77,7 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
 
         public LoginViewModel()
         {
+            this.StartMusic();
             EnterBTNCommand = new RelayCommand(ValidateLogin);
             SignUpBTNCommand = new RelayCommand(SignUp);
         }
@@ -101,6 +102,12 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         //___________________________________________________________________________________________________________
         //_____________________________________________Methods_______________________________________________________
         //___________________________________________________________________________________________________________
+
+        private void StartMusic()
+        {
+            var AudioPlayer = AudioPlayerSingletonModel.Instance;
+            AudioPlayer.Play();
+        }
 
         /// <summary>
         /// Method to validate the Students login credentials

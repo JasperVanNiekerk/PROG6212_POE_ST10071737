@@ -85,7 +85,14 @@
                      TextAlignment="Left"
                      Canvas.Top="109"
                      Canvas.Left="242"
-                     CaretBrush="LightBlue"/>
+                     CaretBrush="LightBlue">
+
+                <TextBox.ToolTip>
+                    <ToolTip Style="{StaticResource TooltipStyle}"
+                             Content="Your Name or Username"/>
+                </TextBox.ToolTip>
+                
+            </TextBox>
 
             <PasswordBox x:Name="LoginPasswordBox"
                          PasswordChar="*"
@@ -100,7 +107,14 @@
                          Canvas.Top="160"
                          Canvas.Left="265"
                          CaretBrush="LightBlue"
-                         PasswordChanged="PasswordBox_PasswordChanged"/>
+                         PasswordChanged="PasswordBox_PasswordChanged">
+
+                <PasswordBox.ToolTip>
+                    <ToolTip Style="{StaticResource TooltipStyle}"
+                             Content="Your Password"/>
+                </PasswordBox.ToolTip>
+
+            </PasswordBox>
 
             <TextBlock x:Name="ErrorLable"
                        Foreground="LightBlue"
@@ -138,6 +152,12 @@
                         </Setter>
                     </Style>
                 </Button.Style>
+
+                <Button.ToolTip>
+                    <ToolTip Style="{StaticResource TooltipStyle}"
+                             Content="Go to the next Window"/>
+                </Button.ToolTip>
+                
             </Button>
 
             <Button Content="Sign up"
@@ -167,6 +187,12 @@
                         </Setter>
                     </Style>
                 </Button.Style>
+
+                <Button.ToolTip>
+                    <ToolTip Style="{StaticResource TooltipStyle}"
+                             Content="Go to the Sign Up Window"/>
+                </Button.ToolTip>
+
             </Button>
         </Canvas>
     </Grid>

@@ -97,7 +97,7 @@
                     <Border Background="black"
                             Opacity="0.75"
                             Width="200"
-                            Height="100"
+                            Height="150"
                             Canvas.Top="60"
                             Canvas.Left="520"
                             BorderBrush="LightBlue"
@@ -139,6 +139,15 @@
                             </Canvas>
 
                             <View:MyDatePicker DateContent="{Binding NewSemesterStartDate}"/>
+
+                            <TextBox Text="Please click the new Button Again to save your semester"
+                                     Foreground="LightBlue"
+                                     FontSize="15"
+                                     Background="Transparent"
+                                     BorderBrush="Transparent"
+                                     BorderThickness="0"
+                                     TextWrapping="Wrap"
+                                     IsReadOnly="True"/>
 
                         </StackPanel>
 
