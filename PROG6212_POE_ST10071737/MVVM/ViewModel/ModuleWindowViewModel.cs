@@ -1,4 +1,6 @@
-﻿using PROG6212_POE_ST10071737.Core;
+﻿using LiveCharts;
+using LiveCharts.Wpf;
+using PROG6212_POE_ST10071737.Core;
 using PROG6212_POE_ST10071737.MVVM.Model;
 using PROG6212_POE_ST10071737.MVVM.View;
 using System;
@@ -29,6 +31,7 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
                 _selectedModule = value;
                 OnPropertyChanged(nameof(SelectedModule));
                 this.SetModuleInfo();
+                this.PieChartSetter();
             }
         }
         //___________________________________________________________________________________________________________
@@ -167,6 +170,26 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         }
         //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// stores the pie charts data collection
+        /// </summary>
+        private SeriesCollection _seriesCollection;
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// stores the pie charts data collection
+        /// </summary>
+        public SeriesCollection SeriesCollection
+        {
+            get { return _seriesCollection; }
+            set
+            {
+                _seriesCollection = value;
+                OnPropertyChanged(nameof(SeriesCollection));
+            }
+        }
+        //___________________________________________________________________________________________________________
+
         //___________________________________________________________________________________________________________
         //__________________________________________Constructors_____________________________________________________
         //___________________________________________________________________________________________________________
@@ -180,6 +203,8 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             this.DoneCommand = new RelayCommand(DoneWithWindow);
             this.AddHoursCommand = new RelayCommand(UpdateModuleSSH);
             this.ShowModuleInfoCommand = new RelayCommand(ShowModuleInfo);
+
+
         }
         //___________________________________________________________________________________________________________
 
@@ -209,12 +234,47 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         //_____________________________________________Methods_______________________________________________________
         //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// sets the display info
+        /// </summary>
         private void SetModuleInfo()
         {
             this.SelectedModuleCode = SelectedModule.ModuleCode;
             this.SelectedModuleName = SelectedModule.ModuleName;
             this.SelectedModuleCredits = SelectedModule.ModuleCredits;
             this.SelectedModuleClassHours = SelectedModule.ModuleClassHourPerWeek;
+        }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// sets the pie chart datasets
+        /// </summary>
+        private void PieChartSetter()
+        {
+            double SSHDone = this.SelectedModule.ModuleSSHoursDoneForWeek;
+            double SSHNeeded = this.SelectedModule.ModuleSSHoursForWeeks - this.SelectedModule.ModuleSSHoursDoneForWeek;
+            double OverlapVariable = this.SelectedModule.ModuleSSHoursDoneForWeek - this.SelectedModule.ModuleSSHoursForWeeks;
+
+            if (SSHDone > SSHNeeded)
+            {
+                this.SelectedModule.ModuleSSHoursDoneForWeek = OverlapVariable;
+            }
+
+            SeriesCollection = new SeriesCollection
+            {
+                new PieSeries
+                {
+                    Title = "Self study hours done",
+                    Values = new ChartValues<double> { SSHDone },
+                    Fill = System.Windows.Media.Brushes.LightBlue,
+                },
+                new PieSeries
+                {
+                    Title = "self study hours needed",
+                    Values = new ChartValues<double> { SSHNeeded },
+                    Fill = System.Windows.Media.Brushes.Transparent,
+                },
+            };
         }
         //___________________________________________________________________________________________________________
 
@@ -288,6 +348,7 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             {
                 currentStudent.UpdateModuleStudyHours(hours, SelectedModule);
             }
+            this.PieChartSetter();
         }
         //___________________________________________________________________________________________________________
 

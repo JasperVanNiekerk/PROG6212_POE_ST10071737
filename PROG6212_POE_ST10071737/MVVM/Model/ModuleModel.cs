@@ -1,4 +1,5 @@
-﻿using PROG6212_POE_ST10071737.Core;
+﻿using MyStudyHourCalculatorLibrary;
+using PROG6212_POE_ST10071737.Core;
 using System;
 using System.Globalization;
 using System.Windows;
@@ -39,13 +40,13 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         /// <summary>
         /// stores the amount of self study hours needed for the module for the current week
         /// </summary>
-        private double ModuleSSHoursForWeeks { get; set; }
+        public double ModuleSSHoursForWeeks { get; set; }
         //___________________________________________________________________________________________________________
 
         /// <summary>
         /// stores the amount of self studied hours done for the module for the current week
         /// </summary>
-        private double ModuleSSHoursDoneForWeek { get; set; }
+        public double ModuleSSHoursDoneForWeek { get; set; }
         //___________________________________________________________________________________________________________
 
         /// <summary>
@@ -90,7 +91,7 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         }
         //___________________________________________________________________________________________________________
 
-        public ModuleModel(string MC, string MN, int MCredits, double MCHPW, DateTime MSD ,int MSN)
+        public ModuleModel(string MC, string MN, int MCredits, double MCHPW, DateTime MSD ,int MSN, int MTW)
         {
             this.ModuleCode = MC;
             this.ModuleName = MN;
@@ -98,8 +99,8 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
             this.ModuleClassHourPerWeek = MCHPW;
             this.ModuleStartDate = MSD;
             this.ModuleSemesterNum = MSN;
-            this.ModuleTotalSSHours = 20;
-            this.ModuleTotalSSHoursDone = 0;
+            this.ModuleTotalWeeks = MTW;
+            this.CalculateSSH();
         }
         //___________________________________________________________________________________________________________
 
@@ -129,17 +130,9 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
 
         public void CalculateSSH()
         {
-            //Semester will store the amount of weeks
-            //so..................
-            //I need to reset this.ModuleSSHoursDoneForWeek every week
-            //but the ssh per week will stay the same and the total ssh will also stay the same
-            //so a method in this should be made to check if its a new week?
-            // so this method should take in the total amount of weeks and this.credits and this.ModuleClassHourPerWeek
-            //and then pass it to the library for calculation
-            //the library should have two methods one for per week ssh and one for the total ssh
-            //so for that to work...........................
-            //the module class should also have a variable for the start date and weeks that will be set when the modules are created
-            this.ModuleTotalSSHours = 100;
+            SSHCalculator SSHCalculatorHere = new SSHCalculator();
+            this.ModuleSSHoursForWeeks = SSHCalculatorHere.CalculatePerWeekSSH(this.ModuleCredits, this.ModuleTotalWeeks, this.ModuleClassHourPerWeek);
+            this.ModuleTotalSSHours = SSHCalculatorHere.CalculateTotalSSH(this.ModuleCredits, this.ModuleTotalWeeks, this.ModuleClassHourPerWeek);
         }
         //___________________________________________________________________________________________________________
 

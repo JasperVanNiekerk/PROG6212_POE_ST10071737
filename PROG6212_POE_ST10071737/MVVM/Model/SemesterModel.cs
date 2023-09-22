@@ -96,7 +96,7 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         /// <param name="module"></param>
         public void AddModule(string MC, string MN, int MCredits, double MCHPW)
         {
-            var module = new ModuleModel(MC, MN, MCredits, MCHPW, this.SemesterStartDate, this.SemesterNumber);
+            var module = new ModuleModel(MC, MN, MCredits, MCHPW, this.SemesterStartDate, this.SemesterNumber, this.SemesterWeeksAmount);
             this.SemesterModules.Add(module);
         }
         //___________________________________________________________________________________________________________

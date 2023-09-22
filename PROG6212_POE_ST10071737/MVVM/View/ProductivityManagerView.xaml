@@ -86,6 +86,7 @@
                         <Label Content="{Binding}"
                            Foreground="LightBlue"
                            FontSize="20"/>
+                        
                         <ProgressBar Height="20"
                                      Width="400"
                                      Maximum="{Binding ModuleTotalSSHours}"
@@ -95,18 +96,23 @@
                                      BorderThickness="2"
                                      Value="{Binding ModuleTotalSSHoursDone}"
                                      Style="{Binding ProgressBarStyle}"/>
-                        <Label Content="{Binding ModuleTotalSSHours}"
-                               Foreground="LightBlue"
-                               FontSize="20"/>
-                        <Label Content="/"
-                               Foreground="LightBlue"
-                               FontSize="20"/>
+                        
                         <Label Content="{Binding ModuleTotalSSHoursDone}"
                                Foreground="LightBlue"
                                FontSize="20"/>
+                        
+                        <Label Content="/"
+                               Foreground="LightBlue"
+                               FontSize="20"/>
+                        
+                        <Label Content="{Binding ModuleTotalSSHours}"
+                               Foreground="LightBlue"
+                               FontSize="20"/>
+                        
                         <Label Content="Hours done"
                                Foreground="LightBlue"
                                FontSize="20"/>
+                        
                     </StackPanel>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>

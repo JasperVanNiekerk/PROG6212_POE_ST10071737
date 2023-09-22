@@ -176,7 +176,26 @@
                         FontSize="20"
                         Canvas.Left="20"
                         Canvas.Top="10"
-                        Command="{Binding EditCommand}"/>
+                        Command="{Binding EditCommand}">
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+
+                </Button>
 
                 <Polygon Points="0,0 80,0 90,30 10,30"
                          Stroke="LightBlue"
@@ -191,10 +210,34 @@
                         FontSize="20"
                         Canvas.Left="33"
                         Canvas.Top="48"
-                        Command="{Binding DeleteCommand}"/>
+                        Command="{Binding DeleteCommand}">
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
 
 
-                
+
+                <lvc:PieChart Series="{Binding SeriesCollection}"
+                              Width="150"
+                              Height="150"
+                              LegendLocation="Bottom"
+                              Canvas.Top="100"/>
+
 
 
                 <Polygon Points="0,0 80,0 90,30 10,30"
@@ -210,11 +253,29 @@
                         FontSize="20"
                         Canvas.Left="115"
                         Canvas.Top="260"
-                        Command="{Binding DoneCommand}"/>
+                        Command="{Binding DoneCommand}">
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+
+                </Button>
 
             </Canvas>
-            
-            
+
         </Grid>
     </Grid>
 </Window>

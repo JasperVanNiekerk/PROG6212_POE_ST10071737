@@ -344,5 +344,11 @@
   <ItemGroup>
     <Resource Include="Notes.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyStudyHourCalculatorLibrary\MyStudyHourCalculatorLibrary.csproj">
+      <Project>{E2520541-AF78-45E5-BB65-3466C17E8636}</Project>
+      <Name>MyStudyHourCalculatorLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
