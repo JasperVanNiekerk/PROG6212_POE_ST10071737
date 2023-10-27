@@ -192,6 +192,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Module.cs">
+      <DependentUpon>MyDatabaseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\Model\AudioPlayerSingletonModel.cs" />
     <Compile Include="MVVM\Model\CurrentStudentModel.cs" />
     <Compile Include="MVVM\Model\ModuleModel.cs" />
@@ -237,6 +240,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MyDatabaseModel.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="MyDatabaseModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyDatabaseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="MyDatabaseModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -246,6 +254,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MyTimeManagementDatabaseDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Semester.cs">
+      <DependentUpon>MyDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Student.cs">
+      <DependentUpon>MyDatabaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="UICode\BooleanToVisibilityConverter.cs" />
     <Page Include="MainWindow.xaml">
@@ -470,6 +484,12 @@
     <Content Include="MyDatabaseModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>MyDatabaseModel.Context.cs</LastGenOutput>
+      <DependentUpon>MyDatabaseModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="MyDatabaseModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MyDatabaseModel.edmx</DependentUpon>
+      <LastGenOutput>MyDatabaseModel.cs</LastGenOutput>
     </Content>
     <Content Include="MyTimeManagementDatabase.mdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
