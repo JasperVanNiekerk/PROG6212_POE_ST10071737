@@ -107,8 +107,8 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         {
             var AudioPlayer = AudioPlayerSingletonModel.Instance;
             AudioPlayer.Play();
-            var Supprise = new MyFunSuppriseClass();
-            Supprise.Supprise();
+            //var Supprise = new MyFunSuppriseClass();
+            //Supprise.Supprise();
         }
 
         /// <summary>
