@@ -16,6 +16,10 @@
           <Property Name="ModuleClassHoursPerWeek" Type="decimal" Precision="5" Scale="2" />
           <Property Name="ModuleStartDate" Type="date" />
           <Property Name="ModuleTotalWeeks" Type="int" />
+          <Property Name="ModuleTotalSSHours" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="ModuleSSHoursDoneForWeek" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="ModuleSSHoursForWeeks" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="ModuleTotalSSHoursDone" Type="decimal" Precision="8" Scale="2" />
           <Property Name="SemesterID" Type="int" />
         </EntityType>
         <EntityType Name="Semester">
@@ -37,7 +41,7 @@
           <Property Name="StudentSurname" Type="nvarchar" MaxLength="255" />
           <Property Name="StudentPassword" Type="nvarchar" MaxLength="255" />
         </EntityType>
-        <Association Name="FK__Module__Semester__3B75D760">
+        <Association Name="FK__Module__Semester__49C3F6B7">
           <End Role="Semester" Type="Self.Semester" Multiplicity="0..1" />
           <End Role="Module" Type="Self.Module" Multiplicity="*" />
           <ReferentialConstraint>
@@ -65,7 +69,7 @@
           <EntitySet Name="Module" EntityType="Self.Module" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Semester" EntityType="Self.Semester" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Module__Semester__3B75D760" Association="Self.FK__Module__Semester__3B75D760">
+          <AssociationSet Name="FK__Module__Semester__49C3F6B7" Association="Self.FK__Module__Semester__49C3F6B7">
             <End Role="Semester" EntitySet="Semester" />
             <End Role="Module" EntitySet="Module" />
           </AssociationSet>
@@ -90,8 +94,12 @@
           <Property Name="ModuleClassHoursPerWeek" Type="Decimal" Precision="5" Scale="2" />
           <Property Name="ModuleStartDate" Type="DateTime" Precision="0" />
           <Property Name="ModuleTotalWeeks" Type="Int32" />
+          <Property Name="ModuleTotalSSHours" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="ModuleSSHoursDoneForWeek" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="ModuleSSHoursForWeeks" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="ModuleTotalSSHoursDone" Type="Decimal" Precision="8" Scale="2" />
           <Property Name="SemesterID" Type="Int32" />
-          <NavigationProperty Name="Semester" Relationship="Self.FK__Module__Semester__3B75D760" FromRole="Module" ToRole="Semester" />
+          <NavigationProperty Name="Semester" Relationship="Self.FK__Module__Semester__49C3F6B7" FromRole="Module" ToRole="Semester" />
         </EntityType>
         <EntityType Name="Semester">
           <Key>
@@ -102,7 +110,7 @@
           <Property Name="SemesterStartDate" Type="DateTime" Precision="0" />
           <Property Name="SemesterWeeksAmount" Type="Int32" />
           <Property Name="StudentID" Type="Int32" />
-          <NavigationProperty Name="Modules" Relationship="Self.FK__Module__Semester__3B75D760" FromRole="Semester" ToRole="Module" />
+          <NavigationProperty Name="Modules" Relationship="Self.FK__Module__Semester__49C3F6B7" FromRole="Semester" ToRole="Module" />
           <NavigationProperty Name="Student" Relationship="Self.FK__Semester__Studen__38996AB5" FromRole="Semester" ToRole="Student" />
         </EntityType>
         <EntityType Name="Student">
@@ -115,7 +123,7 @@
           <Property Name="StudentPassword" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Semesters" Relationship="Self.FK__Semester__Studen__38996AB5" FromRole="Student" ToRole="Semester" />
         </EntityType>
-        <Association Name="FK__Module__Semester__3B75D760">
+        <Association Name="FK__Module__Semester__49C3F6B7">
           <End Role="Semester" Type="Self.Semester" Multiplicity="0..1" />
           <End Role="Module" Type="Self.Module" Multiplicity="*" />
           <ReferentialConstraint>
@@ -139,11 +147,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MyTimeManagementDatabaseEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="MyTimeManagementDatabaseEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Modules" EntityType="Self.Module" />
           <EntitySet Name="Semesters" EntityType="Self.Semester" />
           <EntitySet Name="Students" EntityType="Self.Student" />
-          <AssociationSet Name="FK__Module__Semester__3B75D760" Association="Self.FK__Module__Semester__3B75D760">
+          <AssociationSet Name="FK__Module__Semester__49C3F6B7" Association="Self.FK__Module__Semester__49C3F6B7">
             <End Role="Semester" EntitySet="Semesters" />
             <End Role="Module" EntitySet="Modules" />
           </AssociationSet>
@@ -157,7 +165,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="MyTimeManagementDatabaseModelStoreContainer" CdmEntityContainer="MyTimeManagementDatabaseEntities">
+        <EntityContainerMapping StorageEntityContainer="MyTimeManagementDatabaseModelStoreContainer" CdmEntityContainer="MyTimeManagementDatabaseEntities1">
           <EntitySetMapping Name="Modules">
             <EntityTypeMapping TypeName="MyTimeManagementDatabaseModel.Module">
               <MappingFragment StoreEntitySet="Module">
@@ -168,6 +176,10 @@
                 <ScalarProperty Name="ModuleClassHoursPerWeek" ColumnName="ModuleClassHoursPerWeek" />
                 <ScalarProperty Name="ModuleStartDate" ColumnName="ModuleStartDate" />
                 <ScalarProperty Name="ModuleTotalWeeks" ColumnName="ModuleTotalWeeks" />
+                <ScalarProperty Name="ModuleTotalSSHours" ColumnName="ModuleTotalSSHours" />
+                <ScalarProperty Name="ModuleSSHoursDoneForWeek" ColumnName="ModuleSSHoursDoneForWeek" />
+                <ScalarProperty Name="ModuleSSHoursForWeeks" ColumnName="ModuleSSHoursForWeeks" />
+                <ScalarProperty Name="ModuleTotalSSHoursDone" ColumnName="ModuleTotalSSHoursDone" />
                 <ScalarProperty Name="SemesterID" ColumnName="SemesterID" />
               </MappingFragment>
             </EntityTypeMapping>

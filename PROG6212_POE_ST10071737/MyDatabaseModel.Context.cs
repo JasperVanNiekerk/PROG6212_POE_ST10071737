@@ -13,10 +13,10 @@ namespace PROG6212_POE_ST10071737
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MyTimeManagementDatabaseEntities : DbContext
+    public partial class MyTimeManagementDatabaseEntities1 : DbContext
     {
-        public MyTimeManagementDatabaseEntities()
-            : base("name=MyTimeManagementDatabaseEntities")
+        public MyTimeManagementDatabaseEntities1()
+            : base("name=MyTimeManagementDatabaseEntities1")
         {
         }
     

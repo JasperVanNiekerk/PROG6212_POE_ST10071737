@@ -21,6 +21,10 @@ namespace PROG6212_POE_ST10071737
         public Nullable<decimal> ModuleClassHoursPerWeek { get; set; }
         public Nullable<System.DateTime> ModuleStartDate { get; set; }
         public Nullable<int> ModuleTotalWeeks { get; set; }
+        public Nullable<decimal> ModuleTotalSSHours { get; set; }
+        public Nullable<decimal> ModuleSSHoursDoneForWeek { get; set; }
+        public Nullable<decimal> ModuleSSHoursForWeeks { get; set; }
+        public Nullable<decimal> ModuleTotalSSHoursDone { get; set; }
         public Nullable<int> SemesterID { get; set; }
     
         public virtual Semester Semester { get; set; }
