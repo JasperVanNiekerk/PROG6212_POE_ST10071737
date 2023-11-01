@@ -108,6 +108,9 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             var Student = new StudentModel(StudentName, StudentSurname, StudentPassword);
             var currentStudent = CurrentStudentModel.Instance;
             currentStudent.SetCurrentStudent(Student);
+            //var studentDB = new StudentDB();
+            //studentDB.AddStudentToDB(Student);
+            //studentDB.AddModuleToDB(Student);
             this.ChangeWindows();
         }
         //___________________________________________________________________________________________________________

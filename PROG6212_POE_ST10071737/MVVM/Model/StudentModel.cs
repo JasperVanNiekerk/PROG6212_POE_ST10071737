@@ -12,19 +12,19 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         /// <summary>
         /// Stores the students name
         /// </summary>
-        private String StudentName { get; set; }
+        public String StudentName { get; set; }
         //___________________________________________________________________________________________________________
 
         /// <summary>
         /// stores the students surname
         /// </summary>
-        private String StudentSurname { get; set; }
+        public String StudentSurname { get; set; }
         //___________________________________________________________________________________________________________
 
         /// <summary>
         /// stores the students password
         /// </summary>
-        private String StudentPassword { get; set; }
+        public String StudentPassword { get; set; }
         //___________________________________________________________________________________________________________
 
         private ObservableCollection<SemesterModel> StudentSemesters { get; set; } = new ObservableCollection<SemesterModel>();

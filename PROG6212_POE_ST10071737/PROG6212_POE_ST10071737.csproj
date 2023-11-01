@@ -14,6 +14,7 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -26,7 +27,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -192,9 +192,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Module.cs">
-      <DependentUpon>MyDatabaseModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="MVVM\Model\AudioPlayerSingletonModel.cs" />
     <Compile Include="MVVM\Model\CurrentStudentModel.cs" />
     <Compile Include="MVVM\Model\ModuleModel.cs" />
@@ -234,32 +231,6 @@
     </Compile>
     <Compile Include="MVVM\View\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MyDatabaseModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MyDatabaseModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MyDatabaseModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MyDatabaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MyDatabaseModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MyDatabaseModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="MyTimeManagementDatabaseDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MyTimeManagementDatabaseDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Semester.cs">
-      <DependentUpon>MyDatabaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Student.cs">
-      <DependentUpon>MyDatabaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="UICode\BooleanToVisibilityConverter.cs" />
     <Page Include="MainWindow.xaml">
@@ -413,24 +384,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="MyDatabaseModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MyDatabaseModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="MyDatabaseModel.edmx.diagram">
-      <DependentUpon>MyDatabaseModel.edmx</DependentUpon>
-    </None>
-    <None Include="MyTimeManagementDatabaseDataSet.xsc">
-      <DependentUpon>MyTimeManagementDatabaseDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="MyTimeManagementDatabaseDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>MyTimeManagementDatabaseDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="MyTimeManagementDatabaseDataSet.xss">
-      <DependentUpon>MyTimeManagementDatabaseDataSet.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="POE_Part_1_UML Class_Diagram.cd" />
     <None Include="Properties\Settings.settings">
@@ -480,23 +433,6 @@
     </Content>
     <Content Include="Jarvis.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="MyDatabaseModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MyDatabaseModel.edmx</DependentUpon>
-      <LastGenOutput>MyDatabaseModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="MyDatabaseModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MyDatabaseModel.edmx</DependentUpon>
-      <LastGenOutput>MyDatabaseModel.cs</LastGenOutput>
-    </Content>
-    <Content Include="MyTimeManagementDatabase.mdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="MyTimeManagementDatabase_log.ldf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <DependentUpon>MyTimeManagementDatabase.mdf</DependentUpon>
     </Content>
     <Content Include="ShootToThrill.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
