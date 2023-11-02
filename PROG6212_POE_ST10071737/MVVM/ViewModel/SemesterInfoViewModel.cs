@@ -100,15 +100,22 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         //_____________________________________________Methods_______________________________________________________
         //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// Adds a semester to the current student
+        /// </summary>
+        /// <param name="p"></param>
         private void AddSemesterToCurrentStudent(object p)
         {
             var newSemester = new SemesterModel(this.SemesterNum, this.SemesterStartDate, this.SemesterWeeksNum);
             var CurrentStudent = CurrentStudentModel.Instance;
-            CurrentStudent.AddSemesterToStudent(newSemester);
+            CurrentStudent.AddSemesterToLoginStudent(newSemester);
             this.ChangeWindows();
         }
         //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// sets the views display data
+        /// </summary>
         private void SetDisplay()
         {
             this.SemesterNum = 1;

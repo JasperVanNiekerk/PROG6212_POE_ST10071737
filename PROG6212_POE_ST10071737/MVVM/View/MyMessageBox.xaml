@@ -28,13 +28,14 @@
     </Window.DataContext>
     
     <StackPanel>
-        <TextBlock Text="{Binding Message}"
-                   FontSize="20"
-                   Foreground="LightBlue"
-                   Background="Transparent"/>
+        <TextBox Text="{Binding Message}"
+                 FontSize="20"
+                 Foreground="LightBlue"
+                 Background="Transparent"/>
 
         <StackPanel Orientation="Horizontal"
-                    HorizontalAlignment="Right">
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom">
 
             <Button Style="{StaticResource SettingsButtonStyle}"
                     Content="Done"

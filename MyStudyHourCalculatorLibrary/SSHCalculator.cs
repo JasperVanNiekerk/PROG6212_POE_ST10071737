@@ -15,7 +15,7 @@
 
         public double CalculatePerWeekSSH(int MC, int MWA, double MCH)
         {
-            var SSH = ((MC * 10)/MWA)-MCH;
+            var SSH = (MC * 10)-(MCH*MWA);
             return SSH;
         }
         //___________________________________________________________________________________________________________

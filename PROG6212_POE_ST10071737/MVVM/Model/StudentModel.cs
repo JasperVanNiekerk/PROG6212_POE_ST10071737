@@ -80,12 +80,12 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         //___________________________________________________________________________________________________________
 
         /// <summary>
-        /// returns the Full name of the student
+        /// loads the students semesters from the database
         /// </summary>
-        /// <returns></returns>
-        public string ReturnPassWord()
+        public void loadStudentSemesters(int ID)
         {
-            return this.StudentPassword;
+            var Semesters = new SemesterDB();
+            this.StudentSemesters = new ObservableCollection<SemesterModel>(Semesters.LoadSemesters(ID));
         }
         //___________________________________________________________________________________________________________
 

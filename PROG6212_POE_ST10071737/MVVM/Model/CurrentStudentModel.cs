@@ -30,9 +30,15 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         //___________________________________________________________________________________________________________
 
         /// <summary>
-        /// sets the current student to a new studentModel
+        /// the current student to a new studentModel
         /// </summary>
         private StudentModel CurrentStudent { get; set; }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// the name of the student in the login loop
+        /// </summary>
+        private string LoginStudent { get; set; }
         //___________________________________________________________________________________________________________
 
         //___________________________________________________________________________________________________________
@@ -63,12 +69,32 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         //___________________________________________________________________________________________________________
 
         /// <summary>
+        /// returns the logged in student name
+        /// </summary>
+        /// <returns></returns>
+        public string GetLoginStudent()
+        {
+            return LoginStudent;
+        }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
         /// sets the current students details
         /// </summary>
         /// <param name="student"></param>
         public void SetCurrentStudent(StudentModel student)
         {
             this.CurrentStudent = student;
+        }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// sets the login students name
+        /// </summary>
+        /// <param name="student"></param>
+        public void SetLoginStudent(String studentName)
+        {
+            this.LoginStudent = studentName;
         }
         //___________________________________________________________________________________________________________
 
@@ -81,6 +107,25 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
             this.CurrentStudent.AddSemester(semester);
         }
         //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// adds a semester to the login student
+        /// </summary>
+        /// <param name="semester"></param>
+        public void AddSemesterToLoginStudent(SemesterModel semester)
+        {
+            var students = new StudentDB();
+            var studentID = students.GetStudentIDByName(this.LoginStudent);
+            var semesters = new SemesterDB();
+            semesters.AddSemesterToDB(semester, studentID);
+        }
+        //___________________________________________________________________________________________________________
+
+
+        public LoadCurrentStudentSemesters(int ID)
+        {
+            this.CurrentStudent.loadStudentSemesters(ID);
+        }
 
         /// <summary>
         /// adds a semester to the current student
@@ -110,16 +155,19 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         //___________________________________________________________________________________________________________
 
         /// <summary>
-        /// method to validate the current student
+        /// method to validate the student login
         /// </summary>
         /// <param name="login"></param>
         /// <param name="Password"></param>
         /// <returns></returns>
         public Boolean ValidateCurrentUser(string login, string Password)
         {
-            if (CurrentStudent != null)
+            // I don't check if the parameters are null because i validate that before i pass it to this method
+            var Student = new StudentDB();
+            var validPassword = Student.GetStudentLogin(login);
+            if (!validPassword.Equals("Invalid Username"))
             {
-                if (CurrentStudent.ReturnName().Equals(login) && CurrentStudent.ReturnPassWord().Equals(Password))
+                if (BCrypt.Net.BCrypt.Verify(Password, validPassword))
                 {
                     return true;
                 }
@@ -132,7 +180,6 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
             {
                 return false;
             }
-
         }
         //___________________________________________________________________________________________________________
 

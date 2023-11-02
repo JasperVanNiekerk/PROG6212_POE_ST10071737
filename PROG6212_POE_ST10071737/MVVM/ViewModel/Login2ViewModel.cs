@@ -2,6 +2,7 @@
 using PROG6212_POE_ST10071737.MVVM.Model;
 using PROG6212_POE_ST10071737.MVVM.View;
 using System.Windows;
+using BCrypt.Net;
 
 namespace PROG6212_POE_ST10071737.MVVM.ViewModel
 {
@@ -105,12 +106,13 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         /// <param name="p"></param>
         private void SetCurrentStudent(object p)
         {
-            var Student = new StudentModel(StudentName, StudentSurname, StudentPassword);
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(StudentPassword);
+
+            var Student = new StudentModel(StudentName, StudentSurname, hashedPassword);
             var currentStudent = CurrentStudentModel.Instance;
-            currentStudent.SetCurrentStudent(Student);
-            //var studentDB = new StudentDB();
-            //studentDB.AddStudentToDB(Student);
-            //studentDB.AddModuleToDB(Student);
+            currentStudent.SetLoginStudent(StudentName);
+            var studentDB = new StudentDB();
+            studentDB.AddStudentToDB(Student);
             this.ChangeWindows();
         }
         //___________________________________________________________________________________________________________

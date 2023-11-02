@@ -75,6 +75,9 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         //__________________________________________Constructors_____________________________________________________
         //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// custom constructor
+        /// </summary>
         public LoginViewModel()
         {
             this.StartMusic();
@@ -103,6 +106,9 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         //_____________________________________________Methods_______________________________________________________
         //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// starts the background music
+        /// </summary>
         private void StartMusic()
         {
             var AudioPlayer = AudioPlayerSingletonModel.Instance;
@@ -110,6 +116,7 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             //var Supprise = new MyFunSuppriseClass();
             //Supprise.Supprise();
         }
+        //___________________________________________________________________________________________________________
 
         /// <summary>
         /// Method to validate the Students login credentials
@@ -122,6 +129,7 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
                 var CurrentUser = CurrentStudentModel.Instance;
                 if (CurrentUser.ValidateCurrentUser(this.Username, this.Password))
                 {
+                    CurrentUser.SetLoginStudent(this.Username);
                     this.ChangeWindows(1);
                 }
                 else

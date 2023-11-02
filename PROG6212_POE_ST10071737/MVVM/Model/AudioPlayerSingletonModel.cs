@@ -70,7 +70,7 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
             }
             else
             {
-                Pause();
+                //Pause();
             }
         }
 

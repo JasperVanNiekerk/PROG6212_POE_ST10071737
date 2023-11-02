@@ -4,9 +4,7 @@ using PROG6212_POE_ST10071737.MVVM.View;
 using System;
 using System.IO;
 using System.Media;
-using System.Numerics;
 using System.Windows;
-using System.Windows.Resources;
 using System.Windows.Threading;
 
 namespace PROG6212_POE_ST10071737.MVVM.ViewModel
@@ -85,7 +83,7 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         {
             this.AudioManager();
             timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(100);
+            timer.Interval = TimeSpan.FromMilliseconds(95);
             timer.Tick += Timer_Tick;
             timer.Start();
         }
@@ -95,14 +93,20 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         //_____________________________________________Methods_______________________________________________________
         //___________________________________________________________________________________________________________
 
+        /// <summary>
+        /// pauses the background music and runs the Jarvis voice track
+        /// </summary>
         private void AudioManager()
         {
             var AudioPlayer = AudioPlayerSingletonModel.Instance;
             AudioPlayer.Pause();
             this.Jarvis();
         }
+        //___________________________________________________________________________________________________________
 
-
+        /// <summary>
+        /// Manages the Jarvis voice track
+        /// </summary>
         private void Jarvis()
         {
             var audioFilePath = "Jarvis.wav";
@@ -112,6 +116,18 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
                 SoundPlayer player = new SoundPlayer(audioFilePath);
                 player.Play();
             }
+        }
+        //___________________________________________________________________________________________________________
+
+
+        private void DataLoaders()
+        {
+            var CurrentUser = CurrentStudentModel.Instance;
+            var Student = new StudentDB();
+            var ID = Student.GetStudentIDByName(CurrentUser.GetLoginStudent());
+            CurrentUser.SetCurrentStudent(Student.loadStudent(ID));
+
+            CurrentUser.LoadCurrentStudentSemesters(ID);
         }
 
         /// <summary>
@@ -143,10 +159,8 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         /// <param name="newWindow"></param>
         private void ChangeWindows()
         {
-
             var mainWindow = new MainWindow();
             mainWindow.Show();
-
 
             foreach (Window window in Application.Current.Windows)
             {

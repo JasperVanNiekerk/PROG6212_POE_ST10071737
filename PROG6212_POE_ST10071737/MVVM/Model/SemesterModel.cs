@@ -12,25 +12,25 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         /// <summary>
         /// stores the semesters number
         /// </summary>
-        private int SemesterNumber { get; set; }
+        public int SemesterNumber { get; set; }
         //___________________________________________________________________________________________________________
 
         /// <summary>
         /// stores the Semester start date
         /// </summary>
-        private DateTime SemesterStartDate { get; set; }
+        public DateTime SemesterStartDate { get; set; }
         //___________________________________________________________________________________________________________
 
         /// <summary>
         /// stores the amount of weeks in the semester
         /// </summary>
-        private int SemesterWeeksAmount { get; set; }
+        public int SemesterWeeksAmount { get; set; }
         //___________________________________________________________________________________________________________
 
         /// <summary>
         /// stores the amount of weeks in the semester
         /// </summary>
-        private String SemesterNumString { get; set; }
+        public String SemesterNumString { get; set; }
         //___________________________________________________________________________________________________________
 
         /// <summary>
