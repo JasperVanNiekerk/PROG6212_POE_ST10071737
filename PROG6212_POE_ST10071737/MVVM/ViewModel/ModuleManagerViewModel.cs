@@ -327,7 +327,7 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             var CurrentStudent = CurrentStudentModel.Instance;
             var newModule = new ModuleModel(this.ModuleCode, this.ModuleName, this.ModuleCredits, this.ModuleHours, CurrentSemester.SemesterStartDate, CurrentSemester.SemesterNumber, CurrentSemester.SemesterWeeksAmount, CurrentSemester.SemesterID);
             CurrentStudent.AddModuleToStudentSemester(newModule);
-            CurrentStudent.LoadCurrentStudentSemesters();
+            //CurrentStudent.LoadCurrentStudentSemesters();
             CurrentStudent.LoadCurrentStudentModules();
         }
         //___________________________________________________________________________________________________________

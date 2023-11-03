@@ -2,7 +2,6 @@
 using PROG6212_POE_ST10071737.MVVM.ViewModel;
 using System;
 using System.Collections.ObjectModel;
-using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -84,6 +83,7 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
                     foreach (var module in modules)
                     {
                         var tempModule = new ModuleModel();
+                        tempModule.ModuleID = module.ModuleID;
                         tempModule.ModuleCode = module.ModuleCode;
                         tempModule.ModuleName = module.ModuleName;
                         tempModule.ModuleCredits = (int)module.ModuleCredits;
@@ -108,6 +108,45 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
             }
 
             return SemesterModules;
+        }
+        //___________________________________________________________________________________________________________
+
+        public void UpdateModuleInDB(ModuleModel module)
+        {
+            Task.Run(() =>
+            {
+                try
+                {
+                    using (var Entity = new MyTimeManagementDatabaseEntities())
+                    {
+
+                        Module existingModule = Entity.Modules.FirstOrDefault(m => m.ModuleID == module.ModuleID);
+                        if (existingModule != null)
+                        {
+                            // Update the existing module with the new values
+                            existingModule.ModuleCode = module.ModuleCode;
+                            existingModule.ModuleName = module.ModuleName;
+                            existingModule.ModuleCredits = module.ModuleCredits;
+                            existingModule.ModuleClassHoursPerWeek = (decimal?)module.ModuleClassHourPerWeek;
+                            existingModule.ModuleStartDate = module.ModuleStartDate;
+                            existingModule.ModuleTotalWeeks = module.ModuleTotalWeeks;
+                            existingModule.ModuleTotalSSHours = (decimal?)module.ModuleTotalSSHours;
+                            existingModule.ModuleSSHoursDoneForWeek = (decimal?)module.ModuleSSHoursDoneForWeek;
+                            existingModule.ModuleSSHoursForWeeks = (decimal?)module.ModuleSSHoursForWeeks;
+                            existingModule.ModuleTotalSSHoursDone = (decimal?)module.ModuleTotalSSHoursDone;
+                            existingModule.SemesterID = module.ModuleSemesterID;
+
+                            Entity.SaveChanges();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    var MyMessageBox = new MyMessageBox();
+                    MyMessageBox.DataContext = new MyMessageBoxViewModel { Message = "An error occurred: " + ex.ToString() };
+                    MyMessageBox.Show();
+                }
+            });
         }
         //___________________________________________________________________________________________________________
 

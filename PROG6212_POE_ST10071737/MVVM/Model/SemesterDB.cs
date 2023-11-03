@@ -82,7 +82,7 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
                         SemesterM.SemesterNumber = (int)semester.SemesterNum;
                         SemesterM.SemesterStartDate = (DateTime)semester.SemesterStartDate;
                         SemesterM.SemesterWeeksAmount = (int)semester.SemesterWeeksAmount;
-                        SemesterM.SemesterNumString = "semester " + (int)semester.SemesterNum;
+                        SemesterM.SemesterNumString = "Semester " + (int)semester.SemesterNum;
 
                         Semesters.Add(SemesterM);
                     }

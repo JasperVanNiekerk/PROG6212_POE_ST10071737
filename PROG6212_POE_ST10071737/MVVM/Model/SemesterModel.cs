@@ -145,17 +145,6 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
             this.SemesterModules[index] = module;
         }
         //___________________________________________________________________________________________________________
-
-        /// <summary>
-        /// updates the SemesterModule models SSH at the index param
-        /// </summary>
-        /// <param name="index"></param>
-        /// <param name="module"></param>
-        public void UpdateModuleSSH(int index, double SSH)
-        {
-            this.SemesterModules[index].UpdateSSH(SSH);
-        }
-        //___________________________________________________________________________________________________________
     }
 }
 //____________________________________EOF_________________________________________________________________________

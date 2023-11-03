@@ -12,6 +12,12 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         //___________________________________________________________________________________________________________
 
         /// <summary>
+        /// stores the moduleID
+        /// </summary>
+        public int ModuleID { get; set; }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
         /// stores the module code
         /// </summary>
         public string ModuleCode { get; set; }
@@ -152,58 +158,6 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         //___________________________________________________________________________________________________________
 
         /// <summary>
-        /// Method to add the Hours param to the Self studied hours for both per week an total
-        /// </summary>
-        /// <param name="hours"></param>
-        public void UpdateSSH(double hours)
-        {
-            this.ModuleSSHoursDoneForWeek += hours;
-            this.ModuleTotalSSHoursDone += hours;
-        }
-        //___________________________________________________________________________________________________________
-
-        /// <summary>
-        /// method to return the self studied hours for the current week
-        /// </summary>
-        /// <returns></returns>
-        public double DisplayWeekSSH()
-        {
-            this.CheckNewWeek();
-            return this.ModuleSSHoursDoneForWeek;
-        }
-        //___________________________________________________________________________________________________________
-
-        /// <summary>
-        /// method to return the total amount of self studied hours for the module
-        /// </summary>
-        /// <returns></returns>
-        public double DisplayTotalSSH()
-        {
-            return this.ModuleTotalSSHoursDone;
-        }
-        //___________________________________________________________________________________________________________
-
-        /// <summary>
-        /// method to return the total amount of self study hours needed
-        /// </summary>
-        /// <returns></returns>
-        public double displayTotalSSHNeeded()
-        {
-            return this.ModuleTotalSSHours;
-        }
-        //___________________________________________________________________________________________________________
-
-        /// <summary>
-        /// method to return the amount of self study hours needed per week
-        /// </summary>
-        /// <returns></returns>
-        public double displayTotalSSHNeededPerWeek()
-        {
-            return this.ModuleSSHoursForWeeks;
-        }
-        //___________________________________________________________________________________________________________
-
-        /// <summary>
         /// Method to check if it is a new week
         /// </summary>
         private void CheckNewWeek()// chat helped with this method
@@ -245,16 +199,6 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
             DateTimeFormatInfo dfi = DateTimeFormatInfo.CurrentInfo;
             Calendar cal = dfi.Calendar;
             return cal.GetWeekOfYear(date, dfi.CalendarWeekRule, dfi.FirstDayOfWeek);
-        }
-        //___________________________________________________________________________________________________________
-
-        /// <summary>
-        /// set what is displayed when the module is displayed as a string
-        /// </summary>
-        /// <returns></returns>
-        public override string ToString()
-        {
-            return this.ModuleCode;
         }
         //___________________________________________________________________________________________________________
     }

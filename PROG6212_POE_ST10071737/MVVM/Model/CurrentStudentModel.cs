@@ -209,13 +209,9 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         //___________________________________________________________________________________________________________
 
         /// <summary>
-        /// Adds a module to the selected semester of the current student
+        /// adds a module to the current student
         /// </summary>
-        /// <param name="semesterNum"></param>
-        /// <param name="MC"></param>
-        /// <param name="MN"></param>
-        /// <param name="MCredits"></param>
-        /// <param name="MCHPW"></param>
+        /// <param name="module"></param>
         public void AddModuleToStudentSemester(ModuleModel module)
         {
             var Module = new ModuleDB();
@@ -263,18 +259,10 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         /// </summary>
         /// <param name="addedHours"></param>
         /// <param name="module"></param>
-        public void UpdateModuleStudyHours(double addedHours, ModuleModel module)
+        public void UpdateModuleStudyHours(ModuleModel module)
         {
-            var searchedSemester = module.ModuleSemesterNum;
-            var moduleSemester = CurrentStudent.ReturnStudentSemesters().FirstOrDefault(semester => semester.ReturnSemesterNumber() == searchedSemester);
-            if (moduleSemester != null)
-            {
-                var index = moduleSemester.ReturnSemesterModules().IndexOf(module);
-                if (index >= 0)
-                {
-                    moduleSemester.UpdateModuleSSH(index, addedHours);
-                }
-            }
+            var Module = new ModuleDB();
+            Module.UpdateModuleInDB(module);
         }
         //___________________________________________________________________________________________________________
     }

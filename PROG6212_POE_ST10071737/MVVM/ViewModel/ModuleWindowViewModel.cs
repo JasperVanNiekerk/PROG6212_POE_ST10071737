@@ -371,7 +371,9 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             var currentStudent = CurrentStudentModel.Instance;
             if (Double.TryParse(HoursStudied, out double hours))
             {
-                currentStudent.UpdateModuleStudyHours(hours, SelectedModule);
+                SelectedModule.ModuleSSHoursDoneForWeek += hours;
+                SelectedModule.ModuleTotalSSHoursDone += hours;
+                //currentStudent.UpdateModuleStudyHours(SelectedModule);
             }
             else
             {
