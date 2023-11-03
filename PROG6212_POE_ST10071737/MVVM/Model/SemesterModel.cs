@@ -99,10 +99,10 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         /// <summary>
         /// loads the modules of the semester from the database
         /// </summary>
-        public void LoadSemesterModules()
+        public async void LoadSemesterModules()
         {
             var Module = new ModuleDB();
-            this.SemesterModules = new ObservableCollection<ModuleModel>(Module.LoadSemesterModulesFromDB(SemesterID));
+            this.SemesterModules = new ObservableCollection<ModuleModel>( await Module.LoadSemesterModulesFromDB(SemesterID));
         }
         //___________________________________________________________________________________________________________
 
@@ -124,6 +124,7 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         {
             return this.SemesterModules;
         }
+        //___________________________________________________________________________________________________________
 
         /// <summary>
         /// returns a count of the modules in the semester

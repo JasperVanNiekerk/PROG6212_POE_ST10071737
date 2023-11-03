@@ -44,7 +44,7 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         {
             this.GitHubCommand = new RelayCommand(DisplayGitHub);
             this.CreditsCommand = new RelayCommand(DisplayCredits);
-            this.MusicCommand = new RelayCommand(DisplayGitHub);
+            this.MusicCommand = new RelayCommand(DisplayMusic);
             this.ExitCommand = new RelayCommand(DisplayExit);
         }
         //___________________________________________________________________________________________________________
@@ -87,9 +87,10 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             MyMessageBox.Show();
         }
 
-        private void DisplayMusic() 
-        { 
-
+        private void DisplayMusic(object p) 
+        {
+            var AudioPlayer = AudioPlayerSingletonModel.Instance;
+            AudioPlayer.Play();
         }
 
         private void DisplayExit(object p)

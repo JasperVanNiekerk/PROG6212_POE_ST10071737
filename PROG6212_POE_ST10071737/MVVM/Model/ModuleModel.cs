@@ -140,7 +140,7 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         /// <summary>
         /// Method to check if it is a new week
         /// </summary>
-        private void CheckNewWeek()// chat helped with this method
+        public void CheckNewWeek()// chat helped with this method
         {
             // Set the start date and the number of weeks to reset the value
             var year = this.ModuleStartDate.Year;
@@ -155,7 +155,7 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
             int currentWeek = GetWeekOfYear(currentDate);
 
             // Calculate the week number for the start date
-            int startWeek = GetWeekOfYear(startDate);
+            int startWeek = GetWeekOfYear(this.ModuleStartDate);
 
             // Calculate the week difference
             int weekDifference = currentWeek - startWeek;

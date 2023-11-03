@@ -140,7 +140,24 @@
                         BorderBrush="Transparent"
                         Canvas.Left="116.5"
                         Canvas.Top="225"
-                        Command="{Binding AddHoursCommand}"/>
+                        Command="{Binding AddHoursCommand}">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
 
                 <Polygon Points="0,0 6.8,20 105,20 6.8,20"
                          Stroke="LightBlue"

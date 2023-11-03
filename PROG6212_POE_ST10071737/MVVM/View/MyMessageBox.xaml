@@ -31,7 +31,8 @@
         <TextBox Text="{Binding Message}"
                  FontSize="20"
                  Foreground="LightBlue"
-                 Background="Transparent"/>
+                 Background="Transparent"
+                 TextWrapping="Wrap"/>
 
         <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Right"

@@ -71,43 +71,47 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         /// </summary>
         /// <param name="SemesterID"></param>
         /// <returns></returns>
-        public ObservableCollection<ModuleModel> LoadSemesterModulesFromDB(int SemesterID)
+        public async Task<ObservableCollection<ModuleModel>> LoadSemesterModulesFromDB(int SemesterID)
         {
-            var SemesterModules = new ObservableCollection<ModuleModel>();
-            try
+            return await Task.Run(() =>
             {
-                using (var Entity = new MyTimeManagementDatabaseEntities())
+                var SemesterModules = new ObservableCollection<ModuleModel>();
+                try
                 {
-                    var modules = Entity.Modules.Where(m => m.SemesterID == SemesterID).ToList();
-
-                    foreach (var module in modules)
+                    using (var Entity = new MyTimeManagementDatabaseEntities())
                     {
-                        var tempModule = new ModuleModel();
-                        tempModule.ModuleID = module.ModuleID;
-                        tempModule.ModuleCode = module.ModuleCode;
-                        tempModule.ModuleName = module.ModuleName;
-                        tempModule.ModuleCredits = (int)module.ModuleCredits;
-                        tempModule.ModuleClassHourPerWeek = (double)module.ModuleClassHoursPerWeek;
-                        tempModule.ModuleStartDate = (DateTime)module.ModuleStartDate;
-                        tempModule.ModuleTotalWeeks = (int)module.ModuleTotalWeeks;
-                        tempModule.ModuleTotalSSHours = (double)module.ModuleTotalSSHours;
-                        tempModule.ModuleSSHoursDoneForWeek = (double)module.ModuleSSHoursDoneForWeek;
-                        tempModule.ModuleSSHoursForWeeks = (double)module.ModuleSSHoursForWeeks;
-                        tempModule.ModuleTotalSSHoursDone = (double)module.ModuleTotalSSHoursDone;
-                        tempModule.ModuleSemesterNum = SemesterID;
+                        var modules = Entity.Modules.Where(m => m.SemesterID == SemesterID).ToList();
 
-                        SemesterModules.Add(tempModule);
+                        foreach (var module in modules)
+                        {
+                            var tempModule = new ModuleModel();
+                            tempModule.ModuleID = module.ModuleID;
+                            tempModule.ModuleCode = module.ModuleCode;
+                            tempModule.ModuleName = module.ModuleName;
+                            tempModule.ModuleCredits = (int)module.ModuleCredits;
+                            tempModule.ModuleClassHourPerWeek = (double)module.ModuleClassHoursPerWeek;
+                            tempModule.ModuleStartDate = (DateTime)module.ModuleStartDate;
+                            tempModule.ModuleTotalWeeks = (int)module.ModuleTotalWeeks;
+                            tempModule.ModuleTotalSSHours = (double)module.ModuleTotalSSHours;
+                            tempModule.ModuleSSHoursDoneForWeek = (double)module.ModuleSSHoursDoneForWeek;
+                            tempModule.ModuleSSHoursForWeeks = (double)module.ModuleSSHoursForWeeks;
+                            tempModule.ModuleTotalSSHoursDone = (double)module.ModuleTotalSSHoursDone;
+                            tempModule.ModuleSemesterNum = SemesterID;
+                            tempModule.CheckNewWeek();
+                            SemesterModules.Add(tempModule);
+                        }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                var MyMessageBox = new MyMessageBox();
-                MyMessageBox.DataContext = new MyMessageBoxViewModel { Message = "An error occurred: " + ex.ToString() };
-                MyMessageBox.Show();
-            }
+                catch (Exception ex)
+                {
+                    var MyMessageBox = new MyMessageBox();
+                    MyMessageBox.DataContext = new MyMessageBoxViewModel { Message = "An error occurred: " + ex.ToString() };
+                    MyMessageBox.Show();
+                }
 
-            return SemesterModules;
+                return SemesterModules;
+            });
+            
         }
         //___________________________________________________________________________________________________________
 
