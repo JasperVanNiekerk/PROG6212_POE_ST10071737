@@ -201,6 +201,16 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
             return cal.GetWeekOfYear(date, dfi.CalendarWeekRule, dfi.FirstDayOfWeek);
         }
         //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// defines the toString of the Semester object
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return this.ModuleCode;
+        }
+        //___________________________________________________________________________________________________________
     }
 }
 //____________________________________EOF_________________________________________________________________________

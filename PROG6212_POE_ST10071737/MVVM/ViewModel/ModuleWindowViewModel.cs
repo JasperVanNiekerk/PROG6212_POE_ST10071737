@@ -306,13 +306,11 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             {
                 this.EditBTNString = "Editing";
                 this.IsEditable = false;
-                this.ModuleWasEdited();
             }
             else
             {
                 this.EditBTNString = "Edit";
                 this.IsEditable = true;
-                this.ModuleWasEdited();
             }
         }
         //___________________________________________________________________________________________________________
@@ -371,9 +369,16 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             var currentStudent = CurrentStudentModel.Instance;
             if (Double.TryParse(HoursStudied, out double hours))
             {
-                SelectedModule.ModuleSSHoursDoneForWeek += hours;
-                SelectedModule.ModuleTotalSSHoursDone += hours;
-                //currentStudent.UpdateModuleStudyHours(SelectedModule);
+                if (!(SelectedModule.ModuleSSHoursDoneForWeek >= SelectedModule.ModuleSSHoursForWeeks))
+                {
+                    SelectedModule.ModuleSSHoursDoneForWeek += hours;
+                    SelectedModule.ModuleTotalSSHoursDone += hours;
+                    currentStudent.UpdateModuleStudyHours(SelectedModule);
+                }
+                else
+                {
+                    this.ErrorLabel = "you are done for the week";
+                }
             }
             else
             {

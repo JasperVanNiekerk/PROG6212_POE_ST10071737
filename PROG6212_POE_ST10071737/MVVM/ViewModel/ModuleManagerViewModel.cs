@@ -3,6 +3,7 @@ using PROG6212_POE_ST10071737.MVVM.Model;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 
 namespace PROG6212_POE_ST10071737.MVVM.ViewModel
 {
@@ -326,8 +327,9 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         {
             var CurrentStudent = CurrentStudentModel.Instance;
             var newModule = new ModuleModel(this.ModuleCode, this.ModuleName, this.ModuleCredits, this.ModuleHours, CurrentSemester.SemesterStartDate, CurrentSemester.SemesterNumber, CurrentSemester.SemesterWeeksAmount, CurrentSemester.SemesterID);
+            MessageBox.Show(CurrentSemester.SemesterID.ToString());
             CurrentStudent.AddModuleToStudentSemester(newModule);
-            //CurrentStudent.LoadCurrentStudentSemesters();
+            CurrentStudent.LoadCurrentStudentSemesters();
             CurrentStudent.LoadCurrentStudentModules();
         }
         //___________________________________________________________________________________________________________

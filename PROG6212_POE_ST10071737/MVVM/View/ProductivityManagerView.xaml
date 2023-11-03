@@ -82,7 +82,8 @@
 
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal"
+                                Margin="5">
                         <Label Content="{Binding}"
                            Foreground="LightBlue"
                            FontSize="20"/>

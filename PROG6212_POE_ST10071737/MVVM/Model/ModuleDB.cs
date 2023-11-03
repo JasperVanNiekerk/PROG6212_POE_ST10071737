@@ -94,7 +94,7 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
                         tempModule.ModuleSSHoursDoneForWeek = (double)module.ModuleSSHoursDoneForWeek;
                         tempModule.ModuleSSHoursForWeeks = (double)module.ModuleSSHoursForWeeks;
                         tempModule.ModuleTotalSSHoursDone = (double)module.ModuleTotalSSHoursDone;
-                        tempModule.ModuleSemesterNum = (int)module.SemesterID;
+                        tempModule.ModuleSemesterNum = SemesterID;
 
                         SemesterModules.Add(tempModule);
                     }
@@ -111,42 +111,38 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         }
         //___________________________________________________________________________________________________________
 
-        public void UpdateModuleInDB(ModuleModel module)
+        public async Task UpdateModuleInDB(ModuleModel module)
         {
-            Task.Run(() =>
+            try
             {
-                try
+                using (var Entity = new MyTimeManagementDatabaseEntities())
                 {
-                    using (var Entity = new MyTimeManagementDatabaseEntities())
+
+                    Module existingModule = Entity.Modules.Find(module.ModuleID);
+                    if (existingModule != null)
                     {
+                        // Update the existing module with the new values
+                        existingModule.ModuleCode = module.ModuleCode;
+                        existingModule.ModuleName = module.ModuleName;
+                        existingModule.ModuleCredits = module.ModuleCredits;
+                        existingModule.ModuleClassHoursPerWeek = (decimal?)module.ModuleClassHourPerWeek;
+                        existingModule.ModuleStartDate = module.ModuleStartDate;
+                        existingModule.ModuleTotalWeeks = module.ModuleTotalWeeks;
+                        existingModule.ModuleTotalSSHours = (decimal?)module.ModuleTotalSSHours;
+                        existingModule.ModuleSSHoursDoneForWeek = (decimal?)module.ModuleSSHoursDoneForWeek;
+                        existingModule.ModuleSSHoursForWeeks = (decimal?)module.ModuleSSHoursForWeeks;
+                        existingModule.ModuleTotalSSHoursDone = (decimal?)module.ModuleTotalSSHoursDone;
 
-                        Module existingModule = Entity.Modules.FirstOrDefault(m => m.ModuleID == module.ModuleID);
-                        if (existingModule != null)
-                        {
-                            // Update the existing module with the new values
-                            existingModule.ModuleCode = module.ModuleCode;
-                            existingModule.ModuleName = module.ModuleName;
-                            existingModule.ModuleCredits = module.ModuleCredits;
-                            existingModule.ModuleClassHoursPerWeek = (decimal?)module.ModuleClassHourPerWeek;
-                            existingModule.ModuleStartDate = module.ModuleStartDate;
-                            existingModule.ModuleTotalWeeks = module.ModuleTotalWeeks;
-                            existingModule.ModuleTotalSSHours = (decimal?)module.ModuleTotalSSHours;
-                            existingModule.ModuleSSHoursDoneForWeek = (decimal?)module.ModuleSSHoursDoneForWeek;
-                            existingModule.ModuleSSHoursForWeeks = (decimal?)module.ModuleSSHoursForWeeks;
-                            existingModule.ModuleTotalSSHoursDone = (decimal?)module.ModuleTotalSSHoursDone;
-                            existingModule.SemesterID = module.ModuleSemesterID;
-
-                            Entity.SaveChanges();
-                        }
+                        await Entity.SaveChangesAsync();
                     }
                 }
-                catch (Exception ex)
-                {
-                    var MyMessageBox = new MyMessageBox();
-                    MyMessageBox.DataContext = new MyMessageBoxViewModel { Message = "An error occurred: " + ex.ToString() };
-                    MyMessageBox.Show();
-                }
-            });
+            }
+            catch (Exception ex)
+            {
+                var MyMessageBox = new MyMessageBox();
+                MyMessageBox.DataContext = new MyMessageBoxViewModel { Message = "An error occurred: " + ex.ToString() };
+                MyMessageBox.Show();
+            }
         }
         //___________________________________________________________________________________________________________
 
