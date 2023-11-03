@@ -2,8 +2,6 @@
 using PROG6212_POE_ST10071737.Core;
 using System;
 using System.Globalization;
-using System.Windows;
-using System.Windows.Input;
 
 namespace PROG6212_POE_ST10071737.MVVM.Model
 {
@@ -64,19 +62,25 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         /// <summary>
         /// stores the Semester number of the module
         /// </summary>
-        public double ModuleSemesterNum { get; set; }
+        public int ModuleSemesterNum { get; set; }
         //___________________________________________________________________________________________________________
 
         /// <summary>
         /// stores the semester start date
         /// </summary>
-        private DateTime ModuleStartDate { get; set; }
+        public DateTime ModuleStartDate { get; set; }
         //___________________________________________________________________________________________________________
 
         /// <summary>
         /// stores the amount of weeks in the semester
         /// </summary>
-        private int ModuleTotalWeeks { get; set; }
+        public int ModuleTotalWeeks { get; set; }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// stores the SemesterID of the module
+        /// </summary>
+        public int ModuleSemesterID { get; private set; }
         //___________________________________________________________________________________________________________
 
         //___________________________________________________________________________________________________________
@@ -91,7 +95,17 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         }
         //___________________________________________________________________________________________________________
 
-        public ModuleModel(string MC, string MN, int MCredits, double MCHPW, DateTime MSD ,int MSN, int MTW)
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="MC"></param>
+        /// <param name="MN"></param>
+        /// <param name="MCredits"></param>
+        /// <param name="MCHPW"></param>
+        /// <param name="MSD"></param>
+        /// <param name="MSN"></param>
+        /// <param name="MTW"></param>
+        public ModuleModel(string MC, string MN, int MCredits, double MCHPW, DateTime MSD, int MSN, int MTW, int MSID)
         {
             this.ModuleCode = MC;
             this.ModuleName = MN;
@@ -100,6 +114,7 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
             this.ModuleStartDate = MSD;
             this.ModuleSemesterNum = MSN;
             this.ModuleTotalWeeks = MTW;
+            this.ModuleSemesterID = MSID;
             this.CalculateSSH();
         }
         //___________________________________________________________________________________________________________

@@ -325,8 +325,10 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         private void AddNewModule()
         {
             var CurrentStudent = CurrentStudentModel.Instance;
-            int index = CurrentStudentSemesters.ToList().FindIndex(obj => obj.ReturnSemesterNumber() == CurrentSemester.ReturnSemesterNumber());
-            CurrentStudent.AddModuleToStudentSemester(index, this.ModuleCode, this.ModuleName, this.ModuleCredits, this.ModuleHours);
+            var newModule = new ModuleModel(this.ModuleCode, this.ModuleName, this.ModuleCredits, this.ModuleHours, CurrentSemester.SemesterStartDate, CurrentSemester.SemesterNumber, CurrentSemester.SemesterWeeksAmount, CurrentSemester.SemesterID);
+            CurrentStudent.AddModuleToStudentSemester(newModule);
+            CurrentStudent.LoadCurrentStudentSemesters();
+            CurrentStudent.LoadCurrentStudentModules();
         }
         //___________________________________________________________________________________________________________
 

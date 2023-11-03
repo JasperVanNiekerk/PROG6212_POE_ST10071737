@@ -104,6 +104,8 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         /// <param name="semester"></param>
         public void AddSemesterToStudent(SemesterModel semester)
         {
+            var semesters = new SemesterDB();
+            semesters.AddSemesterToDB(semester, this.CurrentStudent.StudentID);
             this.CurrentStudent.AddSemester(semester);
         }
         //___________________________________________________________________________________________________________
@@ -121,11 +123,24 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         }
         //___________________________________________________________________________________________________________
 
-
-        public LoadCurrentStudentSemesters(int ID)
+        /// <summary>
+        /// sets the current students semesters from the database
+        /// </summary>
+        /// <param name="ID"></param>
+        public void LoadCurrentStudentSemesters()
         {
-            this.CurrentStudent.loadStudentSemesters(ID);
+            this.CurrentStudent.loadStudentSemesters(this.CurrentStudent.StudentID);
         }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
+        /// loads the modules for the current student
+        /// </summary>
+        public void LoadCurrentStudentModules()
+        {
+            this.CurrentStudent.loadModules();
+        }
+        //___________________________________________________________________________________________________________
 
         /// <summary>
         /// adds a semester to the current student
@@ -201,9 +216,11 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         /// <param name="MN"></param>
         /// <param name="MCredits"></param>
         /// <param name="MCHPW"></param>
-        public void AddModuleToStudentSemester(int semesterNum, string MC, string MN, int MCredits, double MCHPW)
+        public void AddModuleToStudentSemester(ModuleModel module)
         {
-            CurrentStudent.AddModuleToStudentSemester(semesterNum, MC, MN, MCredits, MCHPW);
+            var Module = new ModuleDB();
+            Module.AddModuleToDatabase(module);
+            
         }
         //___________________________________________________________________________________________________________
 

@@ -44,6 +44,7 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
                             SemesterStartDate = semester.SemesterStartDate,
                             SemesterWeeksAmount = semester.SemesterWeeksAmount,
                             StudentID = studentID
+                            
                         };
                         Entity.Semesters.Add(newSemester);
                         Entity.SaveChanges();
@@ -77,9 +78,11 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
                     foreach (var semester in semesters)
                     {
                         var SemesterM = new SemesterModel();
+                        SemesterM.SemesterID = semester.SemesterID;
                         SemesterM.SemesterNumber = (int)semester.SemesterNum;
                         SemesterM.SemesterStartDate = (DateTime)semester.SemesterStartDate;
                         SemesterM.SemesterWeeksAmount = (int)semester.SemesterWeeksAmount;
+                        SemesterM.SemesterNumString = "semester " + (int)semester.SemesterNum;
 
                         Semesters.Add(SemesterM);
                     }

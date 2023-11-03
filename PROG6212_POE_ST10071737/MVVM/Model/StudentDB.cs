@@ -142,6 +142,7 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
 
                     if (student != null)
                     {
+                        currentStudent.StudentID = student.StudentID;
                         currentStudent.StudentName = student.StudentName;
                         currentStudent.StudentSurname = student.StudentSurname;
                         currentStudent.StudentPassword = "";

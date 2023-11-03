@@ -10,6 +10,12 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         //___________________________________________________________________________________________________________
 
         /// <summary>
+        /// stores the semesters ID
+        /// </summary>
+        public int SemesterID { get; set; }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
         /// stores the semesters number
         /// </summary>
         public int SemesterNumber { get; set; }
@@ -36,7 +42,7 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         /// <summary>
         /// stores a list of modules in the semester
         /// </summary>
-        private ObservableCollection<ModuleModel> SemesterModules { get; set; } = new ObservableCollection<ModuleModel>();
+        private ObservableCollection<ModuleModel> SemesterModules { get; set; }
         //___________________________________________________________________________________________________________
 
         //___________________________________________________________________________________________________________
@@ -91,13 +97,12 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         //___________________________________________________________________________________________________________
 
         /// <summary>
-        /// Method to add Module to semester
+        /// loads the modules of the semester from the database
         /// </summary>
-        /// <param name="module"></param>
-        public void AddModule(string MC, string MN, int MCredits, double MCHPW)
+        public void LoadSemesterModules()
         {
-            var module = new ModuleModel(MC, MN, MCredits, MCHPW, this.SemesterStartDate, this.SemesterNumber, this.SemesterWeeksAmount);
-            this.SemesterModules.Add(module);
+            var Module = new ModuleDB();
+            this.SemesterModules = new ObservableCollection<ModuleModel>(Module.LoadSemesterModulesFromDB(SemesterID));
         }
         //___________________________________________________________________________________________________________
 

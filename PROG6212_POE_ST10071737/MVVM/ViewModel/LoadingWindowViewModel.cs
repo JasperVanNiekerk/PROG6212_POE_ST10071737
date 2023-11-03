@@ -86,6 +86,7 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             timer.Interval = TimeSpan.FromMilliseconds(95);
             timer.Tick += Timer_Tick;
             timer.Start();
+            this.DataLoaders();
         }
         //___________________________________________________________________________________________________________
 
@@ -119,7 +120,9 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
         }
         //___________________________________________________________________________________________________________
 
-
+        /// <summary>
+        /// Loads the current students data
+        /// </summary>
         private void DataLoaders()
         {
             var CurrentUser = CurrentStudentModel.Instance;
@@ -127,8 +130,11 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
             var ID = Student.GetStudentIDByName(CurrentUser.GetLoginStudent());
             CurrentUser.SetCurrentStudent(Student.loadStudent(ID));
 
-            CurrentUser.LoadCurrentStudentSemesters(ID);
+            CurrentUser.LoadCurrentStudentSemesters();
+
+            CurrentUser.LoadCurrentStudentModules();
         }
+        //___________________________________________________________________________________________________________
 
         /// <summary>
         /// Event for the dispatch timer

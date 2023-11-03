@@ -200,10 +200,10 @@
     </ApplicationDefinition>
     <Compile Include="Module.cs">
       <DependentUpon>MyDataModel.tt</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="MVVM\Model\AudioPlayerSingletonModel.cs" />
     <Compile Include="MVVM\Model\CurrentStudentModel.cs" />
+    <Compile Include="MVVM\Model\ModuleDB.cs" />
     <Compile Include="MVVM\Model\ModuleModel.cs" />
     <Compile Include="MVVM\Model\MyFunSuppriseClass.cs" />
     <Compile Include="MVVM\Model\SemesterDB.cs" />
@@ -248,19 +248,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MyDataModel.Context.tt</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="MyDataModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MyDataModel.tt</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="MyDataModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MyDataModel.edmx</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="MyTimeManagementDatabaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -269,11 +266,9 @@
     </Compile>
     <Compile Include="Semester.cs">
       <DependentUpon>MyDataModel.tt</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Student.cs">
       <DependentUpon>MyDataModel.tt</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="UICode\BooleanToVisibilityConverter.cs" />
     <Page Include="MainWindow.xaml">
@@ -430,11 +425,9 @@
     <EntityDeploy Include="MyDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MyDataModel.Designer.cs</LastGenOutput>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EntityDeploy>
     <None Include="MyDataModel.edmx.diagram">
       <DependentUpon>MyDataModel.edmx</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="MyTimeManagementDatabaseDataSet.xsc">
       <DependentUpon>MyTimeManagementDatabaseDataSet.xsd</DependentUpon>
@@ -498,13 +491,11 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MyDataModel.edmx</DependentUpon>
       <LastGenOutput>MyDataModel.Context.cs</LastGenOutput>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="MyDataModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MyDataModel.edmx</DependentUpon>
       <LastGenOutput>MyDataModel.cs</LastGenOutput>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="MyTimeManagementDatabase.mdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -10,6 +10,12 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         //___________________________________________________________________________________________________________
 
         /// <summary>
+        /// Stores the studentID
+        /// </summary>
+        public int StudentID { get; set; }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
         /// Stores the students name
         /// </summary>
         public String StudentName { get; set; }
@@ -90,6 +96,18 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         //___________________________________________________________________________________________________________
 
         /// <summary>
+        /// loads the modules for each semester 
+        /// </summary>
+        public void loadModules()
+        {
+            foreach (var semester in this.StudentSemesters)
+            {
+                semester.LoadSemesterModules();
+            }
+        }
+        //___________________________________________________________________________________________________________
+
+        /// <summary>
         /// returns the Semester list of the student
         /// </summary>
         /// <returns></returns>
@@ -106,20 +124,6 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         public void AddSemester(SemesterModel semester)
         {
             this.StudentSemesters.Add(semester);
-        }
-        //___________________________________________________________________________________________________________
-
-        /// <summary>
-        /// Adds a Module to the specified semester
-        /// </summary>
-        /// <param name="semesterNum"></param>
-        /// <param name="MC"></param>
-        /// <param name="MN"></param>
-        /// <param name="MCredits"></param>
-        /// <param name="MCHPW"></param>
-        public void AddModuleToStudentSemester(int semesterNum, string MC, string MN, int MCredits, double MCHPW)
-        {
-            this.StudentSemesters[semesterNum].AddModule(MC, MN, MCredits, MCHPW);
         }
         //___________________________________________________________________________________________________________
     }
