@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Linq;
 
 namespace PROG6212_POE_ST10071737.MVVM.Model
 {
@@ -216,7 +215,7 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         {
             var Module = new ModuleDB();
             Module.AddModuleToDatabase(module);
-            
+
         }
         //___________________________________________________________________________________________________________
 
@@ -226,12 +225,10 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         /// <param name="module"></param>
         public void DeleteModule(ModuleModel module)
         {
-            var searchedSemester = module.ModuleSemesterNum;
-            var moduleSemester = CurrentStudent.ReturnStudentSemesters().FirstOrDefault(semester => semester.ReturnSemesterNumber() == searchedSemester);
-            if (moduleSemester != null)
-            {
-                moduleSemester.ReturnSemesterModules().Remove(module);
-            }
+            var Module = new ModuleDB();
+            Module.DeleteModulefromDB(module);
+            LoadCurrentStudentSemesters();
+            LoadCurrentStudentModules();
         }
         //___________________________________________________________________________________________________________
 
@@ -240,26 +237,6 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         /// </summary>
         /// <param name="module"></param>
         public void UpdateModule(ModuleModel module)
-        {
-            var searchedSemester = module.ModuleSemesterNum;
-            var moduleSemester = CurrentStudent.ReturnStudentSemesters().FirstOrDefault(semester => semester.ReturnSemesterNumber() == searchedSemester);
-            if (moduleSemester != null)
-            {
-                var index = moduleSemester.ReturnSemesterModules().IndexOf(module);
-                if (index >= 0)
-                {
-                    moduleSemester.UpdateModuleInSemester(index, module);
-                }
-            }
-        }
-        //___________________________________________________________________________________________________________
-
-        /// <summary>
-        /// adds the addHours param to the module param's self study hours 
-        /// </summary>
-        /// <param name="addedHours"></param>
-        /// <param name="module"></param>
-        public void UpdateModuleStudyHours(ModuleModel module)
         {
             var Module = new ModuleDB();
             Module.UpdateModuleInDB(module);

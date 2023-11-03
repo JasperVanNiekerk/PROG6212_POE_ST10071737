@@ -134,17 +134,6 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
             return this.SemesterModules.Count;
         }
         //___________________________________________________________________________________________________________
-
-        /// <summary>
-        /// updates the SemesterModule at the index param to the module param
-        /// </summary>
-        /// <param name="index"></param>
-        /// <param name="module"></param>
-        public void UpdateModuleInSemester(int index, ModuleModel module)
-        {
-            this.SemesterModules[index] = module;
-        }
-        //___________________________________________________________________________________________________________
     }
 }
 //____________________________________EOF_________________________________________________________________________

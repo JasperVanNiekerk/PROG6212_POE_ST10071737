@@ -129,26 +129,6 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         //_____________________________________________Methods_______________________________________________________
         //___________________________________________________________________________________________________________
 
-        /// <summary>
-        /// method to return the module code
-        /// </summary>
-        /// <returns></returns>
-        public string DisplayModuleCode()
-        {
-            return this.ModuleCode;
-        }
-        //___________________________________________________________________________________________________________
-
-        /// <summary>
-        /// method to return the module name
-        /// </summary>
-        /// <returns></returns>
-        public string DisplayModuleName()
-        {
-            return this.ModuleName;
-        }
-        //___________________________________________________________________________________________________________
-
         public void CalculateSSH()
         {
             SSHCalculator SSHCalculatorHere = new SSHCalculator();

@@ -373,7 +373,6 @@ namespace PROG6212_POE_ST10071737.MVVM.ViewModel
                 {
                     SelectedModule.ModuleSSHoursDoneForWeek += hours;
                     SelectedModule.ModuleTotalSSHoursDone += hours;
-                    currentStudent.UpdateModuleStudyHours(SelectedModule);
                 }
                 else
                 {

@@ -146,6 +146,27 @@ namespace PROG6212_POE_ST10071737.MVVM.Model
         }
         //___________________________________________________________________________________________________________
 
+
+        public void DeleteModulefromDB(ModuleModel module)
+        {
+            try
+            {
+                using (var Entity = new MyTimeManagementDatabaseEntities())
+                {
+                    Module DeletedModule = Entity.Modules.Find(module.ModuleID);
+                    Entity.Modules.Remove(DeletedModule);
+                    Entity.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                var MyMessageBox = new MyMessageBox();
+                MyMessageBox.DataContext = new MyMessageBoxViewModel { Message = "An error occurred: " + ex.ToString() };
+                MyMessageBox.Show();
+            }
+        }
+        //___________________________________________________________________________________________________________
+
     }
 }
 //____________________________________EOF_________________________________________________________________________
